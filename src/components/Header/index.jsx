@@ -8,32 +8,53 @@ import {
   HeaderButton,
   HeaderTitle
 } from '../../elements/header';
+import Flip from 'react-reveal/Flip';
 
 
 class Header extends React.Component {
+  state = {
+    show: false,
+  };
+
   render() {
     const { location, userId } = this.props;
+    const { show } = this.state;
     return (
       <HeaderBox>
         <Container>
-          <HeaderTitle>
-            <img src={logo} />
-            Social Media Demo
-          </HeaderTitle>
+          <HeaderButton onClick={this._handleClick('/')}>
+            <HeaderTitle>
+              <Flip cascade top when={show}>
+                <img src={logo} onLoad={this._onImageLoad}/>
+                Social Media Demo
+              </Flip>
+            </HeaderTitle>
+          </HeaderButton>
           <HeaderActionBar>
             {!userId && location.pathname === '/sign-up' && (
               <HeaderButton onClick={this._handleClick('/login')}>
-                Login
+                login
               </HeaderButton>
             )}
             {!userId && location.pathname === '/login' && (
               <HeaderButton onClick={this._handleClick('/sign-up')}>
-                Signup
+                <Flip cascade top when={show}>
+                  signup
+                </Flip>
+              </HeaderButton>
+            )}
+            {!userId && location.pathname === '/' && (
+              <HeaderButton onClick={this._handleClick('/sign-up')}>
+                <Flip cascade top when={show}>
+                  signup
+                </Flip>
               </HeaderButton>
             )}
             {userId && (
               <HeaderButton onClick={this._handleClick('logout')}>
-                Logout
+                <Flip cascade top when={show}>
+                  logout
+                </Flip>
               </HeaderButton>
             )}
           </HeaderActionBar>
@@ -54,6 +75,10 @@ class Header extends React.Component {
     if (!isLoggingOut) {
       history.replace(path);
     }
+  }
+
+  _onImageLoad = () => {
+    this.setState({ show: true })
   }
 }
 

@@ -15,9 +15,10 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   position: relative;
-`
+`;
+
 export const HeaderTitle = styled.div`
-  padding: 15px;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -25,7 +26,7 @@ export const HeaderTitle = styled.div`
   
   img {
     max-width: 30px;
-    margin-right: 5px;
+    margin-right: 10px;
   }
 `;
 
@@ -53,4 +54,4 @@ export const HeaderButton = styled.button`
   &:hover {
     background: rgba(255,255,255,0.2);
   }
-`
+`;
