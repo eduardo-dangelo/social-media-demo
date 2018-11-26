@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { FaUser } from 'react-icons/fa';
-import LoginUser from '../../components/LoginUser';
+import LoginUserForm from './LoginUserForm';
 
 const LoginContainer = styled.div`
   height: 100%;
-  position: relative;
+  position: relative
   //border: 1px dashed red;
   display: flex;
   align-items: center;
@@ -35,6 +35,13 @@ const BoxHeader = styled.div`
   color: gray;
   padding: 10px 15px;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  
+  svg {
+    margin-right: 5px;
+  }
 `;
 
 const BoxContent = styled.div`
@@ -51,7 +58,7 @@ class Login extends PureComponent {
             Login
           </BoxHeader>
           <BoxContent>
-            <LoginUser/>
+            <LoginUserForm/>
           </BoxContent>
         </LoginBox>
       </LoginContainer>
