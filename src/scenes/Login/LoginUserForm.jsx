@@ -15,7 +15,7 @@ class LoginUserForm extends React.Component {
       <Form>
         <FormGroup>
           <Label>
-            email:
+            Email:
           </Label>
           <Field
             value={this.state.email}
@@ -25,7 +25,7 @@ class LoginUserForm extends React.Component {
         </FormGroup>
         <FormGroup>
           <Label>
-            password:
+            Password:
           </Label>
           <Field
             type="password"

@@ -2,6 +2,7 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { graphql, compose } from 'react-apollo'
 import gql from 'graphql-tag'
+import { ActionBar, ActionButton, Field, Form, FormGroup, Label } from '../../elements/form'
 
 class CreateUserForm extends React.Component {
 
@@ -12,49 +13,49 @@ class CreateUserForm extends React.Component {
       email: '',
       password: '',
       name: '',
-      emailSubscription: false,
     }
   }
 
   render () {
-    if (this.props.loggedInUserQuery.loading) {
-      return (<div>Loading</div>)
-    }
-
-    // redirect if user is logged in
-    if (this.props.loggedInUserQuery.loggedInUser.id) {
-      console.warn('Already logged in')
-      this.props.history.replace('/')
-    }
-
     return (
-      <div className='w-100 pa4 flex justify-center'>
-        <div style={{ maxWidth: 400 }} className=''>
-          <input
-            className='w-100 pa3 mv2'
+      <Form>
+        <FormGroup>
+          <Label>
+            Name:
+          </Label>
+          <Field
+            value={this.state.name}
+            placeholder='name'
+            onChange={(e) => this.setState({name: e.target.value})}
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label>
+            Email:
+          </Label>
+          <Field
             value={this.state.email}
-            placeholder='Email'
+            placeholder='Email address'
             onChange={(e) => this.setState({email: e.target.value})}
           />
-          <input
-            className='w-100 pa3 mv2'
-            type='password'
+        </FormGroup>
+        <FormGroup>
+          <Label>
+            Password:
+          </Label>
+          <Field
+            type="password"
             value={this.state.password}
             placeholder='Password'
             onChange={(e) => this.setState({password: e.target.value})}
           />
-          <input
-            className='w-100 pa3 mv2'
-            value={this.state.name}
-            placeholder='Name'
-            onChange={(e) => this.setState({name: e.target.value})}
-          />
-
-          {this.state.name && this.state.email && this.state.password &&
-          <button className='pa3 bg-black-10 bn dim ttu pointer' onClick={this.signupUser}>Sign up</button>
-          }
-        </div>
-      </div>
+        </FormGroup>
+        <ActionBar>
+          <ActionButton onClick={this.signupUser}>
+            Sign Up
+          </ActionButton>
+        </ActionBar>
+      </Form>
     )
   }
 
@@ -82,18 +83,6 @@ const SIGNUP_USER_MUTATION = gql`
   }
 `
 
-const LOGGED_IN_USER_QUERY = gql`
-  query LoggedInUserQuery {
-    loggedInUser {
-      id
-    }
-  }
-`
-
 export default compose(
   graphql(SIGNUP_USER_MUTATION, {name: 'signupUserMutation'}),
-  graphql(LOGGED_IN_USER_QUERY, { 
-    name: 'loggedInUserQuery',
-    options: { fetchPolicy: 'network-only' }
-  })
 )(withRouter(CreateUserForm))

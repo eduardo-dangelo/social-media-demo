@@ -27,7 +27,7 @@ class Header extends React.Component {
             <HeaderTitle>
               <Flip cascade top when={show}>
                 <img src={logo} onLoad={this._onImageLoad}/>
-                Social Media Demo
+                Social Media
               </Flip>
             </HeaderTitle>
           </TransparentButton>

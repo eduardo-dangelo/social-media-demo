@@ -14,7 +14,11 @@ export const FormGroup = styled.div`
 
 export const Label = styled.div`
   font-size: .9em;
-  min-width: 85px;
+  min-width: 100px;
+  
+  @media all and (max-width: 430px) {
+    display: none;
+  }
 `;
 
 export const Field = styled.input`
@@ -49,5 +53,9 @@ export const ActionButton = styled.button`
     box-shadow: ${variables.boxShadowHover};
     color: ${variables.tertiaryColorHover};
     background: ${variables.primaryColorHover};
+  }
+  
+  @media all and (max-width: 430px) {
+    flex-grow: 2;
   }
 `;

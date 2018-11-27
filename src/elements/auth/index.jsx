@@ -25,6 +25,10 @@ export const Box = styled.div`
     background: ${variables.boxBgHover};
     box-shadow: ${variables.boxShadowHover};
   }
+  
+  @media all and (max-width: 430px) {
+    min-width: 90%;
+  }
 `;
 
 export const BoxHeader = styled.div`

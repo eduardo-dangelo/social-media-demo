@@ -44,5 +44,8 @@ class Shell extends React.Component {
 }
 
 export default compose(
-  graphql(loggedInUser, { name: 'user' }),
+  graphql(loggedInUser, {
+    name: 'user',
+    options: { fetchPolicy: 'network-only' }
+  }),
 )(Shell);
