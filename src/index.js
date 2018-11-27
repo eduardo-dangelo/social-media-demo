@@ -1,10 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './components/App'
 import CreatePost from './components/CreatePost'
-import CreateUser from './components/CreateUser'
-import LoginUser from './scenes/Login/LoginUserForm'
-import Login from './scenes/Login'
+import Login from './scenes/Login';
+import CreateUser from './scenes/CreateUser';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import { ApolloClient } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
@@ -15,7 +13,7 @@ import 'tachyons'
 import Shell from './components/Shell'
 
 // __SIMPLE_API_ENDPOINT__ looks like: 'https://api.graph.cool/simple/v1/__SERVICE_ID__'
-const httpLink = createHttpLink({ uri: '' })
+const httpLink = createHttpLink({ uri: 'https://api.graph.cool/simple/v1/cjowu0zrbb1270106hgdbk7vv' })
 
 const middlewareLink = new ApolloLink((operation, forward) => {
   const token = localStorage.getItem('graphcoolToken')

@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 import { graphql, compose } from 'react-apollo'
 import gql from 'graphql-tag'
 
-class CreateUser extends React.Component {
+class CreateUserForm extends React.Component {
 
   constructor(props) {
     super()
@@ -96,4 +96,4 @@ export default compose(
     name: 'loggedInUserQuery',
     options: { fetchPolicy: 'network-only' }
   })
-)(withRouter(CreateUser))
+)(withRouter(CreateUserForm))

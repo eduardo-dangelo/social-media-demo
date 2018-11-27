@@ -1,15 +1,16 @@
 import styled from 'styled-components'
+import { variables } from '../../services/config'
 
 export const HeaderBox = styled.div`
   width: 100%;
-  min-height: 60px;
-  background: #282c34;
-  color: lightgray;
   padding: 0;
+  min-height: 60px;
+  background: ${variables.primaryColor};
+  color: ${variables.tertiaryColor};
 `;
 
 export const Container = styled.div`
-  max-width: 1200px;
+  max-width: ${variables.containerMaxWidth};
   margin: auto;
   display: flex;
   align-items: center;
@@ -48,10 +49,19 @@ export const HeaderButton = styled.button`
   justify-content: space-around;
   transition: .3s ease;
   padding: 15px;
-  color: lightgray;
+  color: ${variables.tertiaryColor};
   cursor: pointer;
   
   &:hover {
-    background: rgba(255,255,255,0.2);
+    color: ${variables.tertiaryColorHover};
+    background: rgba(255,255,255,0.04);
+  }
+`;
+
+export const TransparentButton = styled(HeaderButton)` 
+  
+  &:hover {
+    color: white;
+    background: rgba(255,255,255,0);
   }
 `;

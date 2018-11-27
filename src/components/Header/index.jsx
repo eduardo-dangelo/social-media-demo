@@ -6,7 +6,8 @@ import {
   HeaderActionBar,
   HeaderBox,
   HeaderButton,
-  HeaderTitle
+  HeaderTitle,
+  TransparentButton,
 } from '../../elements/header';
 import Flip from 'react-reveal/Flip';
 
@@ -22,29 +23,29 @@ class Header extends React.Component {
     return (
       <HeaderBox>
         <Container>
-          <HeaderButton onClick={this._handleClick('/')}>
+          <TransparentButton onClick={this._handleClick('/')}>
             <HeaderTitle>
               <Flip cascade top when={show}>
                 <img src={logo} onLoad={this._onImageLoad}/>
                 Social Media Demo
               </Flip>
             </HeaderTitle>
-          </HeaderButton>
+          </TransparentButton>
           <HeaderActionBar>
-            {!userId && location.pathname === '/sign-up' && (
+            {!userId && location.pathname === '/signup' && (
               <HeaderButton onClick={this._handleClick('/login')}>
                 login
               </HeaderButton>
             )}
             {!userId && location.pathname === '/login' && (
-              <HeaderButton onClick={this._handleClick('/sign-up')}>
+              <HeaderButton onClick={this._handleClick('/signup')}>
                 <Flip cascade top when={show}>
                   signup
                 </Flip>
               </HeaderButton>
             )}
             {!userId && location.pathname === '/' && (
-              <HeaderButton onClick={this._handleClick('/sign-up')}>
+              <HeaderButton onClick={this._handleClick('/signup')}>
                 <Flip cascade top when={show}>
                   signup
                 </Flip>

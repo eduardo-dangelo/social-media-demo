@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { FaUser } from 'react-icons/fa';
-import LoginUserForm from './LoginUserForm';
+import CreateUserForm from './CreateUserForm';
 import { Box, BoxContent, BoxHeader, PageContainer } from '../../elements/auth'
 import Flip from 'react-reveal/Flip';
 
-class Login extends React.Component {
+class CreateUser extends PureComponent {
   render() {
     return (
       <PageContainer>
@@ -12,11 +12,11 @@ class Login extends React.Component {
           <BoxHeader>
             <Flip top cascade>
               <FaUser/>
-              Login
+              Sign Up
             </Flip>
           </BoxHeader>
           <BoxContent>
-            <LoginUserForm/>
+            <CreateUserForm/>
           </BoxContent>
         </Box>
       </PageContainer>
@@ -24,4 +24,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default CreateUser;
