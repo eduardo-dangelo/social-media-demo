@@ -59,7 +59,7 @@ class LoginUserForm extends React.Component {
       <Form onSubmit={this.authenticateUser}>
         {error && (
           <ErrorBox>
-            invalid credential
+            invalid credentials
           </ErrorBox>
         )}
         <FormGroup>

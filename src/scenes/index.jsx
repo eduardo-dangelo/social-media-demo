@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Shell from '../components/Shell';
 import { Route } from 'react-router-dom';
 import Login from './Login';
+import App from './App';
 import CreatePost from '../components/CreatePost';
 import CreateUser from './CreateUser';
 import { compose, graphql } from 'react-apollo'
@@ -18,28 +19,17 @@ class Scenes extends Component {
 
     return (
       <Shell userId={userId}>
-        <Route
-          exact path='/social-media-demo/'
-          render={() => (
-            <Login
-              userId={userId}
-              updateRequired={this._handleRefetch}
-            />
+        <Route exact path='/social-media-demo/' render={() => (
+            <App userId={userId} updateRequired={this._handleRefetch}/>
           )}
         />
         <Route
-          exact path='/social-media-demo/login'
-          render={() => (
-            <Login
-              userId={userId}
-              updateRequired={this._handleRefetch}
-            />
+          exact path='/social-media-demo/login' render={() => (
+            <Login userId={userId} updateRequired={this._handleRefetch}/>
           )}
         />
-        <Route path='/social-media-demo/create'
-               render={() => <CreatePost/>}/>
-        <Route path='/social-media-demo/signup'
-               render={() => <CreateUser/>}/>
+        <Route path='/social-media-demo/create' render={() => <CreatePost/>}/>
+        <Route path='/social-media-demo/signup' render={() => <CreateUser/>}/>
       </Shell>
     );
   }
