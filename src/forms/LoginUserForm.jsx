@@ -1,11 +1,11 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { graphql, compose } from 'react-apollo';
-import { ActionBar, ActionButton, Field, Form, FormGroup, Label } from '../../elements/form';
-import { authenticateUser } from '../../services/mutations';
+import { ActionBar, ActionButton, Field, Form, FormGroup, Label } from '../elements/form';
+import { authenticateUser } from '../services/mutations';
 import { FaCog } from 'react-icons/fa'
 import styled, { keyframes } from 'styled-components'
-import { variables } from '../../services/config'
+import { variables } from '../services/config'
 
 const rotate = keyframes`
   from {
@@ -33,10 +33,28 @@ class LoginUserForm extends React.Component {
     email: '',
     password: '',
     loading: false,
+    error: false,
   }
 
   render () {
-    const { loading, error } = this.state;
+    const { loading, error, email, password } = this.state;
+
+    const validate = () => {
+      let disabled = false
+      const values = [
+        email,
+        password,
+      ]
+
+      values.forEach((item) => {
+        if (item === '') {
+          disabled = true
+        }
+      })
+
+      return disabled;
+    }
+
     return (
       <Form onSubmit={this.authenticateUser}>
         {error && (
@@ -66,7 +84,7 @@ class LoginUserForm extends React.Component {
           />
         </FormGroup>
         <ActionBar>
-          <ActionButton type="submit">
+          <ActionButton type="submit" disabled={validate()}>
             Log in {loading && <FaCogSpin/>}
           </ActionButton>
         </ActionBar>

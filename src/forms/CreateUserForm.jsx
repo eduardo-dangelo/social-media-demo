@@ -1,24 +1,46 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { graphql, compose } from 'react-apollo'
-import gql from 'graphql-tag'
-import { ActionBar, ActionButton, Field, Form, FormGroup, Label } from '../../elements/form'
+import { ActionBar, ActionButton, Field, Form, FormGroup, Label } from '../elements/form'
+import { ErrorBox, FaCogSpin } from './LoginUserForm'
+import { signupUser } from '../services/mutations'
 
 class CreateUserForm extends React.Component {
-
-  constructor(props) {
-    super()
-
-    this.state = {
-      email: '',
-      password: '',
-      name: '',
-    }
+  state = {
+    email: '',
+    password: '',
+    name: '',
+    loading: false,
+    error: false
   }
 
   render () {
+    const { loading, error, email, password, name } = this.state;
+
+    const validate = () => {
+      let disabled = false
+      const values = [
+        email,
+        password,
+        name,
+      ]
+
+      values.forEach((item) => {
+        if (item === '') {
+          disabled = true
+        }
+      })
+
+      return disabled;
+    }
+
     return (
-      <Form onSubmit={this.signupUser}>
+      <Form onSubmit={this.handleSignupUser}>
+        {error && (
+          <ErrorBox>
+            An error has occurred
+          </ErrorBox>
+        )}
         <FormGroup>
           <Label>
             Name:
@@ -51,38 +73,32 @@ class CreateUserForm extends React.Component {
           />
         </FormGroup>
         <ActionBar>
-          <ActionButton type="submit" >
-            Sign Up
+          <ActionButton type="submit" disabled={validate()}>
+            Sign Up {loading && <FaCogSpin/>}
           </ActionButton>
         </ActionBar>
       </Form>
     )
   }
 
-  signupUser = async (e) => {
+  handleSignupUser = async (e) => {
     const { email, password, name } = this.state;
     e.preventDefault();
+    this.setState({ loading: true, error: false });
 
     try {
-      const user = await this.props.signupUserMutation({variables: {email, password, name}})
+      const user = await this.props.signupUser({variables: {email, password, name}})
       localStorage.setItem('graphcoolToken', user.data.signupUser.token)
+      this.setState({ loading: false })
       this.props.history.replace('/social-media-demo')
     } catch (e) {
       console.error(`An error occured: `, e)
+      this.setState({ loading: false, error: true })
       this.props.history.replace('/')
     }
   }
 }
 
-const SIGNUP_USER_MUTATION = gql`
-  mutation SignupUserMutation ($email: String!, $password: String!, $name: String) {
-    signupUser(email: $email, password: $password, name: $name) {
-      id
-      token
-    }
-  }
-`
-
 export default compose(
-  graphql(SIGNUP_USER_MUTATION, {name: 'signupUserMutation'}),
+  graphql(signupUser, {name: 'signupUser'}),
 )(withRouter(CreateUserForm))

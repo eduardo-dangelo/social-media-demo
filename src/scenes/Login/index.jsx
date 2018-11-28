@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaUser } from 'react-icons/fa';
-import LoginUserForm from './LoginUserForm';
+import LoginUserForm from '../../forms/LoginUserForm';
 import { Box, BoxContent, BoxHeader, PageContainer } from '../../elements/auth'
 import Flip from 'react-reveal/Flip';
 

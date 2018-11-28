@@ -62,6 +62,17 @@ export const ActionButton = styled.button`
     background: ${variables.primaryColorHover};
   }
   
+  &:disabled {
+    opacity: .7;
+    cursor: default;
+    
+    &:hover, &:focus {
+      box-shadow: ${variables.boxShadow};
+      color: ${variables.tertiaryColor};
+      background: ${variables.primaryColor};
+    }
+  } 
+  
   @media all and (max-width: 430px) {
     flex-grow: 2;
   }
