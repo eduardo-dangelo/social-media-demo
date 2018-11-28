@@ -1,18 +1,49 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { graphql, compose } from 'react-apollo';
-import gql from 'graphql-tag';
-import { ActionBar, ActionButton, Field, Form, FormGroup, Label } from '../../elements/form'
+import { ActionBar, ActionButton, Field, Form, FormGroup, Label } from '../../elements/form';
+import { authenticateUser } from '../../services/mutations';
+import { FaCog } from 'react-icons/fa'
+import styled, { keyframes } from 'styled-components'
+import { variables } from '../../services/config'
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(359deg);
+  }
+`;
+export const FaCogSpin = styled(FaCog)`
+  animation: ${rotate} 1s linear infinite;
+`;
+
+export const ErrorBox = styled.div`
+  padding: ${variables.space};
+  border: 1px solid #6f6bcf;
+  background: #bfbeff;
+  color: #6f6bcf;
+  margin-bottom: ${variables.space};
+`;
 
 class LoginUserForm extends React.Component {
   state = {
     email: '',
     password: '',
+    loading: false,
   }
 
   render () {
+    const { loading, error } = this.state;
     return (
-      <Form>
+      <Form onSubmit={this.authenticateUser}>
+        {error && (
+          <ErrorBox>
+            invalid credential
+          </ErrorBox>
+        )}
         <FormGroup>
           <Label>
             Email:
@@ -35,47 +66,38 @@ class LoginUserForm extends React.Component {
           />
         </FormGroup>
         <ActionBar>
-          <ActionButton onClick={this.authenticateUser}>
-            Log in
+          <ActionButton type="submit">
+            Log in {loading && <FaCogSpin/>}
           </ActionButton>
         </ActionBar>
       </Form>
     )
   }
 
-  authenticateUser = async () => {
-    const { authenticateUserMutation, history } = this.props
-    const {email, password} = this.state
+  authenticateUser = async (e) => {
+    const { authenticateUser, history, updateRequired } = this.props;
+    const {email, password} = this.state;
+    e.preventDefault();
+    this.setState({ loading: true, error: false });
 
-    authenticateUserMutation({
+
+    authenticateUser({
       variables: { email, password },
     })
       .then((response) => (
-        history.replace('/'),
-        localStorage.setItem('graphcoolToken', response.data.authenticateUser.token)
+        localStorage.setItem('graphcoolToken', response.data.authenticateUser.token),
+        history.replace('/social-media-demo'),
+        updateRequired(),
+        this.setState({ loading: false })
+      ))
+      .catch((e) => (
+        this.setState({ loading: false, error: true })
       ))
   }
 }
 
-const AUTHENTICATE_USER_MUTATION = gql`
-  mutation AuthenticateUserMutation ($email: String!, $password: String!) { 
-    authenticateUser(email: $email, password: $password) {
-      token
-    }
-  }
-`
 
-const LOGGED_IN_USER_QUERY = gql`
-  query LoggedInUserQuery {
-    loggedInUser {
-      id
-    }
-  }
-`
+
 export default compose(
-  graphql(AUTHENTICATE_USER_MUTATION, {name: 'authenticateUserMutation'}),
-  graphql(LOGGED_IN_USER_QUERY, { 
-    name: 'loggedInUserQuery',
-    options: { fetchPolicy: 'network-only' }
-  })
+  graphql(authenticateUser, {name: 'authenticateUser'}),
 )(withRouter(LoginUserForm))

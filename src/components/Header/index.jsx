@@ -23,7 +23,7 @@ class Header extends React.Component {
     return (
       <HeaderBox>
         <Container>
-          <TransparentButton onClick={this._handleClick('/')}>
+          <TransparentButton onClick={this._handleClick('/social-media-demo/')}>
             <HeaderTitle>
               <Flip cascade top when={show}>
                 <img src={logo} onLoad={this._onImageLoad}/>
@@ -32,20 +32,20 @@ class Header extends React.Component {
             </HeaderTitle>
           </TransparentButton>
           <HeaderActionBar>
-            {!userId && location.pathname === '/signup' && (
-              <HeaderButton onClick={this._handleClick('/login')}>
+            {!userId && location.pathname === '/social-media-demo/signup' && (
+              <HeaderButton onClick={this._handleClick('/social-media-demo/login')}>
                 login
               </HeaderButton>
             )}
-            {!userId && location.pathname === '/login' && (
-              <HeaderButton onClick={this._handleClick('/signup')}>
+            {!userId && location.pathname === '/social-media-demo/login' && (
+              <HeaderButton onClick={this._handleClick('/social-media-demo/signup')}>
                 <Flip cascade top when={show}>
                   signup
                 </Flip>
               </HeaderButton>
             )}
-            {!userId && location.pathname === '/' && (
-              <HeaderButton onClick={this._handleClick('/signup')}>
+            {!userId && location.pathname === '/social-media-demo/' && (
+              <HeaderButton onClick={this._handleClick('/social-media-demo/signup')}>
                 <Flip cascade top when={show}>
                   signup
                 </Flip>
@@ -70,7 +70,7 @@ class Header extends React.Component {
 
     if (isLoggingOut) {
       localStorage.removeItem('graphcoolToken');
-      window.location.reload();
+      window.location.reload('/social-media-demo');
     }
 
     if (!isLoggingOut) {

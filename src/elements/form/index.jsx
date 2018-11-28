@@ -44,10 +44,17 @@ export const ActionButton = styled.button`
   border: none;
   cursor: pointer;
   padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   box-shadow: 0 0 0 rgba(0,0,0,0);
   color: ${variables.tertiaryColor};
   background: ${variables.primaryColor};
   transition: ${variables.transition};
+  
+  svg {
+    margin-left: 5px;
+  }
   
   &:hover, &:focus {
     box-shadow: ${variables.boxShadowHover};

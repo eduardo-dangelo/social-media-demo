@@ -6,6 +6,7 @@ import Flip from 'react-reveal/Flip';
 
 class Login extends React.Component {
   render() {
+    const { updateRequired } = this.props;
     return (
       <PageContainer>
         <Box>
@@ -16,7 +17,7 @@ class Login extends React.Component {
             </Flip>
           </BoxHeader>
           <BoxContent>
-            <LoginUserForm/>
+            <LoginUserForm updateRequired={updateRequired}/>
           </BoxContent>
         </Box>
       </PageContainer>

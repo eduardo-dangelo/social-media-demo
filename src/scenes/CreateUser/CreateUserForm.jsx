@@ -18,7 +18,7 @@ class CreateUserForm extends React.Component {
 
   render () {
     return (
-      <Form>
+      <Form onSubmit={this.signupUser}>
         <FormGroup>
           <Label>
             Name:
@@ -51,7 +51,7 @@ class CreateUserForm extends React.Component {
           />
         </FormGroup>
         <ActionBar>
-          <ActionButton onClick={this.signupUser}>
+          <ActionButton type="submit" >
             Sign Up
           </ActionButton>
         </ActionBar>
@@ -59,18 +59,18 @@ class CreateUserForm extends React.Component {
     )
   }
 
-  signupUser = async () => {
-    const { email, password, name } = this.state
+  signupUser = async (e) => {
+    const { email, password, name } = this.state;
+    e.preventDefault();
 
     try {
       const user = await this.props.signupUserMutation({variables: {email, password, name}})
       localStorage.setItem('graphcoolToken', user.data.signupUser.token)
-      this.props.history.replace('/')
+      this.props.history.replace('/social-media-demo')
     } catch (e) {
       console.error(`An error occured: `, e)
       this.props.history.replace('/')
     }
-
   }
 }
 

@@ -10,7 +10,7 @@ import { createHttpLink } from 'apollo-link-http'
 import { ApolloLink} from 'apollo-link'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import 'tachyons'
-import Shell from './components/Shell'
+import Scenes from './scenes'
 
 // __SIMPLE_API_ENDPOINT__ looks like: 'https://api.graph.cool/simple/v1/__SERVICE_ID__'
 const httpLink = createHttpLink({ uri: 'https://api.graph.cool/simple/v1/cjowu0zrbb1270106hgdbk7vv' })
@@ -36,12 +36,7 @@ const client = new ApolloClient({
 ReactDOM.render((
     <ApolloProvider client={client}>
       <Router>
-        <Shell>
-          <Route exact path='/' component={Login} />
-          <Route path='/create' component={CreatePost} />
-          <Route path='/login' component={Login} />
-          <Route path='/signup' component={CreateUser} />
-        </Shell>
+        <Scenes/>
       </Router>
     </ApolloProvider>
   ),
