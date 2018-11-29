@@ -11,17 +11,53 @@ export const Page = styled.div`
   max-width: ${variables.containerMaxWidth}
 `;
 
+
+export const Row = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  overflow: visible;
+  
+  @media all and (max-width: 699px) {
+    flex-direction: column;
+    
+    > div {
+      flex-grow: 1;
+      padding: ${variables.space} !important;
+      padding-bottom: 0 !important;
+    }
+  }
+`;
+
+export const Col = styled.div`
+  flex-grow: ${({ size }) => size ? size : 1};
+  padding: ${variables.spaceSmall};
+  padding-top: ${variables.space};
+  padding-bottom: 0 !important;
+  overflow: visible;
+  
+  &:first-child {
+    padding-left: ${variables.space};
+  }
+  
+  &:last-child {
+    padding-right: ${variables.space};
+  }
+`;
+
 export const Box = styled.div`
   border-radius: 0;
   overflow: hidden;
   //padding: 15px;
-  min-width: 400px;
-  min-height: 150px;
+  //min-width: 400px;
+  //min-height: 150px;
+  width: 100%;
   background: ${variables.boxBg};
   box-shadow: ${variables.boxShadow};
   transition: ${variables.transition};
   border: 1px solid ${variables.primaryColor};
-  margin: ${variables.spaceLarge} ${variables.space};
+  //margin: ${variables.spaceLarge} ${variables.space};
   
   &:hover {
     background: ${variables.boxBgHover};
