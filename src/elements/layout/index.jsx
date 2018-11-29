@@ -1,12 +1,14 @@
 import styled from 'styled-components'
 import { variables } from '../../services/config'
 
-export const PageContainer = styled.div`
+export const Page = styled.div`
   height: 100%;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  margin: auto;
+  max-width: ${variables.containerMaxWidth}
 `;
 
 export const Box = styled.div`

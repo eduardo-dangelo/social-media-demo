@@ -1,5 +1,6 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { variables } from '../../services/config'
+import { FaCog } from 'react-icons/fa'
 
 export const Form = styled.form`
 
@@ -76,4 +77,25 @@ export const ActionButton = styled.button`
   @media all and (max-width: 430px) {
     flex-grow: 2;
   }
+`;
+
+export const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(359deg);
+  }
+`;
+export const FaCogSpin = styled(FaCog)`
+  animation: ${rotate} 1.4s linear infinite;
+`;
+
+export const ErrorBox = styled.div`
+  padding: ${variables.space};
+  border: 1px solid #6f6bcf;
+  background: #bfbeff;
+  color: #6f6bcf;
+  margin-bottom: ${variables.space};
 `;

@@ -7,9 +7,10 @@ export const variables = {
   boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
   boxShadowHover: '0 2px 10px rgba(0,0,0,0.3)',
   transition: '.3s ease',
-  space: '15px',
-  spaceLarge: '30px',
+  space: '16px',
+  spaceSmall: '8px',
+  spaceLarge: '32px',
   boxBg: 'rgba(255,255,255,0.6)',
   boxBgHover: 'rgba(255,255,255,1)',
-  containerMaxWidth: '1200px'
+  containerMaxWidth: '1000px'
 }

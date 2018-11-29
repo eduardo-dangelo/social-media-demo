@@ -1,13 +1,13 @@
 import React, { PureComponent } from 'react';
 import { FaUser } from 'react-icons/fa';
 import CreateUserForm from '../../forms/CreateUserForm';
-import { Box, BoxContent, BoxHeader, PageContainer } from '../../elements/auth'
+import { Box, BoxContent, BoxHeader, Page } from '../../elements/layout'
 import Flip from 'react-reveal/Flip';
 
 class CreateUser extends PureComponent {
   render() {
     return (
-      <PageContainer>
+      <Page>
         <Box>
           <BoxHeader>
             <Flip top cascade>
@@ -19,7 +19,7 @@ class CreateUser extends PureComponent {
             <CreateUserForm/>
           </BoxContent>
         </Box>
-      </PageContainer>
+      </Page>
     );
   }
 }

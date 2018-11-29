@@ -1,32 +1,17 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { graphql, compose } from 'react-apollo';
-import { ActionBar, ActionButton, Field, Form, FormGroup, Label } from '../elements/form';
+import {
+  ActionBar,
+  ActionButton,
+  ErrorBox,
+  FaCogSpin,
+  Field,
+  Form,
+  FormGroup,
+  Label,
+} from '../elements/form';
 import { authenticateUser } from '../services/mutations';
-import { FaCog } from 'react-icons/fa'
-import styled, { keyframes } from 'styled-components'
-import { variables } from '../services/config'
-
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(359deg);
-  }
-`;
-export const FaCogSpin = styled(FaCog)`
-  animation: ${rotate} 1s linear infinite;
-`;
-
-export const ErrorBox = styled.div`
-  padding: ${variables.space};
-  border: 1px solid #6f6bcf;
-  background: #bfbeff;
-  color: #6f6bcf;
-  margin-bottom: ${variables.space};
-`;
 
 class LoginUserForm extends React.Component {
   state = {
@@ -51,6 +36,10 @@ class LoginUserForm extends React.Component {
           disabled = true
         }
       })
+
+      if (loading) {
+        disabled = true
+      }
 
       return disabled;
     }
@@ -105,8 +94,7 @@ class LoginUserForm extends React.Component {
       .then((response) => (
         localStorage.setItem('graphcoolToken', response.data.authenticateUser.token),
         history.replace('/social-media-demo'),
-        updateRequired(),
-        this.setState({ loading: false })
+        updateRequired()
       ))
       .catch((e) => (
         this.setState({ loading: false, error: true })

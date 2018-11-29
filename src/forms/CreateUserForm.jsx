@@ -1,8 +1,16 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { graphql, compose } from 'react-apollo'
-import { ActionBar, ActionButton, Field, Form, FormGroup, Label } from '../elements/form'
-import { ErrorBox, FaCogSpin } from './LoginUserForm'
+import {
+  ActionBar,
+  ActionButton,
+  ErrorBox,
+  FaCogSpin,
+  Field,
+  Form,
+  FormGroup,
+  Label,
+} from '../elements/form'
 import { signupUser } from '../services/mutations'
 
 class CreateUserForm extends React.Component {
@@ -30,6 +38,10 @@ class CreateUserForm extends React.Component {
           disabled = true
         }
       })
+
+      if (loading) {
+        disabled = true
+      }
 
       return disabled;
     }

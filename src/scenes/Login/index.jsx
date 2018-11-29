@@ -1,14 +1,14 @@
 import React from 'react';
 import { FaUser } from 'react-icons/fa';
 import LoginUserForm from '../../forms/LoginUserForm';
-import { Box, BoxContent, BoxHeader, PageContainer } from '../../elements/auth'
+import { Box, BoxContent, BoxHeader, Page } from '../../elements/layout'
 import Flip from 'react-reveal/Flip';
 
 class Login extends React.Component {
   render() {
     const { updateRequired } = this.props;
     return (
-      <PageContainer>
+      <Page>
         <Box>
           <BoxHeader>
             <Flip top cascade>
@@ -20,7 +20,7 @@ class Login extends React.Component {
             <LoginUserForm updateRequired={updateRequired}/>
           </BoxContent>
         </Box>
-      </PageContainer>
+      </Page>
     );
   }
 }
