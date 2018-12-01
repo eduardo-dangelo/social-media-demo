@@ -1,15 +1,19 @@
 import React from 'react';
 import Login from '../Login';
-import { Box, BoxContent, BoxHeader, Col, Page, Row } from '../../elements/layout'
-import styled from 'styled-components'
-import { variables } from '../../services/config'
-import { FaBook, FaUser } from 'react-icons/fa'
-import { ActionBar, ActionButton, FaCogSpin, Field, FormGroup, Label } from '../../elements/form'
+import { Col, Page, Row } from '../../elements/layout'
+import NavBar from './NavBar';
+import Posts from './Posts';
+import Settings from './Settings';
 
 
 class App extends React.Component {
+  state = {
+    view: 'posts'
+  }
+
   render() {
     const { userId, updateRequired } = this.props;
+    const { view } = this.state;
 
     if (!userId) {
       return <Login userId={userId} updateRequired={updateRequired}/>;
@@ -19,49 +23,19 @@ class App extends React.Component {
       <Page>
         <Row>
           <Col size={2}>
-            <Box>
-              <BoxHeader>
-                <FaUser/>
-                Welcome Ud
-              </BoxHeader>
-              <BoxContent>
-                <p>
-                  eduardo@smd.com
-                </p>
-                <p>
-                  settings
-                </p>
-              </BoxContent>
-            </Box>
+            <NavBar onSelectItem={this.handleViewChange}/>
           </Col>
           <Col size={6}>
-            <Box>
-              <BoxHeader>
-                What are you thinking Eduardo?
-              </BoxHeader>
-                <Row>
-                  <Col size={8}>
-                    <FormGroup>
-                      <Field
-                        // value={this.state.email}
-                        placeholder='Email address'
-                        // onChange={(e) => this.setState({email: e.target.value})}
-                      />
-                    </FormGroup>
-                  </Col>
-                  <Col>
-                    <ActionBar>
-                    <ActionButton type="submit" disabled={true}>
-                      Post
-                    </ActionButton>
-                    </ActionBar>
-                  </Col>
-                </Row>
-            </Box>
+            {view === 'posts' && <Posts/>}
+            {view === 'settings' && <Settings/>}
           </Col>
         </Row>
       </Page>
     );
+  }
+
+  handleViewChange = (view) => {
+    this.setState({ view });
   }
 }
 

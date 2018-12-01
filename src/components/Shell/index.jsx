@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Header from '../Header';
+import { variables } from '../../config';
 
 const Container = styled.div`
   font-family: 'Montserrat', sans-serif;
@@ -10,7 +11,7 @@ const Body = styled.div`
   width: 100%;
   min-height: calc(100vh - 60px);
   position: relative;
-  background: #efe3ff;
+  background: ${variables.pageBg};
 `;
 
 const BodyContainer = styled.div`

@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import { variables } from '../../services/config'
+import { variables } from '../../config'
 
 export const HeaderBox = styled.div`
   width: 100%;
   padding: 0;
   min-height: 60px;
-  background: ${variables.primaryColor};
-  color: ${variables.tertiaryColor};
+  background: ${variables.headerBg};
+  color: ${variables.textColor};
 `;
 
 export const Container = styled.div`
@@ -49,11 +49,11 @@ export const HeaderButton = styled.button`
   justify-content: space-around;
   transition: .3s ease;
   padding: 15px;
-  color: ${variables.tertiaryColor};
+  color: ${variables.textColor};
   cursor: pointer;
   
   &:hover {
-    color: ${variables.tertiaryColorHover};
+    color: ${variables.textColorHover};
     background: rgba(255,255,255,0.04);
   }
 `;

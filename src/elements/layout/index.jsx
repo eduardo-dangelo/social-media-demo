@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { variables } from '../../services/config'
+import { variables } from '../../config'
 
 export const Page = styled.div`
   height: 100%;
@@ -56,7 +56,7 @@ export const Box = styled.div`
   background: ${variables.boxBg};
   box-shadow: ${variables.boxShadow};
   transition: ${variables.transition};
-  border: 1px solid ${variables.primaryColor};
+  border: 1px solid ${variables.headerBg};
   //margin: ${variables.spaceLarge} ${variables.space};
   
   &:hover {
@@ -75,8 +75,8 @@ export const BoxHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background: ${variables.primaryColor};
-  color: ${variables.tertiaryColor};
+  background: ${variables.headerBg};
+  color: ${variables.textColor};
   transition: ${variables.transition};
   
   svg {
