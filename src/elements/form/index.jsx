@@ -100,6 +100,20 @@ export const ActionButton = styled.button`
   }
 `;
 
+export const ActionLink = styled.a`
+  color: ${variables.headerBg};
+  cursor: pointer;
+  
+  svg, &:last-child {
+    margin-left: ${variables.spaceSmall};
+  }
+  
+  &:hover {
+    color: ${variables.headerBgHover};
+    text-shadow: ${variables.boxShadow};
+  }
+`;
+
 export const rotate = keyframes`
   from {
     transform: rotate(0deg);

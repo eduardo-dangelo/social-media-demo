@@ -8,7 +8,7 @@ import {
   HeaderButton,
   HeaderTitle,
   TransparentButton,
-} from '../../elements/header';
+} from '../elements/header';
 import Flip from 'react-reveal/Flip';
 
 

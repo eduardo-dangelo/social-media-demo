@@ -57,7 +57,7 @@ export const Box = styled.div`
   box-shadow: ${variables.boxShadow};
   transition: ${variables.transition};
   border: 1px solid ${variables.headerBg};
-  //margin: ${variables.spaceLarge} ${variables.space};
+  margin-top: ${({ mt }) => mt ? mt : 0 };
   
   &:hover {
     background: ${variables.boxBgHover};

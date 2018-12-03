@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Shell from '../components/Shell';
+import Shell from '../Shell';
 import { Route } from 'react-router-dom';
 import Login from './Login';
 import App from './App';

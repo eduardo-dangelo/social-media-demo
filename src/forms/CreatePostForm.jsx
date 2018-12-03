@@ -1,16 +1,12 @@
 import React from 'react';
 import {
-  ActionBar,
   ActionButton,
   ErrorBox,
   FaCogSpin,
   Field,
   Form,
   FormGroup,
-  Label,
-  RadioButton,
-} from '../elements/form'
-import { FaMoon, FaLightbulb } from 'react-icons/fa'
+} from '../elements/form';
 
 class CreatePostForm extends React.Component {
   state = {
@@ -69,4 +65,4 @@ class CreatePostForm extends React.Component {
   }
 }
 
-export default CreatePostForm
+export default CreatePostForm;

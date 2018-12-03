@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Header from '../Header';
-import { variables } from '../../config';
+import { variables } from '../config';
 
 const Container = styled.div`
   font-family: 'Montserrat', sans-serif;
