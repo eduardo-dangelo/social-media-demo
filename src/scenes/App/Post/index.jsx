@@ -2,8 +2,8 @@ import React from 'react';
 import { Box, BoxContent } from '../../../elements/layout'
 import { variables } from '../../../config'
 import { ActionBar, ActionLink } from '../../../elements/form'
-import { TransparentButton } from '../../../elements/header'
-import { FaThumbsUp, FaComment } from 'react-icons/fa'
+import { FaThumbsUp, FaComment, FaUser } from 'react-icons/fa'
+import Comments from '../Comments'
 
 
 class Post extends React.Component {
@@ -12,6 +12,7 @@ class Post extends React.Component {
     return (
       <Box mt={variables.space}>
         <BoxContent>
+          <FaUser/>{' '}
           {post.user.name}
           <h3>{post.content}</h3>
           <ActionBar divider>
@@ -29,6 +30,7 @@ class Post extends React.Component {
             </ActionLink>
           </ActionBar>
         </BoxContent>
+        <Comments comments={post.comments}/>
       </Box>
     )
   }

@@ -13,7 +13,16 @@ class Posts extends React.Component {
         user : {
           id: '666',
           name: 'Robot Cop'
-        }
+        },
+        comments: [
+          {
+            id: '10393',
+            content: 'dale!',
+            user: {
+              name: 'Judson',
+            }
+          }
+        ]
       },
       {
         id: '124',
@@ -21,7 +30,8 @@ class Posts extends React.Component {
         user : {
           id: '666',
           name: 'Robot Cooper'
-        }
+        },
+        comments: []
       }
     ]
 

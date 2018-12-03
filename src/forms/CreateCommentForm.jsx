@@ -8,7 +8,7 @@ import {
   FormGroup, Label,
 } from '../elements/form';
 
-class CreatePostForm extends React.Component {
+class CreateCommentForm extends React.Component {
   state = {
     theme: 'dark',
     name: '',
@@ -48,11 +48,11 @@ class CreatePostForm extends React.Component {
         )}
         <FormGroup noMargin>
           <Label>
-            Post:
+            Comment:
           </Label>
           <Field
             value={name}
-            placeholder='post...'
+            placeholder='comment...'
             onChange={(e) => this.setState({name: e.target.value})}
           />
           <ActionButton type="submit" disabled={validate()}>
@@ -68,4 +68,4 @@ class CreatePostForm extends React.Component {
   }
 }
 
-export default CreatePostForm;
+export default CreateCommentForm;
