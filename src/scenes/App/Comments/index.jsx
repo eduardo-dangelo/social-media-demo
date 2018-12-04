@@ -8,18 +8,27 @@ import { FaComment, FaThumbsUp, FaUser, FaUserCircle } from 'react-icons/fa'
 import { ActionBar, ActionLink } from '../../../elements/form'
 
 export const CommentsContainer = styled.div`
-  background: #e7e2e0;
+  background: ${variables.box.alt.bg};
   padding: ${variables.space};
+  padding-left: ${variables.spaceLarge};
+  border-top: 1px solid ${variables.box.border.color};
+  border-bottom: 1px solid ${variables.box.border.color};
 `;
 
 export const CommentBox = styled.div`
-  border-radius: 4px;
+  border-radius: 20px;
   box-shadow: ${variables.boxShadow};
   padding: ${variables.space};
   background: ${variables.boxBgHover};
+  border: 1px solid ${variables.box.border.color};
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: ${variables.spaceSmall};
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 class Comments extends React.Component {
@@ -27,23 +36,25 @@ class Comments extends React.Component {
     const { comments } = this.props;
     return (
       <>
-        <CommentsContainer>
-          {comments.map((comment) => {
-            return (
-              <CommentBox key={comment.id}>
-                <span>
-                  <FaUser/>{' '}{comment.user.name} {comment.content}
-                </span>
-                <ActionLink>
+        {comments.length > 0 && (
+          <CommentsContainer>
+            {comments.map((comment) => {
+              return (
+                <CommentBox key={comment.id}>
                   <span>
-                    like 12
-                    <FaThumbsUp/>
+                    <FaUser/>{' '} <strong>{comment.user.name}</strong> {comment.content}
                   </span>
-                </ActionLink>
-              </CommentBox>
-            );
-          })}
-        </CommentsContainer>
+                  <ActionLink>
+                    <span>
+                      like 12
+                      <FaThumbsUp/>
+                    </span>
+                  </ActionLink>
+                </CommentBox>
+              );
+            })}
+          </CommentsContainer>
+        )}
         <BoxContent>
           <CreateCommentForm/>
         </BoxContent>

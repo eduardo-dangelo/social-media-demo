@@ -11,6 +11,10 @@ export const FormGroup = styled.div`
   align-items: center;
   justify-content: flex-start;
   margin-bottom: ${({ noMargin }) => noMargin ? 0 : variables.space};
+  
+  button {
+    margin-left: ${variables.spaceSmall};
+  }
 `
 
 export const Label = styled.div`
@@ -28,11 +32,14 @@ export const Field = styled.input`
   flex-grow: 1;
   background: ${variables.pageBg};
   box-shadow: inset ${variables.boxShadow};
-  border: 1px solid ${variables.headerBg};
+  border: 1px solid ${variables.box.border.color};
+  border-radius: 18px;
   opacity: .8;
+  min-width: 60px;
   
   &:focus {
     box-shadow: ${variables.boxShadowHover};
+    outline: none;
     opacity: 1;
   }
 `;
@@ -58,30 +65,36 @@ export const ActionBar = styled.div`
   align-items: center;
   justify-content: flex-end;
   border-top: ${({ divider }) => divider ? '1px dashed' : 'none'};
+  border-color: ${variables.box.border.color};
   padding-top: ${({ divider }) => divider ? variables.space : 0 };
 `
 
 export const ActionButton = styled.button`
   border: none;
   cursor: pointer;
-  padding: ${variables.buttonPadding};
+  padding: ${variables.button.padding};
   display: flex;
   align-items: center;
   max-height: 38px;
+  border-radius: 18px;
   justify-content: space-around;
   box-shadow: 0 0 0 rgba(0,0,0,0);
-  color: ${variables.textColor};
-  background: ${variables.headerBg};
+  color: ${variables.button.color};
+  background: ${variables.button.bg};
   transition: ${variables.transition};
+  
+  span {
+    display: flex;
+    align-items: center;
+  }
   
   svg {
     margin-left: ${variables.spaceSmall};
   }
   
   &:hover, &:focus {
-    box-shadow: ${variables.boxShadowHover};
-    color: ${variables.textColorHover};
-    background: ${variables.headerBgHover};
+    box-shadow: ${variables.boxShadow};
+    color: ${variables.button.hover.color};
   }
   
   &:disabled {
@@ -89,9 +102,7 @@ export const ActionButton = styled.button`
     cursor: default;
     
     &:hover, &:focus {
-      box-shadow: ${variables.boxShadow};
-      color: ${variables.textColor};
-      background: ${variables.headerBg};
+      box-shadow: none;
     }
   } 
   
@@ -101,15 +112,17 @@ export const ActionButton = styled.button`
 `;
 
 export const ActionLink = styled.a`
-  color: ${variables.headerBg};
+  color: ${variables.link.color};
+  font-weight: 500;
   cursor: pointer;
+  transition: ${variables.transition};
   
   svg, &:last-child {
     margin-left: ${variables.spaceSmall};
   }
   
   &:hover {
-    color: ${variables.headerBgHover};
+    color: ${variables.link.hover.color};
     text-shadow: ${variables.boxShadow};
   }
 `;

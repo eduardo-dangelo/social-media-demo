@@ -73,7 +73,9 @@ class UserSettingsForm extends React.Component {
         </FormGroup>
         <ActionBar divider>
           <ActionButton type="submit" disabled={validate()}>
-            Save {loading && <FaCogSpin/>}
+            <span>
+              Save {loading && <FaCogSpin/>}
+            </span>
           </ActionButton>
         </ActionBar>
       </Form>

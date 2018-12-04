@@ -7,6 +7,7 @@ import {
   Form,
   FormGroup, Label,
 } from '../elements/form';
+import { FaPaperPlane } from 'react-icons/fa'
 
 class CreateCommentForm extends React.Component {
   state = {
@@ -56,7 +57,9 @@ class CreateCommentForm extends React.Component {
             onChange={(e) => this.setState({name: e.target.value})}
           />
           <ActionButton type="submit" disabled={validate()}>
-            Save {loading && <FaCogSpin/>}
+            <span>
+              Send {loading ? <FaCogSpin/> : <FaPaperPlane/>}
+            </span>
           </ActionButton>
         </FormGroup>
       </Form>

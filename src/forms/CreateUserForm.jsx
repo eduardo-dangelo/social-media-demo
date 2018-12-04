@@ -86,7 +86,9 @@ class CreateUserForm extends React.Component {
         </FormGroup>
         <ActionBar>
           <ActionButton type="submit" disabled={validate()}>
-            Sign Up {loading && <FaCogSpin/>}
+            <span>
+              Sign Up {loading && <FaCogSpin/>}
+            </span>
           </ActionButton>
         </ActionBar>
       </Form>

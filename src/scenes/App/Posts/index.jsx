@@ -21,6 +21,13 @@ class Posts extends React.Component {
             user: {
               name: 'Judson',
             }
+          },
+          {
+            id: '1039asd3',
+            content: 'Eh nois meu passeiro',
+            user: {
+              name: 'Carlos',
+            }
           }
         ]
       },

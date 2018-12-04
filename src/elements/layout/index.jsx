@@ -47,21 +47,25 @@ export const Col = styled.div`
 `;
 
 export const Box = styled.div`
-  border-radius: 0;
+  border-radius: ${variables.box.border.radius};
   overflow: hidden;
   //padding: 15px;
   //min-width: 400px;
   //min-height: 150px;
   width: 100%;
   background: ${variables.boxBg};
-  box-shadow: ${variables.boxShadow};
+  //box-shadow: ${variables.boxShadow};
   transition: ${variables.transition};
-  border: 1px solid ${variables.headerBg};
+  border: 1px solid ${variables.box.border.color};
   margin-top: ${({ mt }) => mt ? mt : 0 };
+  
+  svg {
+    color: ${variables.box.icon.color};
+  }
   
   &:hover {
     background: ${variables.boxBgHover};
-    box-shadow: ${variables.boxShadowHover};
+    box-shadow: ${variables.boxShadow};
   }
   
   @media all and (max-width: 430px) {

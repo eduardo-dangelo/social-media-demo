@@ -74,7 +74,9 @@ class LoginUserForm extends React.Component {
         </FormGroup>
         <ActionBar>
           <ActionButton type="submit" disabled={validate()}>
-            Log in {loading && <FaCogSpin/>}
+            <span>
+              Log in {loading && <FaCogSpin/>}
+            </span>
           </ActionButton>
         </ActionBar>
       </Form>

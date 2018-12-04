@@ -17,7 +17,8 @@ export const LItem = styled.a`
   justify-content: flex-start;
   transition: ${variables.transition};
   padding: ${variables.spaceSmall} ${variables.space};
-  background: ${({ active }) => active ? 'rgba(0,0,0,0.2)' : 'transparent'};
+  background: ${({ active }) => active ? variables.link.active.bg : 'transparent'};
+  color: ${variables.link.color};
   
   svg {
     margin-right: ${variables.spaceSmall};
@@ -25,6 +26,7 @@ export const LItem = styled.a`
   
   &:hover {
     text-shadow: ${variables.boxShadow};
+    color: ${variables.link.hover.color};
   }
 `;
 
