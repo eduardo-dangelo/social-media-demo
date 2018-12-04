@@ -1,6 +1,6 @@
 import React from 'react';
 import { ActionBar, ActionButton, ErrorBox, FaCogSpin, Field, Form, FormGroup, Label, RadioButton } from '../elements/form'
-import { FaMoon, FaLightbulb } from 'react-icons/fa'
+import { FaMoon, FaLightbulb, FaPaperPlane, FaPaperclip } from 'react-icons/fa'
 
 class UserSettingsForm extends React.Component {
   state = {
@@ -74,7 +74,7 @@ class UserSettingsForm extends React.Component {
         <ActionBar divider>
           <ActionButton type="submit" disabled={validate()}>
             <span>
-              Save {loading && <FaCogSpin/>}
+              Save {loading ? <FaCogSpin/> : <FaPaperclip/>}
             </span>
           </ActionButton>
         </ActionBar>

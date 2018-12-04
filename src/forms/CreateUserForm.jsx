@@ -12,6 +12,7 @@ import {
   Label,
 } from '../elements/form'
 import { signupUser } from '../services/mutations'
+import { FaSignInAlt } from 'react-icons/fa'
 
 class CreateUserForm extends React.Component {
   state = {
@@ -39,9 +40,9 @@ class CreateUserForm extends React.Component {
         }
       })
 
-      if (loading) {
-        disabled = true
-      }
+      // if (loading) {
+      //   disabled = true
+      // }
 
       return disabled;
     }
@@ -87,7 +88,7 @@ class CreateUserForm extends React.Component {
         <ActionBar>
           <ActionButton type="submit" disabled={validate()}>
             <span>
-              Sign Up {loading && <FaCogSpin/>}
+              Sign Up {loading ? <FaCogSpin/> : <FaSignInAlt/>}
             </span>
           </ActionButton>
         </ActionBar>

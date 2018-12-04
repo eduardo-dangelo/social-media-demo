@@ -16,7 +16,7 @@ export const CommentsContainer = styled.div`
 `;
 
 export const CommentBox = styled.div`
-  border-radius: 20px;
+  border-radius: 18px;
   box-shadow: ${variables.boxShadow};
   padding: ${variables.space};
   background: ${variables.boxBgHover};

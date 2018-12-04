@@ -53,10 +53,21 @@ export const RadioButton = styled.button`
   background: ${({ active }) => active ? variables.headerBg : variables.textColor };
   transition: ${variables.transition};
   border: 1px solid ${({ active }) => active ? 'transparent' : variables.headerBg };
-  padding: ${variables.buttonPadding};
+  padding: ${variables.button.padding};
+  border-radius: ${variables.button.border.radius} 0 0 ${variables.button.border.radius};
+  margin-left: 0 !important;
+  
+  &:last-child {
+    border-radius: 0 ${variables.button.border.radius} ${variables.button.border.radius} 0;
+    margin-left: 0;
+  }
   
   svg {
     margin-right: ${variables.spaceSmall};
+  }
+  
+  &:focus {
+    outline: none;
   }
 `;
 
@@ -76,7 +87,7 @@ export const ActionButton = styled.button`
   display: flex;
   align-items: center;
   max-height: 38px;
-  border-radius: 18px;
+  border-radius: ${variables.button.border.radius};
   justify-content: space-around;
   box-shadow: 0 0 0 rgba(0,0,0,0);
   color: ${variables.button.color};
@@ -95,11 +106,16 @@ export const ActionButton = styled.button`
   &:hover, &:focus {
     box-shadow: ${variables.boxShadow};
     color: ${variables.button.hover.color};
+    outline: none;
   }
   
   &:disabled {
     opacity: .7;
     cursor: default;
+    
+    svg {
+      color: ${variables.button.color};
+    }
     
     &:hover, &:focus {
       box-shadow: none;
