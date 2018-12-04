@@ -85,7 +85,7 @@ class CreateUserForm extends React.Component {
             onChange={(e) => this.setState({password: e.target.value})}
           />
         </FormGroup>
-        <ActionBar>
+        <ActionBar divider>
           <ActionButton type="submit" disabled={validate()}>
             <span>
               Sign Up {loading ? <FaCogSpin/> : <FaSignInAlt/>}
