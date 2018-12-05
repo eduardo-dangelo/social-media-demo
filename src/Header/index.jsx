@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './graphql_logo.png';
+import logo from './graphql_Logo_color_xxs.png';
 import { withRouter } from 'react-router-dom';
 import {
   Container,

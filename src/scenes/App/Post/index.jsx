@@ -4,11 +4,12 @@ import { variables } from '../../../config'
 import { ActionBar, ActionLink } from '../../../elements/form'
 import { FaThumbsUp, FaComment, FaUser } from 'react-icons/fa'
 import Comments from '../Comments'
-
+import Tada from 'react-reveal/Tada'
 
 class Post extends React.Component {
   state = {
     showComments: false,
+    counter: 0
   }
 
   render() {
@@ -27,12 +28,14 @@ class Post extends React.Component {
                 <FaComment/>
               </span>
             </ActionLink>
-            <ActionLink onClick={this.handleLike}>
-              <span>
-                like 12
-                <FaThumbsUp/>
-              </span>
-            </ActionLink>
+            <Tada  spy={this.state.counter}>
+              <ActionLink onClick={this.handleLike}>
+                <span>
+                  like 12
+                  <FaThumbsUp/>
+                </span>
+              </ActionLink>
+            </Tada>
           </ActionBar>
         </BoxContent>
         {showComments && (
@@ -47,7 +50,7 @@ class Post extends React.Component {
   }
 
   handleLike = () => {
-    //
+    this.setState({ counter: this.state.counter + 1 });
   }
 }
 

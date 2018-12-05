@@ -56,6 +56,7 @@ export const RadioButton = styled.button`
   padding: ${variables.button.padding};
   border-radius: ${variables.button.border.radius} 0 0 ${variables.button.border.radius};
   margin-left: 0 !important;
+  cursor: pointer;
   
   &:last-child {
     border-radius: 0 ${variables.button.border.radius} ${variables.button.border.radius} 0;
@@ -78,6 +79,29 @@ export const ActionBar = styled.div`
   border-top: ${({ divider }) => divider ? '1px dashed' : 'none'};
   border-color: ${variables.box.border.color};
   padding-top: ${({ divider }) => divider ? variables.space : 0 };
+  position: relative;
+  
+  // &:before {
+  //   content: "";
+  //   background: ${variables.pageBg};
+  //   width: 25px;
+  //   height: 25px;
+  //   border-radius: 50%;
+  //   position: absolute;
+  //   left: -30px;
+  //   top: -15px;
+  // }
+  //
+  //   &:after {
+  //   content: "";
+  //   background: ${variables.pageBg};
+  //   width: 25px;
+  //   height: 25px;
+  //   border-radius: 50%;
+  //   position: absolute;
+  //   right: -30px;
+  //   top: -15px;
+  // }
 `
 
 export const ActionButton = styled.button`

@@ -6,6 +6,7 @@ import { BoxContent } from '../../../elements/layout'
 import CreateCommentForm from '../../../forms/CreateCommentForm'
 import { FaComment, FaThumbsUp, FaUser, FaUserCircle } from 'react-icons/fa'
 import { ActionBar, ActionLink } from '../../../elements/form'
+import Tada from 'react-reveal/Tada'
 
 export const CommentsContainer = styled.div`
   background: ${variables.box.alt.bg};
@@ -17,7 +18,6 @@ export const CommentsContainer = styled.div`
 
 export const CommentBox = styled.div`
   border-radius: 18px;
-  box-shadow: ${variables.boxShadow};
   padding: ${variables.space};
   background: ${variables.boxBgHover};
   border: 1px solid ${variables.box.border.color};
@@ -25,13 +25,22 @@ export const CommentBox = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: ${variables.spaceSmall};
+  transition: ${variables.transition};
   
   &:last-child {
     margin-bottom: 0;
   }
+  
+  // &:hover {
+  //   box-shadow: ${variables.boxShadowHover};
+  // }
 `;
 
 class Comments extends React.Component {
+  state = {
+    counter: 0
+  }
+
   render() {
     const { comments } = this.props;
     return (
@@ -44,12 +53,14 @@ class Comments extends React.Component {
                   <span>
                     <FaUser/>{' '} <strong>{comment.user.name}</strong> {comment.content}
                   </span>
-                  <ActionLink>
-                    <span>
-                      like 12
-                      <FaThumbsUp/>
-                    </span>
-                  </ActionLink>
+                  <Tada  spy={this.state.counter}>
+                    <ActionLink onClick={this.handleLike}>
+                      <span>
+                        like 12
+                        <FaThumbsUp/>
+                      </span>
+                    </ActionLink>
+                  </Tada>
                 </CommentBox>
               );
             })}
@@ -60,6 +71,10 @@ class Comments extends React.Component {
         </BoxContent>
       </>
     )
+  }
+
+  handleLike = () => {
+    this.setState({ counter: this.state.counter + 1 });
   }
 }
 
