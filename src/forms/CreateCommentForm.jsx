@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  ActionButton,
+  ActionButton, ButtonContent,
   ErrorBox,
   FaCogSpin,
   Field,
@@ -8,6 +8,7 @@ import {
   FormGroup, Label,
 } from '../elements/form';
 import { FaPaperPlane } from 'react-icons/fa'
+import Flip from 'react-reveal/Flip'
 
 class CreateCommentForm extends React.Component {
   state = {
@@ -57,9 +58,13 @@ class CreateCommentForm extends React.Component {
             onChange={(e) => this.setState({name: e.target.value})}
           />
           <ActionButton type="submit" disabled={validate()}>
-            <span>
-              Send {loading ? <FaCogSpin/> : <FaPaperPlane/>}
-            </span>
+            <ButtonContent>
+              <Flip cascade top>
+                Send
+                {!loading ? <FaPaperPlane/> : ''}
+              </Flip>
+              {loading ? <FaCogSpin/> : ''}
+            </ButtonContent>
           </ActionButton>
         </FormGroup>
       </Form>

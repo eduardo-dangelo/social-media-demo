@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { graphql, compose } from 'react-apollo';
 import {
   ActionBar,
-  ActionButton,
+  ActionButton, ButtonContent,
   ErrorBox,
   FaCogSpin,
   Field,
@@ -13,6 +13,7 @@ import {
 } from '../elements/form';
 import { authenticateUser } from '../services/mutations';
 import { FaSignInAlt } from 'react-icons/fa';
+import Flip from 'react-reveal/Flip'
 
 class LoginUserForm extends React.Component {
   state = {
@@ -75,9 +76,13 @@ class LoginUserForm extends React.Component {
         </FormGroup>
         <ActionBar divider>
           <ActionButton type="submit" disabled={validate()}>
-            <span>
-              Log in {loading ? <FaCogSpin/> : <FaSignInAlt/>}
-            </span>
+            <ButtonContent>
+              <Flip cascade top>
+                Log In
+                {!loading ? <FaSignInAlt/> : ''}
+              </Flip>
+              {loading ? <FaCogSpin/> : ''}
+            </ButtonContent>
           </ActionButton>
         </ActionBar>
       </Form>

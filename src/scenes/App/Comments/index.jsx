@@ -7,6 +7,7 @@ import CreateCommentForm from '../../../forms/CreateCommentForm'
 import { FaComment, FaThumbsUp, FaUser, FaUserCircle } from 'react-icons/fa'
 import { ActionBar, ActionLink } from '../../../elements/form'
 import Tada from 'react-reveal/Tada'
+import Flip from 'react-reveal/Flip'
 
 export const CommentsContainer = styled.div`
   background: ${variables.box.alt.bg};
@@ -30,10 +31,18 @@ export const CommentBox = styled.div`
   &:last-child {
     margin-bottom: 0;
   }
+`;
+
+const CommentContent = styled.div`
+  display: flex;
+  padding: 0;
+  align-items: center;
+  justify-content: flex-start;
   
-  // &:hover {
-  //   box-shadow: ${variables.boxShadowHover};
-  // }
+  strong {
+    margin-right: ${variables.spaceSmall};
+    margin-left: ${variables.spaceSmall};
+  }
 `;
 
 class Comments extends React.Component {
@@ -50,9 +59,14 @@ class Comments extends React.Component {
             {comments.map((comment) => {
               return (
                 <CommentBox key={comment.id}>
-                  <span>
-                    <FaUser/>{' '} <strong>{comment.user.name}</strong> {comment.content}
-                  </span>
+                  <CommentContent>
+                    <FaUser/>
+                    {' '}
+                    <strong>{comment.user.name}</strong>
+                    <Flip cascade top>
+                      {comment.content}
+                    </Flip>
+                  </CommentContent>
                   <Tada  spy={this.state.counter}>
                     <ActionLink onClick={this.handleLike}>
                       <span>

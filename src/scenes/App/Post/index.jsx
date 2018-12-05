@@ -5,6 +5,7 @@ import { ActionBar, ActionLink } from '../../../elements/form'
 import { FaThumbsUp, FaComment, FaUser } from 'react-icons/fa'
 import Comments from '../Comments'
 import Tada from 'react-reveal/Tada'
+import Flip from 'react-reveal/Flip'
 
 class Post extends React.Component {
   state = {
@@ -20,7 +21,9 @@ class Post extends React.Component {
         <BoxContent>
           <FaUser/>{' '}
           {post.user.name}
-          <h3>{post.content}</h3>
+          <Flip cascade top>
+            <h3>{post.content}</h3>
+          </Flip>
           <ActionBar divider>
             <ActionLink onClick={this.handleToggleComments}>
               <span>

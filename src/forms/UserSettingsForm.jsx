@@ -1,6 +1,7 @@
 import React from 'react';
-import { ActionBar, ActionButton, ErrorBox, FaCogSpin, Field, Form, FormGroup, Label, RadioButton } from '../elements/form'
+import { ActionBar, ActionButton, ButtonContent, ErrorBox, FaCogSpin, Field, Form, FormGroup, Label, RadioButton } from '../elements/form'
 import { FaMoon, FaLightbulb, FaPaperPlane, FaPaperclip } from 'react-icons/fa'
+import Flip from 'react-reveal/Flip'
 
 class UserSettingsForm extends React.Component {
   state = {
@@ -73,9 +74,13 @@ class UserSettingsForm extends React.Component {
         </FormGroup>
         <ActionBar divider>
           <ActionButton type="submit" disabled={validate()}>
-            <span>
-              Save {loading ? <FaCogSpin/> : <FaPaperclip/>}
-            </span>
+            <ButtonContent>
+              <Flip cascade top>
+                Save
+                {!loading ? <FaPaperclip/> : ''}
+              </Flip>
+              {loading ? <FaCogSpin/> : ''}
+            </ButtonContent>
           </ActionButton>
         </ActionBar>
       </Form>

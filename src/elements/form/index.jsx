@@ -151,6 +151,15 @@ export const ActionButton = styled.button`
   }
 `;
 
+export const ButtonContent = styled.span`
+  display: flex;
+  padding: 0;
+  align-items: baseline;
+  justify-content: flex-start;
+`;
+
+
+
 export const ActionLink = styled.a`
   color: ${variables.link.color};
   font-weight: 500;
