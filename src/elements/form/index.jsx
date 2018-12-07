@@ -160,6 +160,8 @@ export const FaCogSpin = styled(FaCog)`
 `;
 
 export const ErrorBox = styled.div`
+  border-radius: ${variables.buttonBorderRadius};
   padding: ${variables.space};
   margin-bottom: ${variables.space};
+  border: 1px solid;
 `;

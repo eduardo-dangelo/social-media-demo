@@ -11,7 +11,7 @@ export const variables = {
   pageBg: '#dfdfdf',
   pageBgDark: '#151415',
   headerBg: '#282c34',
-  headerBgDark: '#000000',
+  headerBgDark: '#060009',
   headerColor: '#b7b7b7',
   headerColorDark: '#b7b7b7',
   headerColorHover: '#2c313d',
@@ -31,7 +31,7 @@ export const dark = {
     }
   },
   box: {
-    bg: '#181818',
+    bg: '#232323',
     color: '#c2d0ec',
     icon: {
       color: '#ff5270',
@@ -44,8 +44,8 @@ export const dark = {
       bg: '#645d60',
     },
     error: {
-      bg: '#ffdec9',
-      color: '#78353b',
+      bg: '#3c181f',
+      color: '#ff5386',
     }
   },
   link: {
@@ -55,7 +55,7 @@ export const dark = {
       color: '#865bcc',
     },
     active: {
-      bg: '#000000',
+      bg: variables.headerBgDark,
       color: '#b579ff',
       hover: {
         color: '#865bcc',
@@ -66,7 +66,7 @@ export const dark = {
     border: {
       radius: '18px',
     },
-    bg: '#000000',
+    bg: variables.headerBgDark,
     color: '#b7b7b7',
     padding: '10px 15px',
     hover: {
@@ -82,7 +82,7 @@ export const dark = {
   },
   input: {
     bg: '#0a0a0a',
-    color: '#c9c9c9',
+    color: '#949494',
   },
 }
 
@@ -113,7 +113,7 @@ export const light = {
     },
     error: {
       bg: '#ffdec9',
-      color: '#78353b',
+      color: '#cb7e7f',
     }
   },
   link: {

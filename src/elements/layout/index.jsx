@@ -78,6 +78,7 @@ export const BoxHeader = styled.div`
 
 export const BoxContent = styled.div`
   padding: ${variables.space};
+  border-top: ${({ divider }) => divider ? '1px solid' : 'none'};
 `;
 
 export const CommentsContainer = styled.div`

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { variables } from '../../config'
-import { Box, BoxHeader, CommentBox, CommentsContainer } from '../layout'
+import { Box, BoxContent, BoxHeader, CommentBox, CommentsContainer } from '../layout'
 import { ActionBar, ActionButton, ActionLink, ErrorBox, Field, RadioButton } from '../form'
 
 export const Container = styled.div`
@@ -28,6 +28,10 @@ export const Body = styled.div`
   ${BoxHeader} {
     color: ${({ styles }) => styles.theme.header.color};
     background: ${({ styles }) => styles.theme.header.bg};
+    border-color: ${({ styles }) => styles.theme.box.border.color};
+  }
+  
+  ${BoxContent} {
     border-color: ${({ styles }) => styles.theme.box.border.color};
   }
   

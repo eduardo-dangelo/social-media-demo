@@ -41,7 +41,7 @@ class Comments extends React.Component {
             })}
           </CommentsContainer>
         )}
-        <BoxContent>
+        <BoxContent divider>
           <CreateCommentForm/>
         </BoxContent>
       </>
