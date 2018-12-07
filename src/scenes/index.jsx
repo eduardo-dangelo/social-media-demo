@@ -11,7 +11,7 @@ import { style } from '../config'
 
 class Scenes extends Component {
   state = {
-    theme: 'light'
+    theme: 'dark'
   }
 
   render() {

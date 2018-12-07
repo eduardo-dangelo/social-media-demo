@@ -7,23 +7,31 @@ export const variables = {
   spaceLarge: '32px',
   containerMaxWidth: '1000px',
   buttonPadding: '10px 15px',
-  buttonBorderRadius: '18px'
+  buttonBorderRadius: '18px',
+  pageBg: '#dfdfdf',
+  pageBgDark: '#151415',
+  headerBg: '#282c34',
+  headerBgDark: '#000000',
+  headerColor: '#b7b7b7',
+  headerColorDark: '#b7b7b7',
+  headerColorHover: '#2c313d',
+  headerColorDarkHover: '#dddddd',
 }
 
 export const dark = {
   page: {
-    bg: '#2e2e2e',
+    bg: '#151415',
   },
   header: {
-    bg: '#282c34',
-    color: '#b7b7b7',
+    bg: variables.headerBgDark,
+    color: variables.headerColorDark,
     hover: {
-      bg: '#2c313d',
-      color: '#dddddd',
+      bg: variables.headerBgDark,
+      color: variables.headerColorDarkHover,
     }
   },
   box: {
-    bg: '#333333',
+    bg: '#181818',
     color: '#c2d0ec',
     icon: {
       color: '#ff5270',
@@ -33,7 +41,7 @@ export const dark = {
       radius: '6px'
     },
     alt: {
-      bg: '#535150',
+      bg: '#645d60',
     },
     error: {
       bg: '#ffdec9',
@@ -41,16 +49,16 @@ export const dark = {
     }
   },
   link: {
-    color: '#6ba3ff',
+    color: '#b579ff',
     bg: 'transparent',
     hover : {
-      color: '#4e86cc',
+      color: '#865bcc',
     },
     active: {
-      bg: '#2c313d',
-      color: '#b7b7b7',
+      bg: '#000000',
+      color: '#b579ff',
       hover: {
-        color: '#dddddd',
+        color: '#865bcc',
       }
     }
   },
@@ -58,33 +66,33 @@ export const dark = {
     border: {
       radius: '18px',
     },
-    bg: '#282c34',
+    bg: '#000000',
     color: '#b7b7b7',
     padding: '10px 15px',
     hover: {
       color: '#dddddd'
     },
     alt: {
-      bg: '#b7b7b7',
-      color: '#282c34',
+      bg: '#151415',
+      color: '#676767',
       hover: {
-        color: '#3f4653',
+        color: '#838189',
       },
     }
   },
   input: {
-    bg: '#2e2e2e',
-    color: '#c0d5f9',
+    bg: '#0a0a0a',
+    color: '#c9c9c9',
   },
 }
 
 export const light = {
   page: {
-    bg: '#dfdfdf',
+    bg: variables.pageBg,
   },
   header: {
-    bg: '#282c34',
-    color: '#b7b7b7',
+    bg: variables.headerBg,
+    color: variables.headerColorDark,
     hover: {
       bg: '#2c313d',
       color: '#dddddd',

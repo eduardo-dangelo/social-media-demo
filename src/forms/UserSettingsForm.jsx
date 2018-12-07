@@ -5,14 +5,14 @@ import Flip from 'react-reveal/Flip'
 
 class UserSettingsForm extends React.Component {
   state = {
-    theme: 'light',
     name: '',
     loading: false,
     error: false
   }
 
   render() {
-    const { loading, error, theme, name } = this.state;
+    const { theme } = this.props;
+    const { loading, error, name } = this.state;
 
     const validate = () => {
       let disabled = false
@@ -94,8 +94,7 @@ class UserSettingsForm extends React.Component {
   }
 
   handleSelectTheme = (theme) => () => {
-    const { onSelectTheme } = this.props
-    this.setState({ theme: theme })
+    const { onSelectTheme } = this.props;
     onSelectTheme(theme)
   }
 }

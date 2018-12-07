@@ -27,7 +27,7 @@ class App extends React.Component {
           </Col>
           <Col size={6}>
             {view === 'posts' && <Posts/>}
-            {view === 'settings' && <Settings onSelectTheme={onSelectTheme}/>}
+            {view === 'settings' && <Settings theme={theme} onSelectTheme={onSelectTheme}/>}
           </Col>
         </Row>
       </Page>
