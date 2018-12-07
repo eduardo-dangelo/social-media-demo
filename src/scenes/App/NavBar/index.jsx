@@ -1,8 +1,9 @@
 import React from 'react';
-import { Box, BoxContent, BoxHeader } from '../../../elements/layout';
+import { Box, BoxHeader } from '../../../elements/layout';
 import { FaUser, FaEnvelope, FaUserCog } from 'react-icons/fa';
 import styled from 'styled-components';
 import { variables } from '../../../config'
+import { style } from '../../../config'
 
 export const UList = styled.div`
   margin: 0;
@@ -17,8 +18,8 @@ export const LItem = styled.a`
   justify-content: flex-start;
   transition: ${variables.transition};
   padding: ${variables.spaceSmall} ${variables.space};
-  background: ${({ active }) => active ? variables.link.active.bg : 'transparent'};
-  color: ${variables.link.color};
+  background: ${({ theme, active }) => active ? style.themes[theme].link.active.bg : 'transparent'};
+  color: ${({ theme, active }) => active ? style.themes[theme].link.active.color : style.themes[theme].link.color};
   
   svg {
     margin-right: ${variables.spaceSmall};
@@ -26,7 +27,6 @@ export const LItem = styled.a`
   
   &:hover {
     text-shadow: ${variables.boxShadow};
-    color: ${variables.link.hover.color};
   }
 `;
 
@@ -36,6 +36,7 @@ class NavBar extends React.Component {
   }
 
   render() {
+    const { theme } = this.props;
     const { activeItem } = this.state;
     const items = [
       { name: 'Posts', key: 'posts', icon: (<FaEnvelope/>)},
@@ -52,6 +53,8 @@ class NavBar extends React.Component {
           {items.map((item) => {
             return (
               <LItem
+                key={item.key}
+                theme={theme}
                 active={activeItem === item.key}
                 onClick={this.handleClick(item.key)}
               >

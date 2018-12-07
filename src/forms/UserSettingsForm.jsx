@@ -1,11 +1,11 @@
 import React from 'react';
 import { ActionBar, ActionButton, ButtonContent, ErrorBox, FaCogSpin, Field, Form, FormGroup, Label, RadioButton } from '../elements/form'
-import { FaMoon, FaLightbulb, FaPaperPlane, FaPaperclip } from 'react-icons/fa'
+import { FaMoon, FaLightbulb, FaPaperclip } from 'react-icons/fa'
 import Flip from 'react-reveal/Flip'
 
 class UserSettingsForm extends React.Component {
   state = {
-    theme: 'dark',
+    theme: 'light',
     name: '',
     loading: false,
     error: false
@@ -57,6 +57,7 @@ class UserSettingsForm extends React.Component {
           </Label>
           <RadioButton
             type="button"
+            activeTheme={theme}
             active={theme === 'dark'}
             onClick={this.handleSelectTheme('dark')}
           >
@@ -65,6 +66,7 @@ class UserSettingsForm extends React.Component {
           </RadioButton>
           <RadioButton
             type="button"
+            activeTheme={theme}
             active={theme === 'light'}
             onClick={this.handleSelectTheme('light')}
           >
@@ -92,7 +94,9 @@ class UserSettingsForm extends React.Component {
   }
 
   handleSelectTheme = (theme) => () => {
-   this.setState({ theme: theme }) 
+    const { onSelectTheme } = this.props
+    this.setState({ theme: theme })
+    onSelectTheme(theme)
   }
 }
 

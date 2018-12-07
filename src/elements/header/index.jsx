@@ -5,8 +5,9 @@ export const HeaderBox = styled.div`
   width: 100%;
   padding: 0;
   min-height: 60px;
-  background: ${variables.headerBg};
-  color: ${variables.textColor};
+  background: ${({ styles }) => styles.theme.header.bg};
+  color: ${({ styles }) => styles.theme.header.color};
+  border-bottom: 1px solid ${({ styles }) => styles.theme.header.color};
 `;
 
 export const Container = styled.div`
@@ -49,11 +50,11 @@ export const HeaderButton = styled.button`
   justify-content: space-around;
   transition: .3s ease;
   padding: 15px;
-  color: ${variables.textColor};
+  color: ${({ styles }) => styles.theme.header.color};
   cursor: pointer;
   
   &:hover {
-    color: ${variables.textColorHover};
+    color: ${({ styles }) => styles.theme.header.hover.color};
     background: rgba(255,255,255,0.04);
   }
 `;

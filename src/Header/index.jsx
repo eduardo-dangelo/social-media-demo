@@ -18,12 +18,12 @@ class Header extends React.Component {
   };
 
   render() {
-    const { location, userId } = this.props;
+    const { location, userId, styles } = this.props;
     const { show } = this.state;
     return (
-      <HeaderBox>
+      <HeaderBox styles={styles}>
         <Container>
-          <TransparentButton onClick={this._handleClick('/social-media-demo/')}>
+          <TransparentButton styles={styles} onClick={this._handleClick('/social-media-demo/')}>
             <HeaderTitle>
               <Flip cascade top when={show}>
                 <img src={logo} onLoad={this._onImageLoad}/>
@@ -33,26 +33,26 @@ class Header extends React.Component {
           </TransparentButton>
           <HeaderActionBar>
             {!userId && location.pathname === '/social-media-demo/signup' && (
-              <HeaderButton onClick={this._handleClick('/social-media-demo/login')}>
+              <HeaderButton styles={styles} onClick={this._handleClick('/social-media-demo/login')}>
                 login
               </HeaderButton>
             )}
             {!userId && location.pathname === '/social-media-demo/login' && (
-              <HeaderButton onClick={this._handleClick('/social-media-demo/signup')}>
+              <HeaderButton styles={styles} onClick={this._handleClick('/social-media-demo/signup')}>
                 <Flip cascade top when={show}>
                   signup
                 </Flip>
               </HeaderButton>
             )}
             {!userId && location.pathname === '/social-media-demo/' && (
-              <HeaderButton onClick={this._handleClick('/social-media-demo/signup')}>
+              <HeaderButton styles={styles} onClick={this._handleClick('/social-media-demo/signup')}>
                 <Flip cascade top when={show}>
                   signup
                 </Flip>
               </HeaderButton>
             )}
             {userId && (
-              <HeaderButton onClick={this._handleClick('logout')}>
+              <HeaderButton styles={styles} onClick={this._handleClick('logout')}>
                 <Flip cascade top when={show}>
                   logout
                 </Flip>

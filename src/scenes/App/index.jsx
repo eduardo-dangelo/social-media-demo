@@ -12,7 +12,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { userId, updateRequired } = this.props;
+    const { userId, updateRequired, onSelectTheme, styles, theme } = this.props;
     const { view } = this.state;
 
     if (!userId) {
@@ -23,11 +23,11 @@ class App extends React.Component {
       <Page>
         <Row>
           <Col size={2}>
-            <NavBar onSelectItem={this.handleViewChange}/>
+            <NavBar styles={styles} theme={theme} onSelectItem={this.handleViewChange}/>
           </Col>
           <Col size={6}>
             {view === 'posts' && <Posts/>}
-            {view === 'settings' && <Settings/>}
+            {view === 'settings' && <Settings onSelectTheme={onSelectTheme}/>}
           </Col>
         </Row>
       </Page>

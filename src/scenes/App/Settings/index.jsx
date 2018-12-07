@@ -15,7 +15,7 @@ class Settings extends React.Component {
           </Flip>
         </BoxHeader>
         <BoxContent>
-          <UserSettingsForm/>
+          <UserSettingsForm onSelectTheme={this.props.onSelectTheme}/>
         </BoxContent>
       </Box>
     )

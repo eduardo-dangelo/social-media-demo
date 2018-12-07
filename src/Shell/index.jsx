@@ -1,31 +1,14 @@
 import React from 'react';
-import styled from 'styled-components';
 import Header from '../Header';
-import { variables } from '../config';
-
-const Container = styled.div`
-  font-family: 'Montserrat', sans-serif;
-`;
-
-const Body = styled.div`
-  width: 100%;
-  min-height: calc(100vh - 60px);
-  position: relative;
-  background: ${variables.pageBg};
-`;
-
-const BodyContainer = styled.div`
-  max-width: 1200px;
-  margin: auto;
-`;
+import { Body, BodyContainer, Container } from '../elements/shell'
 
 class Shell extends React.Component {
   render() {
-    const { children, userId } = this.props;
+    const { children, userId, theme, styles } = this.props;
     return (
       <Container>
-        <Header userId={userId}/>
-        <Body>
+        <Header userId={userId} styles={styles}/>
+        <Body theme={theme} styles={styles}>
           <BodyContainer>
             {children}
           </BodyContainer>

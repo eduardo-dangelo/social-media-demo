@@ -2,12 +2,12 @@ import styled from 'styled-components'
 import { variables } from '../../config'
 
 export const Page = styled.div`
+  margin: auto;
   height: 100%;
-  position: relative;
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: space-around;
-  margin: auto;
   max-width: ${variables.containerMaxWidth}
 `;
 
@@ -15,9 +15,9 @@ export const Page = styled.div`
 export const Row = styled.div`
   width: 100%;
   display: flex;
-  justify-content: flex-start;
   flex-wrap: wrap;
   overflow: visible;
+  justify-content: flex-start;
   
   @media all and (max-width: 699px) {
     flex-direction: column;
@@ -32,8 +32,8 @@ export const Row = styled.div`
 
 export const Col = styled.div`
   flex-grow: ${({ size }) => size ? size : 1};
-  padding: ${variables.spaceSmall};
   padding-top: ${variables.space};
+  padding: ${variables.spaceSmall};
   padding-bottom: 0 !important;
   overflow: visible;
   
@@ -47,19 +47,13 @@ export const Col = styled.div`
 `;
 
 export const Box = styled.div`
-  border-radius: ${variables.box.border.radius};
   width: 100%;
-  background: ${variables.boxBg};
+  overflow: hidden;
+  border: 1px solid;
   transition: ${variables.transition};
-  border: 1px solid ${variables.box.border.color};
   margin-top: ${({ mt }) => mt ? mt : 0 };
   
-  svg {
-    color: ${variables.box.icon.color};
-  }
-  
   &:hover {
-    background: ${variables.boxBgHover};
     box-shadow: ${variables.boxShadow};
   }
   
@@ -74,9 +68,8 @@ export const BoxHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background: ${variables.headerBg};
-  color: ${variables.textColor};
   transition: ${variables.transition};
+  border-bottom: 1px solid;
   
   svg {
     margin-right: 5px;
@@ -85,4 +78,37 @@ export const BoxHeader = styled.div`
 
 export const BoxContent = styled.div`
   padding: ${variables.space};
+`;
+
+export const CommentsContainer = styled.div`
+  border-top: 1px solid;
+  padding: ${variables.space};
+  padding-left: ${variables.spaceLarge};
+`;
+
+export const CommentBox = styled.div`
+  display: flex;
+  align-items: center;
+  border-radius: 18px;
+  justify-content: space-between;
+  padding: ${variables.space};
+  transition: ${variables.transition};
+  margin-bottom: ${variables.spaceSmall};
+  border: 1px solid;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+export const CommentContent = styled.div`
+  display: flex;
+  padding: 0;
+  align-items: center;
+  justify-content: flex-start;
+  
+  strong {
+    margin-left: ${variables.spaceSmall};
+    margin-right: ${variables.spaceSmall};
+  }
 `;
