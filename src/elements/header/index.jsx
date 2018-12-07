@@ -53,9 +53,10 @@ export const HeaderButton = styled.button`
   color: ${({ styles }) => styles.theme.header.color};
   cursor: pointer;
   
-  &:hover {
+  &:hover, &:focus {
     color: ${({ styles }) => styles.theme.header.hover.color};
     background: rgba(255,255,255,0.04);
+    outline: none;
   }
 `;
 
