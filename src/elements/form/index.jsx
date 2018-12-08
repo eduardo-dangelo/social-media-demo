@@ -135,6 +135,7 @@ export const ActionLink = styled.a`
   font-weight: 500;
   cursor: pointer;
   transition: ${variables.transition};
+  margin-left: ${({ marginLeft }) => marginLeft ? variables.spaceSmall : '0'};
   
   svg, &:last-child {
     margin-left: ${variables.spaceSmall};

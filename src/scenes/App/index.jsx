@@ -71,7 +71,6 @@ export default compose(
   graphql(currentUser, {
     name: 'currentUser',
     options: ({ userId }) => {
-      console.log('userId', userId)
       return { variables: { id: userId }}
     }
   }),

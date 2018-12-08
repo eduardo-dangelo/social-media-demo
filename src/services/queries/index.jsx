@@ -26,6 +26,7 @@ export const allPosts = gql`
       updatedAt
       content
       author {
+        id
         name
       }
     }

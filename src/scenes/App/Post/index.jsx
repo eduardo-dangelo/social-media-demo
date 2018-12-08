@@ -7,17 +7,21 @@ import Comments from '../Comments'
 import Tada from 'react-reveal/Tada'
 import Flip from 'react-reveal/Flip'
 import TimeAgo from 'react-timeago'
+import CreatePostForm from '../../../forms/CreatePostForm'
+import EditPostForm from '../../../forms/EditPostForm'
+import DeletePostForm from '../../../forms/DeletePostForm'
 
 class Post extends React.Component {
   state = {
     showComments: false,
-    counter: 0
+    counter: 0,
+    editPost: false,
+    deletePost: false
   }
 
   render() {
-    const { post } = this.props;
-    console.log('post', post)
-    const { showComments } = this.state;
+    const { post, userId, updateRequired } = this.props;
+    const { showComments, editPost, deletePost } = this.state;
     return (
       <Box mt={variables.space}>
         <BoxContent>
@@ -28,21 +32,46 @@ class Post extends React.Component {
             </PostAuthor>
             <PostDate>
               <TimeAgo date={post.updatedAt} />
-              <ActionLink onClick={this.handleToggleComments}>
-              <span>
-                <FaPencilAlt/>
-              </span>
-              </ActionLink>
-              <ActionLink onClick={this.handleToggleComments}>
-              <span>
-                <FaTrashAlt/>
-              </span>
-              </ActionLink>
+              {post.author.id === userId && (
+                <ActionLink marginLeft onClick={this.handleEditPost}>
+                  <span>
+                    <FaPencilAlt/>
+                  </span>
+                </ActionLink>
+              )}
+              {post.author.id === userId && (
+                <ActionLink onClick={this.handleDeletePost}>
+                  <span>
+                    <FaTrashAlt/>
+                  </span>
+                </ActionLink>
+              )}
             </PostDate>
           </PostHeader>
-          <Flip cascade top>
-            <h3>{post.content}</h3>
-          </Flip>
+          {!editPost && !deletePost && (
+            <Flip cascade top>
+              <h3>{post.content}</h3>
+            </Flip>
+          )}
+          {editPost && (
+            <BoxContent midSection>
+              <EditPostForm
+                postId={post.id}
+                userId={userId}
+                updateRequired={updateRequired}
+              />
+            </BoxContent>
+          )}
+          {deletePost && (
+            <BoxContent midSection>
+              <DeletePostForm
+                userId={userId}
+                postId={post.id}
+                onCancel={this.handleDeletePost}
+                updateRequired={updateRequired}
+              />
+            </BoxContent>
+          )}
           <ActionBar divider>
             <ActionLink onClick={this.handleToggleComments}>
               <span>
@@ -69,6 +98,14 @@ class Post extends React.Component {
 
   handleToggleComments = () => {
     this.setState({ showComments: !this.state.showComments })
+  }
+
+  handleEditPost = () => {
+    this.setState({ editPost: !this.state.editPost, deletePost: false })
+  }
+
+  handleDeletePost = () => {
+    this.setState({ deletePost: !this.state.deletePost, editPost: false, })
   }
 
   handleLike = () => {

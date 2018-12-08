@@ -51,7 +51,7 @@ class CreatePostForm extends React.Component {
         )}
         <FormGroup noMargin>
           <Label>
-            Post:
+            Edit Post:
           </Label>
           <Field
             value={name}

@@ -9,42 +9,6 @@ import Fade from 'react-reveal/Fade'
 
 class Posts extends React.PureComponent {
   render() {
-    // const posts = [
-    //   {
-    //     id: '123',
-    //     content: 'Hello World',
-    //     user : {
-    //       id: '666',
-    //       name: 'Robot Cop'
-    //     },
-    //     comments: [
-    //       {
-    //         id: '10393',
-    //         content: 'dale!',
-    //         user: {
-    //           name: 'Judson',
-    //         }
-    //       },
-    //       {
-    //         id: '1039asd3',
-    //         content: 'Eh nois meu passeiro',
-    //         user: {
-    //           name: 'Carlos',
-    //         }
-    //       }
-    //     ]
-    //   },
-    //   {
-    //     id: '124',
-    //     content: 'Hello World 2',
-    //     user : {
-    //       id: '666',
-    //       name: 'Robot Cooper'
-    //     },
-    //     comments: []
-    //   }
-    // ]
-
     const { userName, userId, allPosts } = this.props;
     let posts = []
 
@@ -66,7 +30,7 @@ class Posts extends React.PureComponent {
         </Box>
         {posts.map((post) => {
           return (
-            <Post key={post.id} post={post}/>
+            <Post key={post.id} post={post} userId={userId} updateRequired={this.handleRefetch}/>
           );
         })}
       </>

@@ -113,7 +113,6 @@ class UserSettingsForm extends React.Component {
       variables: { id, name, authorId },
     })
       .then((response) => (
-          console.log('response', response),
           updateRequired()
       ))
       .catch((e) => (
