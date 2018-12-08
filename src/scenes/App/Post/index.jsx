@@ -56,9 +56,10 @@ class Post extends React.Component {
           {editPost && (
             <BoxContent midSection>
               <EditPostForm
-                postId={post.id}
                 userId={userId}
-                updateRequired={updateRequired}
+                postId={post.id}
+                postContent={post.content}
+                updateRequired={this.handleEditPost}
               />
             </BoxContent>
           )}

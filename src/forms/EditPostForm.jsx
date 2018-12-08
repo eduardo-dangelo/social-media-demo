@@ -10,9 +10,9 @@ import {
 import { FaPaperPlane } from 'react-icons/fa'
 import Flip from 'react-reveal/Flip'
 import { compose, graphql } from 'react-apollo'
-import { createPost } from '../services/mutations'
+import { updatePost } from '../services/mutations'
 
-class CreatePostForm extends React.Component {
+class EditPostForm extends React.Component {
   state = {
     theme: 'dark',
     content: '',
@@ -20,8 +20,14 @@ class CreatePostForm extends React.Component {
     error: false
   }
 
+  componentDidMount() {
+    const { postContent } = this.props;
+    this.setState({ content: postContent });
+  }
+
+
   render() {
-    const { loading, error, content, name } = this.state;
+    const { loading, error, content } = this.state;
 
     const validate = () => {
       let disabled = false
@@ -54,7 +60,7 @@ class CreatePostForm extends React.Component {
             Edit Post:
           </Label>
           <Field
-            value={name}
+            value={content}
             placeholder='post...'
             onChange={(e) => this.setState({content: e.target.value})}
           />
@@ -74,20 +80,21 @@ class CreatePostForm extends React.Component {
 
   handleSaveChanges = async (e) => {
     const { content } = this.state;
-    const authorId = this.props.userId;
+    const { userId, postId } = this.props;
     e.preventDefault();
     this.setState({ loading: true, error: false });
+    console.log('postId', postId)
 
-    await this.props.createPost({
-      variables: { content, authorId }
+    await this.props.updatePost({
+      variables: { id: postId, content, authorId: userId }
     })
-      .then((response) => (
-        this.setState({ content: '', loading: false, error: false }),
+      .then(() => (
+        this.setState({ loading: false, error: false }),
         this.props.updateRequired()
       ))
   }
 }
 
 export default compose(
-  graphql(createPost, { name: 'createPost'})
-)(CreatePostForm);
+  graphql(updatePost, { name: 'updatePost'})
+)(EditPostForm);
