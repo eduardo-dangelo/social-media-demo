@@ -7,3 +7,27 @@ export const loggedInUser = gql`
     }
   }
 `;
+
+export const currentUser = gql`
+  query CurrentUser ($id: ID!){
+    User(id: $id) {
+      id
+      email
+      name
+    }
+  }
+`;
+
+export const allPosts = gql`
+  query AllPosts {
+    allPosts(orderBy: createdAt_DESC) {
+      id
+      createdAt
+      updatedAt
+      content
+      author {
+        name
+      }
+    }
+  }
+`;

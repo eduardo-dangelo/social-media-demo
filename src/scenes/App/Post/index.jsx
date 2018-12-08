@@ -1,11 +1,12 @@
 import React from 'react';
-import { Box, BoxContent } from '../../../elements/layout'
+import { Box, BoxContent, PostAuthor, PostDate, PostHeader } from '../../../elements/layout'
 import { variables } from '../../../config'
 import { ActionBar, ActionLink } from '../../../elements/form'
-import { FaThumbsUp, FaComment, FaUser } from 'react-icons/fa'
+import { FaThumbsUp, FaComment, FaUser, FaTrashAlt, FaPencilAlt } from 'react-icons/fa'
 import Comments from '../Comments'
 import Tada from 'react-reveal/Tada'
 import Flip from 'react-reveal/Flip'
+import TimeAgo from 'react-timeago'
 
 class Post extends React.Component {
   state = {
@@ -15,12 +16,30 @@ class Post extends React.Component {
 
   render() {
     const { post } = this.props;
+    console.log('post', post)
     const { showComments } = this.state;
     return (
       <Box mt={variables.space}>
         <BoxContent>
-          <FaUser/>{' '}
-          {post.user.name}
+          <PostHeader>
+            <PostAuthor>
+              <FaUser/>{' '}
+              {post.author.name}
+            </PostAuthor>
+            <PostDate>
+              <TimeAgo date={post.updatedAt} />
+              <ActionLink onClick={this.handleToggleComments}>
+              <span>
+                <FaPencilAlt/>
+              </span>
+              </ActionLink>
+              <ActionLink onClick={this.handleToggleComments}>
+              <span>
+                <FaTrashAlt/>
+              </span>
+              </ActionLink>
+            </PostDate>
+          </PostHeader>
           <Flip cascade top>
             <h3>{post.content}</h3>
           </Flip>

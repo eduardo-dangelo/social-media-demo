@@ -16,3 +16,21 @@ export const signupUser = gql`
     }
   }
 `;
+
+export const updateUser = gql`
+  mutation UpdateUser ($id: ID!, $name: String, $authorId: ID!) {
+    updateUser(id: $id, name: $name, authorId: $authorId) {
+      id
+      name
+      email
+    }
+  }
+`;
+
+export const createPost = gql`
+  mutation CreatePost ($content: String!, $authorId: ID!) {
+    createPost(content: $content, authorId: $authorId) {
+      id
+    }
+  }
+`

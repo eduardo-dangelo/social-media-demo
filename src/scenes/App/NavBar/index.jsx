@@ -1,34 +1,7 @@
 import React from 'react';
-import { Box, BoxHeader } from '../../../elements/layout';
+import { Box, BoxHeader, LItem, UList } from '../../../elements/layout';
 import { FaUser, FaEnvelope, FaUserCog } from 'react-icons/fa';
-import styled from 'styled-components';
-import { variables } from '../../../config'
-import { style } from '../../../config'
-
-export const UList = styled.div`
-  margin: 0;
-  padding: ${variables.spaceSmall} 0;
-`;
-
-export const LItem = styled.a`
-  display: flex;
-  cursor: pointer;
-  align-items: center;
-  text-decoration: none;
-  justify-content: flex-start;
-  transition: ${variables.transition};
-  padding: ${variables.spaceSmall} ${variables.space};
-  background: ${({ theme, active }) => active ? style.themes[theme].link.active.bg : 'transparent'};
-  color: ${({ theme, active }) => active ? style.themes[theme].link.active.color : style.themes[theme].link.color};
-  
-  svg {
-    margin-right: ${variables.spaceSmall};
-  }
-  
-  &:hover {
-    text-shadow: ${variables.boxShadow};
-  }
-`;
+import Flip from 'react-reveal/Flip'
 
 class NavBar extends React.Component {
   state = {
@@ -36,7 +9,7 @@ class NavBar extends React.Component {
   }
 
   render() {
-    const { theme } = this.props;
+    const { theme, userName } = this.props;
     const { activeItem } = this.state;
     const items = [
       { name: 'Posts', key: 'posts', icon: (<FaEnvelope/>)},
@@ -47,7 +20,9 @@ class NavBar extends React.Component {
       <Box>
         <BoxHeader>
           <FaUser/>
-          Welcome Ud
+          <Flip top cascade>
+            {`Welcome ${userName}`}
+          </Flip>
         </BoxHeader>
         <UList>
           {items.map((item) => {

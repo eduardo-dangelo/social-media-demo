@@ -2,13 +2,26 @@ import React from 'react';
 import { ActionBar, ActionButton, ButtonContent, ErrorBox, FaCogSpin, Field, Form, FormGroup, Label, RadioButton } from '../elements/form'
 import { FaMoon, FaLightbulb, FaPaperclip } from 'react-icons/fa'
 import Flip from 'react-reveal/Flip'
+import { compose, graphql } from 'react-apollo'
+import { updateUser } from '../services/mutations'
 
 class UserSettingsForm extends React.Component {
   state = {
+    id: '',
     name: '',
     loading: false,
     error: false
   }
+
+  componentWillMount() {
+    const { currentUser } = this.props;
+    this.setState({
+      id: currentUser.User.id,
+      name: currentUser.User.name,
+      authorId: currentUser.User.id
+    })
+  }
+
 
   render() {
     const { theme } = this.props;
@@ -89,8 +102,23 @@ class UserSettingsForm extends React.Component {
     )
   }
 
-  handleSaveChanges = () => {
-    // logic here...
+  handleSaveChanges = async (e) => {
+    const { updateUser, updateRequired } = this.props;
+    const { name, id, authorId } = this.state;
+    e.preventDefault();
+    this.setState({ loading: true, error: false });
+
+
+    updateUser({
+      variables: { id, name, authorId },
+    })
+      .then((response) => (
+          console.log('response', response),
+          updateRequired()
+      ))
+      .catch((e) => (
+        this.setState({ loading: false, error: true })
+      ))
   }
 
   handleSelectTheme = (theme) => () => {
@@ -99,4 +127,7 @@ class UserSettingsForm extends React.Component {
   }
 }
 
-export default UserSettingsForm
+export default compose(
+  graphql(updateUser,
+    { name: 'updateUser' })
+)(UserSettingsForm)

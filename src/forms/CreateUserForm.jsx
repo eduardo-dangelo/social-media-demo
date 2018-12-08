@@ -114,7 +114,7 @@ class CreateUserForm extends React.Component {
     } catch (e) {
       console.error(`An error occured: `, e)
       this.setState({ loading: false, error: true })
-      this.props.history.replace('/')
+      // this.props.history.replace('/')
     }
   }
 }

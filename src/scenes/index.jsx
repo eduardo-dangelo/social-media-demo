@@ -6,8 +6,10 @@ import App from './App';
 import CreatePost from '../components/CreatePost';
 import CreateUser from './CreateUser';
 import { compose, graphql } from 'react-apollo'
-import { loggedInUser } from '../services/queries'
+import { currentUser, loggedInUser } from '../services/queries'
 import { style } from '../config'
+
+let userId = null
 
 class Scenes extends Component {
   state = {

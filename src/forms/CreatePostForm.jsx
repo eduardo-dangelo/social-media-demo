@@ -9,23 +9,24 @@ import {
 } from '../elements/form';
 import { FaPaperPlane } from 'react-icons/fa'
 import Flip from 'react-reveal/Flip'
+import { compose, graphql } from 'react-apollo'
+import { createPost } from '../services/mutations'
 
 class CreatePostForm extends React.Component {
   state = {
     theme: 'dark',
-    name: '',
+    content: '',
     loading: false,
     error: false
   }
 
   render() {
-    const { loading, error, theme, name } = this.state;
+    const { loading, error, content, name } = this.state;
 
     const validate = () => {
       let disabled = false
       const values = [
-        name,
-        theme,
+        content,
       ]
 
       values.forEach((item) => {
@@ -55,7 +56,7 @@ class CreatePostForm extends React.Component {
           <Field
             value={name}
             placeholder='post...'
-            onChange={(e) => this.setState({name: e.target.value})}
+            onChange={(e) => this.setState({content: e.target.value})}
           />
           <ActionButton type="submit" disabled={validate()}>
             <ButtonContent>
@@ -71,9 +72,23 @@ class CreatePostForm extends React.Component {
     )
   }
 
-  handleSaveChanges = () => {
-    // logic here...
+  handleSaveChanges = async (e) => {
+    const { content } = this.state;
+    const authorId = this.props.userId;
+    e.preventDefault();
+    this.setState({ loading: true, error: false });
+    console.log('content', this.props)
+
+    await this.props.createPost({
+      variables: { content, authorId }
+    })
+      .then((response) => (
+        this.setState({ content: '', loading: false, error: false }),
+        this.props.updateRequired()
+      ))
   }
 }
 
-export default CreatePostForm;
+export default compose(
+  graphql(createPost, { name: 'createPost'})
+)(CreatePostForm);

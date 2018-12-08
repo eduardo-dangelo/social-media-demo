@@ -6,7 +6,7 @@ import Flip from 'react-reveal/Flip'
 
 class Settings extends React.Component {
   render() {
-    const { theme, onSelectTheme } = this.props;
+    const { theme, onSelectTheme, currentUser } = this.props;
     return (
       <Box>
         <BoxHeader>
@@ -16,7 +16,11 @@ class Settings extends React.Component {
           </Flip>
         </BoxHeader>
         <BoxContent>
-          <UserSettingsForm theme={theme} onSelectTheme={onSelectTheme}/>
+          <UserSettingsForm
+            theme={theme}
+            onSelectTheme={onSelectTheme}
+            currentUser={currentUser}
+          />
         </BoxContent>
       </Box>
     )

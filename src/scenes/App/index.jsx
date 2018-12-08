@@ -4,6 +4,8 @@ import { Col, Page, Row } from '../../elements/layout'
 import NavBar from './NavBar';
 import Posts from './Posts';
 import Settings from './Settings';
+import { compose, graphql } from 'react-apollo'
+import { currentUser } from '../../services/queries'
 
 
 class App extends React.Component {
@@ -12,22 +14,48 @@ class App extends React.Component {
   }
 
   render() {
-    const { userId, updateRequired, onSelectTheme, styles, theme } = this.props;
+    const {
+      theme,
+      styles,
+      userId,
+      currentUser,
+      updateRequired,
+      onSelectTheme,
+    } = this.props;
     const { view } = this.state;
 
     if (!userId) {
       return <Login userId={userId} updateRequired={updateRequired}/>;
     }
 
+    const userName = currentUser.User ? currentUser.User.name : '';
+
+    if (!userName) {
+      return null;
+    }
+
     return (
       <Page>
         <Row>
           <Col size={2}>
-            <NavBar styles={styles} theme={theme} onSelectItem={this.handleViewChange}/>
+            <NavBar
+              theme={theme}
+              styles={styles}
+              userName={userName}
+              onSelectItem={this.handleViewChange}
+            />
           </Col>
           <Col size={6}>
-            {view === 'posts' && <Posts/>}
-            {view === 'settings' && <Settings theme={theme} onSelectTheme={onSelectTheme}/>}
+            {view === 'settings' && (
+              <Settings
+                theme={theme}
+                currentUser={currentUser}
+                onSelectTheme={onSelectTheme}
+              />
+            )}
+            {view === 'posts' && (
+              <Posts userName={userName} userId={userId}/>
+            )}
           </Col>
         </Row>
       </Page>
@@ -39,4 +67,12 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default compose(
+  graphql(currentUser, {
+    name: 'currentUser',
+    options: ({ userId }) => {
+      console.log('userId', userId)
+      return { variables: { id: userId }}
+    }
+  }),
+)(App);

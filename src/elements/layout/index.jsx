@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { variables } from '../../config'
+import { style, variables } from '../../config'
 
 export const Page = styled.div`
   margin: auto;
@@ -87,6 +87,27 @@ export const CommentsContainer = styled.div`
   padding-left: ${variables.spaceLarge};
 `;
 
+export const PostHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const PostAuthor = styled.div`
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+  
+  svg {
+    margin-right: ${variables.spaceSmall};
+  }
+`;
+
+export const PostDate = styled.div`
+  font-size: .8em;
+`;
+
+
 export const CommentBox = styled.div`
   display: flex;
   align-items: center;
@@ -111,5 +132,30 @@ export const CommentContent = styled.div`
   strong {
     margin-left: ${variables.spaceSmall};
     margin-right: ${variables.spaceSmall};
+  }
+`;
+
+export const UList = styled.div`
+  margin: 0;
+  padding: ${variables.spaceSmall} 0;
+`;
+
+export const LItem = styled.a`
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  text-decoration: none;
+  justify-content: flex-start;
+  transition: ${variables.transition};
+  padding: ${variables.spaceSmall} ${variables.space};
+  background: ${({ theme, active }) => active ? style.themes[theme].link.active.bg : 'transparent'};
+  color: ${({ theme, active }) => active ? style.themes[theme].link.active.color : style.themes[theme].link.color};
+  
+  svg {
+    margin-right: ${variables.spaceSmall};
+  }
+  
+  &:hover {
+    text-shadow: ${variables.boxShadow};
   }
 `;
