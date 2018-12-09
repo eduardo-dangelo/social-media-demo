@@ -3,8 +3,9 @@ import { BoxContent, CommentActions, CommentBox, CommentContent } from '../../..
 import { FaThumbsUp, FaTrashAlt, FaUser } from 'react-icons/fa'
 import Flip from 'react-reveal/Flip'
 import Tada from 'react-reveal/Tada'
-import { ActionLink } from '../../../elements/form'
+import { ActionBar, ActionLink } from '../../../elements/form'
 import DeleteCommentForm from '../../../forms/DeleteCommentForm'
+import LikesComment from '../LikesComment'
 
 class Comment extends React.Component {
   state = {
@@ -39,14 +40,12 @@ class Comment extends React.Component {
           </CommentContent>
         )}
         <CommentActions>
-          <Tada  spy={this.state.counter}>
-            <ActionLink onClick={this.handleLike}>
-              <span>
-                like 12
-                <FaThumbsUp/>
-              </span>
-            </ActionLink>
-          </Tada>
+          <LikesComment
+            comment={comment}
+            userId={userId}
+            likes={comment.likes}
+            updateRequired={updateRequired}
+          />
           {comment.author.id === userId && (
             <ActionLink onClick={this.toggleDeleteComment}>
               <span>

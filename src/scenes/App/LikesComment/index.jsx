@@ -3,19 +3,19 @@ import Tada from 'react-reveal/Tada'
 import { ActionLink, ActionLinkContent } from '../../../elements/form'
 import { FaRegThumbsUp, FaThumbsUp } from 'react-icons/fa'
 import { compose, graphql } from 'react-apollo'
-import { dislikePost, likePost } from '../../../services/mutations'
+import { dislikeComment, likeComment } from '../../../services/mutations'
 
-class Likes extends React.Component {
+class LikesComment extends React.Component {
   state = {
     counter: 0,
   }
 
   render() {
-    const { likes, post, userId } = this.props;
+    const { likes, comment, userId } = this.props;
     let liked = false;
     let likeId = null;
 
-    post.likes.forEach((like) => {
+    comment.likes.forEach((like) => {
       if (like.author.id === userId) {
         liked = true;
         likeId = like.id
@@ -35,9 +35,9 @@ class Likes extends React.Component {
   }
 
   handleLike = () => {
-    const { likePost, post, userId, updateRequired } = this.props;
-    likePost({
-      variables: { postId: post.id, authorId: userId }
+    const { likeComment, comment, userId, updateRequired } = this.props;
+    likeComment({
+      variables: { commentId: comment.id, authorId: userId }
     })
       .then(() => (
         updateRequired()
@@ -46,9 +46,9 @@ class Likes extends React.Component {
   }
 
   handleDislike = (likeId) => () => {
-    const { dislikePost, updateRequired } = this.props;
+    const { dislikeComment, updateRequired } = this.props;
 
-    dislikePost({
+    dislikeComment({
       variables: { id: likeId }
     })
       .then(() => (
@@ -59,6 +59,6 @@ class Likes extends React.Component {
 }
 
 export default compose(
-  graphql(likePost, { name: 'likePost'}),
-  graphql(dislikePost, { name: 'dislikePost'})
-)(Likes)
+  graphql(likeComment, { name: 'likeComment'}),
+  graphql(dislikeComment, { name: 'dislikeComment'})
+)(LikesComment)

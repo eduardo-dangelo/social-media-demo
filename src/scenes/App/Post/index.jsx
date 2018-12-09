@@ -10,7 +10,7 @@ import EditPostForm from '../../../forms/EditPostForm'
 import DeletePostForm from '../../../forms/DeletePostForm'
 import { compose, graphql } from 'react-apollo'
 import { likePost } from '../../../services/mutations'
-import Likes from '../Likes'
+import LikesPost from '../LikesPost'
 
 class Post extends React.Component {
   state = {
@@ -84,7 +84,7 @@ class Post extends React.Component {
                 {post.comments.length > 0 ? <FaComment/> : <FaRegComment/>}
               </span>
             </ActionLink>
-            <Likes
+            <LikesPost
               post={post}
               userId={userId}
               likes={post.likes}

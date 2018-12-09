@@ -103,3 +103,24 @@ export const deleteComment = gql`
     }
   }
 `;
+
+export const likeComment = gql`
+  mutation CreateCommentLike ($commentId: ID!, $authorId: ID!) {
+    createCommentLike(commentId: $commentId, authorId: $authorId) {
+      id
+      author {
+        id
+        name
+      }
+    }
+  }
+`;
+
+
+export const dislikeComment = gql`
+  mutation DeleteCommentLike ($id: ID!) {
+    deleteCommentLike(id: $id) {
+      id
+    }
+  }
+`;
