@@ -73,7 +73,26 @@ permissions:
 
 - operation: User.update
   authenticated: true
-  # Only the author of a post can delete it
+
+- operation: PostLike.read
+
+- operation: PostLike.create
+  authenticated: true
+
+- operation: PostLike.delete
+  authenticated: true
+
+- operation: PostLikes.connect
+  authenticated: true
+
+- operation: PostLikes.disconnect
+  authenticated: true
+
+- operation: UserPostLikes.connect
+  authenticated: true
+
+- operation: UserPostLikes.disconnect
+  authenticated: true
 
   
 # Your root tokens used for functions to get full access to the API

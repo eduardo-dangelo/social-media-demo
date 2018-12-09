@@ -10,6 +10,8 @@ import TimeAgo from 'react-timeago'
 import CreatePostForm from '../../../forms/CreatePostForm'
 import EditPostForm from '../../../forms/EditPostForm'
 import DeletePostForm from '../../../forms/DeletePostForm'
+import { compose, graphql } from 'react-apollo'
+import { likePost } from '../../../services/mutations'
 
 class Post extends React.Component {
   state = {
@@ -112,8 +114,14 @@ class Post extends React.Component {
   }
 
   handleLike = () => {
+    const { likePost, post, userId } = this.props;
+    likePost({
+      variables: { postId: post.id, authorId: userId }
+    })
     this.setState({ counter: this.state.counter + 1 });
   }
 }
 
-export default Post
+export default compose(
+  graphql(likePost, { name: 'likePost'})
+)(Post)

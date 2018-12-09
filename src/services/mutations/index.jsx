@@ -37,10 +37,22 @@ export const createPost = gql`
 `;
 
 export const updatePost = gql`
-  mutation UpdatePost ($id: ID!, $content: String!, $authorId: ID!) {
-    updatePost(id: $id, content: $content, authorId: $authorId) {
+  mutation UpdatePost ($id: ID!, $content: String!, $authorId: ID!, $likes: Int!) {
+    updatePost(id: $id, content: $content, authorId: $authorId, likes: $likes) {
       id
       content
+    }
+  }
+`;
+
+export const likePost = gql`
+  mutation CreatePostLike ($postId: ID!, $authorId: ID!) {
+    createPostLike(postId: $postId, authorId: $authorId) {
+      id
+      author {
+        id
+        name
+      }
     }
   }
 `;
