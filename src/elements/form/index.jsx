@@ -151,6 +151,12 @@ export const ActionLink = styled.a`
   }
 `;
 
+export const ActionLinkContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+`;
+
 export const rotate = keyframes`
   from {
     transform: rotate(0deg);

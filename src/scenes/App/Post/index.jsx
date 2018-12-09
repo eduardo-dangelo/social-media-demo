@@ -12,6 +12,7 @@ import EditPostForm from '../../../forms/EditPostForm'
 import DeletePostForm from '../../../forms/DeletePostForm'
 import { compose, graphql } from 'react-apollo'
 import { likePost } from '../../../services/mutations'
+import Likes from '../Likes'
 
 class Post extends React.Component {
   state = {
@@ -24,6 +25,7 @@ class Post extends React.Component {
   render() {
     const { post, userId, updateRequired } = this.props;
     const { showComments, editPost, deletePost } = this.state;
+    console.log('post', post)
     return (
       <Box mt={variables.space}>
         <BoxContent>
@@ -84,14 +86,12 @@ class Post extends React.Component {
                 <FaComment/>
               </span>
             </ActionLink>*/}
-            <Tada  spy={this.state.counter}>
-              <ActionLink onClick={this.handleLike}>
-                <span>
-                  like 12
-                  <FaThumbsUp/>
-                </span>
-              </ActionLink>
-            </Tada>
+            <Likes
+              post={post}
+              userId={userId}
+              likes={post.likes}
+              updateRequired={updateRequired}
+            />
           </ActionBar>
         </BoxContent>
         {showComments && (
@@ -111,14 +111,6 @@ class Post extends React.Component {
 
   handleDeletePost = () => {
     this.setState({ deletePost: !this.state.deletePost, editPost: false, })
-  }
-
-  handleLike = () => {
-    const { likePost, post, userId } = this.props;
-    likePost({
-      variables: { postId: post.id, authorId: userId }
-    })
-    this.setState({ counter: this.state.counter + 1 });
   }
 }
 

@@ -83,7 +83,6 @@ class EditPostForm extends React.Component {
     const { userId, postId } = this.props;
     e.preventDefault();
     this.setState({ loading: true, error: false });
-    console.log('postId', postId)
 
     await this.props.updatePost({
       variables: { id: postId, content, authorId: userId }

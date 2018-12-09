@@ -30,6 +30,13 @@ export const allPosts = gql`
         id
         name
       }
+      likes {
+        id
+        author {
+          id
+          name
+        }
+      }
     }
   }
 `;
