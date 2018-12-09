@@ -103,17 +103,17 @@ class UserSettingsForm extends React.Component {
   }
 
   handleSaveChanges = async (e) => {
-    const { updateUser, updateRequired } = this.props;
-    const { name, id, authorId } = this.state;
+    const { updateUser, theme } = this.props;
+    const { name, id } = this.state;
     e.preventDefault();
     this.setState({ loading: true, error: false });
 
 
     updateUser({
-      variables: { id, name, authorId },
+      variables: { id, name, theme },
     })
       .then((response) => (
-          updateRequired()
+        this.setState({ loading: false, error: false })
       ))
       .catch((e) => (
         this.setState({ loading: false, error: true })

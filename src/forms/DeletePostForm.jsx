@@ -35,18 +35,14 @@ class DeletePostForm extends React.Component {
           </Label>
           <ActionButton type="submit">
             <ButtonContent>
-              <Flip cascade top>
-                Yes
-                {!loading ? <FaPaperPlane/> : ''}
-              </Flip>
+              Yes
+              {!loading ? <FaPaperPlane/> : ''}
               {loading ? <FaCogSpin/> : ''}
             </ButtonContent>
           </ActionButton>
           <ActionButton type="button" onClick={this.handleCancel}>
             <ButtonContent>
-              <Flip cascade top>
-                cancel
-              </Flip>
+              cancel
             </ButtonContent>
           </ActionButton>
         </FormGroup>

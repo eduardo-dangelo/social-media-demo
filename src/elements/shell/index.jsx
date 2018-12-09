@@ -11,7 +11,7 @@ export const Body = styled.div`
   width: 100%;
   min-height: calc(100vh - 60px);
   position: relative;
-  transition: ${variables.transition};
+  transition: ${variables.transitionLarge};
   background: ${({ styles }) => styles.theme.page.bg};
   
   ${Box} {
@@ -19,6 +19,7 @@ export const Body = styled.div`
     color: ${({ styles }) => styles.theme.box.color};
     border-color: ${({ styles }) => styles.theme.box.border.color};
     border-radius: ${({ styles }) => styles.theme.box.border.radius};
+    transition: ${variables.transitionLarge};
     
     svg {
       color: ${({ styles }) => styles.theme.box.icon.color};
@@ -29,6 +30,7 @@ export const Body = styled.div`
     color: ${({ styles }) => styles.theme.header.color};
     background: ${({ styles }) => styles.theme.header.bg};
     border-color: ${({ styles }) => styles.theme.box.border.color};
+    transition: ${variables.transitionLarge};
   }
   
   ${BoxContent} {
@@ -49,6 +51,7 @@ export const Body = styled.div`
     background: ${({ styles }) => styles.theme.input.bg};
     border-color: ${({ styles }) => styles.theme.box.border.color};
     color: ${({ styles }) => styles.theme.input.color};
+    transition: ${variables.transitionLarge};
   }
   
   ${ActionButton} {

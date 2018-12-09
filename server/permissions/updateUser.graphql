@@ -1,0 +1,5 @@
+query ($user_id: ID!) {
+  SomePostExists(filter: {
+    id: $user_id,
+  })
+}

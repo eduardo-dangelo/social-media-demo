@@ -66,9 +66,14 @@ permissions:
     - id
     - name
     - email
+    - theme
   # Only authenticated users can create relation between a user and a post
 - operation: UserPosts.connect
   authenticated: true
+
+- operation: User.update
+  authenticated: true
+  # Only the author of a post can delete it
 
   
 # Your root tokens used for functions to get full access to the API

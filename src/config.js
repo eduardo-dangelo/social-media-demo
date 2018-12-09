@@ -2,6 +2,7 @@ export const variables = {
   boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
   boxShadowHover: '0 2px 10px rgba(0,0,0,0.3)',
   transition: '.3s ease',
+  transitionLarge: '1s ease',
   space: '16px',
   spaceSmall: '8px',
   spaceLarge: '32px',

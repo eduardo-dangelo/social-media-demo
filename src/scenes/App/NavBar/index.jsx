@@ -8,6 +8,15 @@ class NavBar extends React.Component {
     activeItem: 'posts',
   }
 
+  componentWillMount() {
+    const { userTheme, onLoadUserTheme } = this.props;
+
+    if (userTheme !== '') {
+      onLoadUserTheme(userTheme);
+    }
+  }
+
+
   render() {
     const { theme, userName } = this.props;
     const { activeItem } = this.state;

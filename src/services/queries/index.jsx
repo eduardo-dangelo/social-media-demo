@@ -14,6 +14,7 @@ export const currentUser = gql`
       id
       email
       name
+      theme
     }
   }
 `;

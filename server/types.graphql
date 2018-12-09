@@ -10,6 +10,8 @@ type User @model {
   email: String @isUnique
   password: String
 
+  theme: String
+
   posts: [Post!]! @relation(name: "UserPosts")
   comments: [Comment!]! @relation(name: "UserComments")
   postLikes: [PostLike!]! @relation(name: "UserPostLikes")

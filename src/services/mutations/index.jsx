@@ -18,11 +18,12 @@ export const signupUser = gql`
 `;
 
 export const updateUser = gql`
-  mutation UpdateUser ($id: ID!, $name: String, $authorId: ID!) {
-    updateUser(id: $id, name: $name, authorId: $authorId) {
+  mutation UpdateUser ($id: ID!, $name: String, $theme: String) {
+    updateUser(id: $id, name: $name, theme: $theme) {
       id
       name
       email
+      theme
     }
   }
 `;

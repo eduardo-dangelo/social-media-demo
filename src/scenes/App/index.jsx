@@ -8,7 +8,7 @@ import { compose, graphql } from 'react-apollo'
 import { currentUser } from '../../services/queries'
 
 
-class App extends React.Component {
+class App extends React.PureComponent {
   state = {
     view: 'posts'
   }
@@ -29,6 +29,7 @@ class App extends React.Component {
     }
 
     const userName = currentUser.User ? currentUser.User.name : '';
+    const userTheme = currentUser.User ? currentUser.User.theme : '';
 
     if (!userName) {
       return null;
@@ -42,6 +43,8 @@ class App extends React.Component {
               theme={theme}
               styles={styles}
               userName={userName}
+              userTheme={userTheme}
+              onLoadUserTheme={onSelectTheme}
               onSelectItem={this.handleViewChange}
             />
           </Col>
