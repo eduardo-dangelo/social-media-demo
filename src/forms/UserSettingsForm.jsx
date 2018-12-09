@@ -1,7 +1,8 @@
 import React from 'react';
-import { ActionBar, ActionButton, ButtonContent, ErrorBox, FaCogSpin, Field, Form, FormGroup, Label, RadioButton } from '../elements/form'
+import { ActionBar, ActionButton, ButtonContent, ErrorBox, FaCogSpin, Field, Form, FormGroup, Label, RadioButton, SuccessMessage } from '../elements/form'
 import { FaMoon, FaLightbulb, FaPaperclip } from 'react-icons/fa'
 import Flip from 'react-reveal/Flip'
+import Fade from 'react-reveal/Fade'
 import { compose, graphql } from 'react-apollo'
 import { updateUser } from '../services/mutations'
 
@@ -10,7 +11,8 @@ class UserSettingsForm extends React.Component {
     id: '',
     name: '',
     loading: false,
-    error: false
+    error: false,
+    saveSuccess: false
   }
 
   componentWillMount() {
@@ -25,7 +27,7 @@ class UserSettingsForm extends React.Component {
 
   render() {
     const { theme } = this.props;
-    const { loading, error, name } = this.state;
+    const { loading, error, name, saveSuccess } = this.state;
 
     const validate = () => {
       let disabled = false
@@ -88,6 +90,11 @@ class UserSettingsForm extends React.Component {
           </RadioButton>
         </FormGroup>
         <ActionBar divider>
+          <Fade bottom opposite when={saveSuccess}>
+            <SuccessMessage>
+              Saved!
+            </SuccessMessage>
+          </Fade>
           <ActionButton type="submit" disabled={validate()}>
             <ButtonContent>
               <Flip cascade top>
@@ -112,10 +119,11 @@ class UserSettingsForm extends React.Component {
     updateUser({
       variables: { id, name, theme },
     })
-      .then((response) => (
-        this.setState({ loading: false, error: false })
+      .then(() => (
+        this.setState({ loading: false, error: false, saveSuccess: true }),
+        setTimeout(() => this.setState({ saveSuccess: false  }), 2000)
       ))
-      .catch((e) => (
+      .catch(() => (
         this.setState({ loading: false, error: true })
       ))
   }

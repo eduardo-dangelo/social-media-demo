@@ -120,7 +120,12 @@ export const ActionBar = styled.div`
   justify-content: flex-end;
   border-top: ${({ divider }) => divider ? '1px dashed' : 'none'};
   padding-top: ${({ divider }) => divider ? variables.space : 0 };
-`
+`;
+
+export const SuccessMessage = styled.div`
+  margin-right: ${variables.spaceSmall};
+  font-size: .8em;
+`;
 
 export const ButtonContent = styled.span`
   padding: 0;
