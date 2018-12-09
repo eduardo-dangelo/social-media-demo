@@ -76,9 +76,25 @@ export const BoxHeader = styled.div`
   }
 `;
 
+export const BoxHeaderContent = styled.div`
+  max-width: 200px;
+  word-wrap: break-word;
+`;
+
+export const PostHeaderContent = styled.div`
+  max-width: 600px;
+  word-wrap: break-word;
+`;
+
 export const BoxContent = styled.div`
   padding: ${({ midSection }) => midSection ? `${variables.space} 0` : variables.space};
   border-top: ${({ divider }) => divider ? '1px solid' : 'none'};
+`;
+
+export const PostContent = styled.h3`
+  width: 100%;
+  max-width: 600px;
+  word-wrap: break-word;
 `;
 
 export const CommentsContainer = styled.div`

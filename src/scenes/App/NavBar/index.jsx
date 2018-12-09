@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, BoxHeader, LItem, UList } from '../../../elements/layout';
+import { Box, BoxHeader, BoxHeaderContent, LItem, UList } from '../../../elements/layout';
 import { FaUser, FaEnvelope, FaUserCog } from 'react-icons/fa';
 import Flip from 'react-reveal/Flip'
 
@@ -29,9 +29,11 @@ class NavBar extends React.Component {
       <Box>
         <BoxHeader>
           <FaUser/>
-          <Flip top cascade>
-            {`Welcome ${userName}`}
-          </Flip>
+          <BoxHeaderContent>
+            <Flip top cascade>
+              {`Welcome ${userName}`}
+            </Flip>
+          </BoxHeaderContent>
         </BoxHeader>
         <UList>
           {items.map((item) => {

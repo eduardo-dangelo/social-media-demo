@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, BoxContent, PostAuthor, PostDate, PostHeader } from '../../../elements/layout'
+import { Box, BoxContent, PostAuthor, PostContent, PostDate, PostHeader } from '../../../elements/layout'
 import { variables } from '../../../config'
 import { ActionBar, ActionLink } from '../../../elements/form'
 import { FaThumbsUp, FaComment, FaUser, FaTrashAlt, FaPencilAlt } from 'react-icons/fa'
@@ -49,9 +49,11 @@ class Post extends React.Component {
             </PostDate>
           </PostHeader>
           {!editPost && !deletePost && (
-            <Flip cascade top>
-              <h3>{post.content}</h3>
-            </Flip>
+            <PostContent>
+              <Flip cascade top>
+                {post.content}
+              </Flip>
+            </PostContent>
           )}
           {editPost && (
             <BoxContent midSection>
@@ -74,12 +76,12 @@ class Post extends React.Component {
             </BoxContent>
           )}
           <ActionBar divider>
-            <ActionLink onClick={this.handleToggleComments}>
+            {/*<ActionLink onClick={this.handleToggleComments}>
               <span>
                 comments 3
                 <FaComment/>
               </span>
-            </ActionLink>
+            </ActionLink>*/}
             <Tada  spy={this.state.counter}>
               <ActionLink onClick={this.handleLike}>
                 <span>

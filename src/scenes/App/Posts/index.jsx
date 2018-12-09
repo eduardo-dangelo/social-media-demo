@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, BoxContent, BoxHeader, Col, Row } from '../../../elements/layout'
+import { Box, BoxContent, BoxHeader, BoxHeaderContent, Col, PostHeaderContent, Row } from '../../../elements/layout'
 import Flip from 'react-reveal/Flip'
 import CreatePostForm from '../../../forms/CreatePostForm'
 import Post from '../Post';
@@ -20,9 +20,11 @@ class Posts extends React.PureComponent {
       <>
         <Box>
           <BoxHeader>
-            <Flip top cascade>
-              {`What are you thinking ${userName}?`}
-            </Flip>
+            <PostHeaderContent>
+              <Flip top cascade>
+                {`What are you thinking ${userName}?`}
+              </Flip>
+            </PostHeaderContent>
           </BoxHeader>
           <BoxContent>
             <CreatePostForm userId={userId} updateRequired={this.handleRefetch}/>
