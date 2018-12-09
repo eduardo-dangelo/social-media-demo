@@ -36,8 +36,8 @@ type PostLike @model {
   # Required system field:
   id: ID! @isUnique # read-only (managed by Graphcool)
 
-  post: Post! @relation(name: "PostLikes")
-  author: User! @relation(name: "UserPostLikes")
+  post: Post @relation(name: "PostLikes")
+  author: User @relation(name: "UserPostLikes")
 }
 
 type Comment @model {
