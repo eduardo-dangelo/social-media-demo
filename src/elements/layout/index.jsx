@@ -143,7 +143,7 @@ export const CommentContent = styled.div`
   display: flex;
   padding: 0;
   font-size: .9em;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   
   strong {
@@ -154,6 +154,11 @@ export const CommentContent = styled.div`
   button {
     font-size: .9em;
   }
+`;
+
+export const CommentText = styled.div`
+  max-width: 400px;
+  word-wrap: break-word;
 `;
 
 export const CommentActions = styled.div`

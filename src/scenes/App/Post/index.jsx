@@ -80,7 +80,7 @@ class Post extends React.Component {
           <ActionBar divider>
             <ActionLink onClick={this.handleToggleComments}>
               <span>
-                comments {post.comments.length}
+                {post.comments.length > 1 ? 'Comments' : 'comment'} {post.comments.length}
                 {post.comments.length > 0 ? <FaComment/> : <FaRegComment/>}
               </span>
             </ActionLink>

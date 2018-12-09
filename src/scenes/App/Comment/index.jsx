@@ -1,5 +1,5 @@
 import React from 'react';
-import { BoxContent, CommentActions, CommentBox, CommentContent } from '../../../elements/layout'
+import { BoxContent, CommentActions, CommentBox, CommentContent, CommentText } from '../../../elements/layout'
 import { FaThumbsUp, FaTrashAlt, FaUser } from 'react-icons/fa'
 import Flip from 'react-reveal/Flip'
 import Tada from 'react-reveal/Tada'
@@ -24,9 +24,11 @@ class Comment extends React.Component {
             <FaUser/>
             {' '}
             <strong>{comment.author.name}</strong>
-            <Flip cascade top>
-              {comment.content}
-            </Flip>
+            <CommentText>
+              <Flip cascade top>
+                {comment.content}
+              </Flip>
+            </CommentText>
           </CommentContent>
         )}
         {deleteComment && (
