@@ -32,6 +32,7 @@ export const createPost = gql`
   mutation CreatePost ($content: String!, $authorId: ID!) {
     createPost(content: $content, authorId: $authorId) {
       id
+      content
     }
   }
 `;
@@ -70,6 +71,34 @@ export const dislikePost = gql`
 export const deletePost = gql`
   mutation DeletePost ($id: ID!) {
     deletePost(id: $id) {
+      id
+    }
+  }
+`;
+
+export const createComment = gql`
+  mutation CreateComment ($postId: ID!, $authorId: ID!, $content: String!) {
+    createComment(postId: $postId, authorId: $authorId, content: $content) {
+      id
+      content
+      author {
+        id
+        name
+      }
+      likes {
+        id
+        author {
+          id
+          name
+        }
+      }
+    }
+  }
+`;
+
+export const deleteComment = gql`
+  mutation DeleteComment ($id: ID!) {
+    deleteComment(id: $id) {
       id
     }
   }

@@ -142,6 +142,7 @@ export const CommentBox = styled.div`
 export const CommentContent = styled.div`
   display: flex;
   padding: 0;
+  font-size: .9em;
   align-items: center;
   justify-content: flex-start;
   
@@ -149,6 +150,17 @@ export const CommentContent = styled.div`
     margin-left: ${variables.spaceSmall};
     margin-right: ${variables.spaceSmall};
   }
+  
+  button {
+    font-size: .9em;
+  }
+`;
+
+export const CommentActions = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: .8em;
 `;
 
 export const UList = styled.div`

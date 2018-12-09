@@ -50,14 +50,14 @@ type Comment @model {
 
   content: String!
   likes: [CommentLike!]! @relation(name: "CommentLikes")
-  author: User! @relation(name: "UserComments")
-  post: Post! @relation(name: "PostComments")
+  author: User @relation(name: "UserComments")
+  post: Post @relation(name: "PostComments")
 }
 
 type CommentLike @model {
   # Required system field:
   id: ID! @isUnique # read-only (managed by Graphcool)
 
-  comment: Comment! @relation(name: "CommentLikes")
-  author: User! @relation(name: "UserCommentLikes")
+  comment: Comment @relation(name: "CommentLikes")
+  author: User @relation(name: "UserCommentLikes")
 }

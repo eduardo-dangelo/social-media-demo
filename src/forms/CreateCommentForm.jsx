@@ -9,23 +9,23 @@ import {
 } from '../elements/form';
 import { FaPaperPlane } from 'react-icons/fa'
 import Flip from 'react-reveal/Flip'
+import { compose, graphql } from 'react-apollo'
+import { createComment } from '../services/mutations'
 
 class CreateCommentForm extends React.Component {
   state = {
-    theme: 'dark',
-    name: '',
+    content: '',
     loading: false,
     error: false
   }
 
   render() {
-    const { loading, error, theme, name } = this.state;
+    const { loading, error, content } = this.state;
 
     const validate = () => {
       let disabled = false
       const values = [
-        name,
-        theme,
+        content,
       ]
 
       values.forEach((item) => {
@@ -53,9 +53,9 @@ class CreateCommentForm extends React.Component {
             Comment:
           </Label>
           <Field
-            value={name}
+            value={content}
             placeholder='comment...'
-            onChange={(e) => this.setState({name: e.target.value})}
+            onChange={(e) => this.setState({content: e.target.value})}
           />
           <ActionButton type="submit" disabled={validate()}>
             <ButtonContent>
@@ -71,9 +71,22 @@ class CreateCommentForm extends React.Component {
     )
   }
 
-  handleSaveChanges = () => {
-    // logic here...
+  handleSaveChanges = async (e) => {
+    const { content } = this.state;
+    const { postId, userId } = this.props;
+    e.preventDefault();
+    this.setState({ loading: true, error: false });
+
+    await this.props.createComment({
+      variables: { postId, authorId: userId, content }
+    })
+      .then(() => (
+        this.setState({ content: '', loading: false, error: false }),
+        this.props.updateRequired()
+      ))
   }
 }
 
-export default CreateCommentForm;
+export default compose(
+  graphql(createComment, { name: 'createComment' })
+)(CreateCommentForm);

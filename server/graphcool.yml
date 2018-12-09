@@ -74,6 +74,7 @@ permissions:
 - operation: User.update
   authenticated: true
 
+
 - operation: PostLike.read
 
 - operation: PostLike.create
@@ -94,7 +95,50 @@ permissions:
 - operation: UserPostLikes.disconnect
   authenticated: true
 
-  
+- operation: Comment.read
+
+- operation: Comment.create
+  authenticated: true
+
+- operation: Comment.update
+  authenticated: true
+
+- operation: Comment.delete
+  authenticated: true
+
+- operation: UserComments.connect
+  authenticated: true
+
+- operation: UserComments.disconnect
+  authenticated: true
+
+- operation: PostComments.connect
+  authenticated: true
+
+- operation: PostComments.disconnect
+  authenticated: true
+
+
+- operation: CommentLike.read
+
+- operation: CommentLike.create
+  authenticated: true
+
+- operation: CommentLike.delete
+  authenticated: true
+
+- operation: CommentLikes.connect
+  authenticated: true
+
+- operation: CommentLikes.disconnect
+  authenticated: true
+
+- operation: UserCommentLikes.connect
+  authenticated: true
+
+- operation: UserCommentLikes.disconnect
+  authenticated: true
+
 # Your root tokens used for functions to get full access to the API
 # Read more here:
 # https://docs-next.graph.cool/reference/auth/authentication/authentication-tokens-eip7ahqu5o

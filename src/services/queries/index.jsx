@@ -37,6 +37,21 @@ export const allPosts = gql`
           name
         }
       }
+      comments {
+        id
+        content
+        likes {
+          id
+          author {
+            id
+            name
+          }
+        }
+        author {
+          id
+          name
+        }
+      }
     }
   }
 `;

@@ -2,12 +2,10 @@ import React from 'react';
 import { Box, BoxContent, PostAuthor, PostContent, PostDate, PostHeader } from '../../../elements/layout'
 import { variables } from '../../../config'
 import { ActionBar, ActionLink } from '../../../elements/form'
-import { FaThumbsUp, FaComment, FaUser, FaTrashAlt, FaPencilAlt } from 'react-icons/fa'
+import { FaRegComment, FaComment, FaUser, FaTrashAlt, FaPencilAlt } from 'react-icons/fa'
 import Comments from '../Comments'
-import Tada from 'react-reveal/Tada'
 import Flip from 'react-reveal/Flip'
 import TimeAgo from 'react-timeago'
-import CreatePostForm from '../../../forms/CreatePostForm'
 import EditPostForm from '../../../forms/EditPostForm'
 import DeletePostForm from '../../../forms/DeletePostForm'
 import { compose, graphql } from 'react-apollo'
@@ -80,12 +78,12 @@ class Post extends React.Component {
             </BoxContent>
           )}
           <ActionBar divider>
-            {/*<ActionLink onClick={this.handleToggleComments}>
+            <ActionLink onClick={this.handleToggleComments}>
               <span>
-                comments 3
-                <FaComment/>
+                comments {post.comments.length}
+                {post.comments.length > 0 ? <FaComment/> : <FaRegComment/>}
               </span>
-            </ActionLink>*/}
+            </ActionLink>
             <Likes
               post={post}
               userId={userId}
@@ -95,7 +93,12 @@ class Post extends React.Component {
           </ActionBar>
         </BoxContent>
         {showComments && (
-          <Comments comments={post.comments}/>
+          <Comments
+            userId={userId}
+            postId={post.id}
+            comments={post.comments}
+            updateRequired={updateRequired}
+          />
         )}
       </Box>
     )
