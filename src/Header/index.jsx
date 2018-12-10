@@ -10,23 +10,22 @@ import {
   TransparentButton,
 } from '../elements/header';
 import Flip from 'react-reveal/Flip';
+import { FaBolt, FaChild, FaLayerGroup, FaGlobe } from 'react-icons/fa'
 
 
 class Header extends React.Component {
-  state = {
-    show: false,
-  };
-
   render() {
     const { location, userId, styles } = this.props;
-    const { show } = this.state;
     return (
       <HeaderBox styles={styles}>
         <Container>
           <TransparentButton styles={styles} onClick={this._handleClick('/social-media-demo/')}>
             <HeaderTitle>
-              <Flip cascade top when={show}>
-                <img src={logo} onLoad={this._onImageLoad}/>
+              <Flip cascade top>
+                {/*<img src={logo} onLoad={this._onImageLoad}/>*/}
+                {/*<FaChild/>*/}
+                <FaLayerGroup/>
+
                 Social Media
               </Flip>
             </HeaderTitle>
@@ -39,21 +38,21 @@ class Header extends React.Component {
             )}
             {!userId && location.pathname === '/social-media-demo/login' && (
               <HeaderButton styles={styles} onClick={this._handleClick('/social-media-demo/signup')}>
-                <Flip cascade top when={show}>
+                <Flip cascade top>
                   signup
                 </Flip>
               </HeaderButton>
             )}
             {!userId && location.pathname === '/social-media-demo/' && (
               <HeaderButton styles={styles} onClick={this._handleClick('/social-media-demo/signup')}>
-                <Flip cascade top when={show}>
+                <Flip cascade top>
                   signup
                 </Flip>
               </HeaderButton>
             )}
             {userId && (
               <HeaderButton styles={styles} onClick={this._handleClick('logout')}>
-                <Flip cascade top when={show}>
+                <Flip cascade top>
                   logout
                 </Flip>
               </HeaderButton>
@@ -70,7 +69,7 @@ class Header extends React.Component {
 
     if (isLoggingOut) {
       localStorage.removeItem('graphcoolToken');
-      window.location.reload('/social-media-demo');
+      window.location.reload('/social-media-demo/');
     }
 
     if (!isLoggingOut) {

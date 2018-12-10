@@ -8,14 +8,23 @@ export const HeaderBox = styled.div`
   background: ${({ styles }) => styles.theme.header.bg};
   color: ${({ styles }) => styles.theme.header.color};
   border-bottom: 1px solid ${({ styles }) => styles.theme.header.color};
+  position: relative;
+  
+  svg {
+    color: ${({ styles }) => styles.theme.box.icon.color};
+    margin-right: ${({ styles }) => styles.variables.spaceSmall};
+  }
 `;
 
 export const Container = styled.div`
   max-width: ${variables.containerMaxWidth};
-  margin: auto;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  //border: 1px solid orange;
+  min-height: 60px;
+  //width: 100%;
   position: relative;
 `;
 
@@ -25,6 +34,7 @@ export const HeaderTitle = styled.div`
   align-items: center;
   justify-content: flex-start;
   font-size: 1.2em;
+  font-weight: 400;
   
   img {
     max-width: 30px;

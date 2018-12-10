@@ -160,4 +160,5 @@ export const style = {
     dark,
     light,
   },
+  variables: variables,
 }

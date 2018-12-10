@@ -26,7 +26,8 @@ class Scenes extends Component {
     }
 
     const styles = {
-      theme: style.themes[theme]
+      theme: style.themes[theme],
+      variables: style.variables
     }
 
     return (
