@@ -23,7 +23,6 @@ class Post extends React.Component {
   render() {
     const { post, userId, updateRequired } = this.props;
     const { showComments, editPost, deletePost } = this.state;
-    console.log('post', post)
     return (
       <Box mt={variables.space}>
         <BoxContent>

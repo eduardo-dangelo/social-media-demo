@@ -55,7 +55,6 @@ class DeletePostForm extends React.Component {
 
     const { postId, updateRequired } = this.props;
     this.setState({ loading: true, error: false });
-    console.log('postId', postId)
 
     await this.props.deletePost({
       variables: { id: postId }

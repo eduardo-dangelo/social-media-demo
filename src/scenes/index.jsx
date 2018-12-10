@@ -48,7 +48,7 @@ class Scenes extends Component {
             <CreatePost/>
           </Route>
           <Route path='/social-media-demo/signup'>
-            <CreateUser/>
+            <CreateUser updateRequired={this._handleRefetch}/>
           </Route>
         </Switch>
       </Shell>

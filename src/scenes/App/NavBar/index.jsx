@@ -11,7 +11,7 @@ class NavBar extends React.Component {
   componentWillMount() {
     const { userTheme, onLoadUserTheme } = this.props;
 
-    if (userTheme !== '') {
+    if (userTheme) {
       onLoadUserTheme(userTheme);
     }
   }

@@ -103,6 +103,7 @@ class CreateUserForm extends React.Component {
 
   handleSignupUser = async (e) => {
     const { email, password, name } = this.state;
+    const { history, updateRequired } = this.props;
     e.preventDefault();
     this.setState({ loading: true, error: false });
 
@@ -110,11 +111,15 @@ class CreateUserForm extends React.Component {
       const user = await this.props.signupUser({variables: {email, password, name}})
       localStorage.setItem('graphcoolToken', user.data.signupUser.token)
       this.setState({ loading: false })
-      this.props.history.replace('/social-media-demo')
+      setTimeout(() => (
+        updateRequired()
+      ), 800)
+      setTimeout(() => (
+        history.replace('/social-media-demo/')
+      ), 1500)
     } catch (e) {
       console.error(`An error occured: `, e)
       this.setState({ loading: false, error: true })
-      // this.props.history.replace('/')
     }
   }
 }

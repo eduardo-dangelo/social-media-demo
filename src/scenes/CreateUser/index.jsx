@@ -6,6 +6,7 @@ import Flip from 'react-reveal/Flip';
 
 class CreateUser extends PureComponent {
   render() {
+    const { updateRequired } = this.props;
     return (
       <Page>
         <Row>
@@ -19,7 +20,7 @@ class CreateUser extends PureComponent {
                 </Flip>
               </BoxHeader>
               <BoxContent>
-                <CreateUserForm/>
+                <CreateUserForm updateRequired={updateRequired}/>
               </BoxContent>
             </Box>
           </Col>
