@@ -4,7 +4,7 @@ import { FaCog } from 'react-icons/fa'
 import { style } from '../../config'
 
 export const Form = styled.form`
-
+  width: ${({ expand }) => expand ? '98%' : '100%'};
 `;
 
 export const FormGroup = styled.div`

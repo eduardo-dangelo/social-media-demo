@@ -96,6 +96,16 @@ export const createComment = gql`
   }
 `;
 
+export const updateComment = gql`
+  mutation UpdateComment ($id: ID!, $content: String!, $authorId: ID!) {
+    updateComment(id: $id, content: $content, authorId: $authorId) {
+      id
+      content
+    }
+  }
+`;
+
+
 export const deleteComment = gql`
   mutation DeleteComment ($id: ID!) {
     deleteComment(id: $id) {

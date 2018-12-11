@@ -38,7 +38,7 @@ class App extends React.PureComponent {
     return (
       <Page>
         <Row>
-          <Col size={2}>
+          <Col size={2} navBar>
             <NavBar
               theme={theme}
               styles={styles}

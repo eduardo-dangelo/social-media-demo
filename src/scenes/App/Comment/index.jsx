@@ -1,11 +1,11 @@
 import React from 'react';
-import { BoxContent, CommentActions, CommentBox, CommentContent, CommentText } from '../../../elements/layout'
-import { FaThumbsUp, FaTrashAlt, FaUser } from 'react-icons/fa'
+import { CommentActions, CommentBox, CommentContent, CommentText } from '../../../elements/layout'
+import { FaPencilAlt, FaTrashAlt, FaUser } from 'react-icons/fa'
 import Flip from 'react-reveal/Flip'
-import Tada from 'react-reveal/Tada'
-import { ActionBar, ActionLink } from '../../../elements/form'
+import { ActionLink } from '../../../elements/form'
 import DeleteCommentForm from '../../../forms/DeleteCommentForm'
 import LikesComment from '../LikesComment'
+import EditCommentForm from '../../../forms/EditCommentForm'
 
 class Comment extends React.Component {
   state = {
@@ -15,11 +15,11 @@ class Comment extends React.Component {
 
   render() {
     const { comment, userId, updateRequired } = this.props;
-    const { deleteComment } = this.state;
+    const { deleteComment, editComment } = this.state;
 
     return (
       <CommentBox key={comment.id}>
-        {!deleteComment && (
+        {!deleteComment && !editComment && (
           <CommentContent>
             <FaUser/>
             {' '}
@@ -29,6 +29,16 @@ class Comment extends React.Component {
                 {comment.content}
               </Flip>
             </CommentText>
+          </CommentContent>
+        )}
+        {editComment && (
+          <CommentContent>
+            <EditCommentForm
+              userId={userId}
+              commentId={comment.id}
+              commentContent={comment.content}
+              updateRequired={this.toggleEditComment}
+            />
           </CommentContent>
         )}
         {deleteComment && (
@@ -42,12 +52,13 @@ class Comment extends React.Component {
           </CommentContent>
         )}
         <CommentActions>
-          <LikesComment
-            comment={comment}
-            userId={userId}
-            likes={comment.likes}
-            updateRequired={updateRequired}
-          />
+          {comment.author.id === userId && (
+            <ActionLink marginLeft onClick={this.toggleEditComment}>
+              <span>
+                <FaPencilAlt/>
+              </span>
+            </ActionLink>
+          )}
           {comment.author.id === userId && (
             <ActionLink onClick={this.toggleDeleteComment}>
               <span>
@@ -55,6 +66,12 @@ class Comment extends React.Component {
               </span>
             </ActionLink>
           )}
+          <LikesComment
+            comment={comment}
+            userId={userId}
+            likes={comment.likes}
+            updateRequired={updateRequired}
+          />
         </CommentActions>
       </CommentBox>
     )
@@ -64,8 +81,12 @@ class Comment extends React.Component {
     this.setState({ counter: this.state.counter + 1 });
   }
 
+  toggleEditComment = () => {
+    this.setState({ editComment: !this.state.editComment, deleteComment: false })
+  }
+
   toggleDeleteComment = () => {
-    this.setState({ deleteComment: !this.state.deleteComment });
+    this.setState({ deleteComment: !this.state.deleteComment, editComment: false });
   }
 }
 

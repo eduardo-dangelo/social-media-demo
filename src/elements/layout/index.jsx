@@ -4,7 +4,7 @@ import { style, variables } from '../../config'
 export const Page = styled.div`
   margin: auto;
   height: 100%;
-  display: flex;
+  //display: flex;
   position: relative;
   align-items: center;
   justify-content: space-around;
@@ -18,8 +18,9 @@ export const Row = styled.div`
   flex-wrap: wrap;
   overflow: visible;
   justify-content: flex-start;
+  padding-top: ${variables.spaceSmall};
   
-  @media all and (max-width: 699px) {
+  @media all and (max-width: 799px) {
     flex-direction: column;
     
     > div {
@@ -36,6 +37,7 @@ export const Col = styled.div`
   padding: ${variables.spaceSmall};
   padding-bottom: 0 !important;
   overflow: visible;
+  max-width: ${({ navBar }) => navBar ? '300px' : 'none'};
   
   &:first-child {
     padding-left: ${variables.space};
@@ -44,6 +46,14 @@ export const Col = styled.div`
   &:last-child {
     padding-right: ${variables.space};
   }
+  
+  @media all and (max-width: 799px) {
+    max-width: 100%;
+  }
+`;
+
+export const PostArea = styled.div`
+  margin-bottom: 60px;
 `;
 
 export const Box = styled.div`
@@ -101,6 +111,8 @@ export const CommentsContainer = styled.div`
   border-top: 1px solid;
   padding: ${variables.space};
   padding-left: ${variables.spaceLarge};
+  width: 100%;
+  position: relative;
 `;
 
 export const PostHeader = styled.div`
@@ -143,6 +155,7 @@ export const CommentContent = styled.div`
   display: flex;
   padding: 0;
   font-size: .9em;
+  flex: 1;
   align-items: flex-start;
   justify-content: flex-start;
   
@@ -157,7 +170,9 @@ export const CommentContent = styled.div`
 `;
 
 export const CommentText = styled.div`
+  width: auto;
   max-width: 400px;
+  position: relative;
   word-wrap: break-word;
 `;
 
