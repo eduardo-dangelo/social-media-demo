@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import Shell from '../Shell';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Login from './Login';
 import App from './App';
-import CreatePost from '../components/CreatePost';
 import CreateUser from './CreateUser';
-import { compose, graphql } from 'react-apollo'
-import { currentUser, loggedInUser } from '../services/queries'
-import { style } from '../config'
-
-let userId = null
+import { compose, graphql } from 'react-apollo';
+import { loggedInUser } from '../services/queries';
+import { style } from '../config';
 
 class Scenes extends Component {
   state = {
@@ -42,13 +39,18 @@ class Scenes extends Component {
             />
           </Route>
           <Route exact path='/social-media-demo/login'>
-            <Login userId={userId} updateRequired={this._handleRefetch}/>
-          </Route>
-          <Route path='/social-media-demo/create'>
-            <CreatePost/>
+            {userId ? (
+              <Redirect to={'/social-media-demo/'}/>
+              ) : (
+              <Login userId={userId} updateRequired={this._handleRefetch}/>
+            )}
           </Route>
           <Route path='/social-media-demo/signup'>
-            <CreateUser updateRequired={this._handleRefetch}/>
+            {userId ? (
+              <Redirect to={'/social-media-demo/'}/>
+            ) : (
+              <CreateUser updateRequired={this._handleRefetch}/>
+            )}
           </Route>
         </Switch>
       </Shell>
