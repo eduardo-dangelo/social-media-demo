@@ -1,7 +1,7 @@
 import React from 'react';
-import { BoxContent, CommentsContainer } from '../../../elements/layout'
-import CreateCommentForm from '../../../forms/CreateCommentForm'
-import Comment from '../Comment'
+import Comment from '../Comment';
+import CreateCommentForm from '../../../forms/CreateCommentForm';
+import { BoxContent, CommentsContainer } from '../../../elements/layout';
 
 class Comments extends React.Component {
   render() {
@@ -13,8 +13,8 @@ class Comments extends React.Component {
             {comments.map((comment) => {
               return (
                 <Comment
-                  key={comment.id}
                   userId={userId}
+                  key={comment.id}
                   comment={comment}
                   updateRequired={updateRequired}
                 />
@@ -30,7 +30,7 @@ class Comments extends React.Component {
           />
         </BoxContent>
       </>
-    )
+    );
   }
 }
 

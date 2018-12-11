@@ -7,10 +7,10 @@ import {
   Form,
   FormGroup, Label,
 } from '../elements/form';
-import { FaPaperPlane } from 'react-icons/fa'
-import Flip from 'react-reveal/Flip'
-import { compose, graphql } from 'react-apollo'
-import { updatePost } from '../services/mutations'
+import { FaPaperPlane } from 'react-icons/fa';
+import Flip from 'react-reveal/Flip';
+import { compose, graphql } from 'react-apollo';
+import { updatePost } from '../services/mutations';
 
 class EditPostForm extends React.Component {
   state = {
@@ -75,7 +75,7 @@ class EditPostForm extends React.Component {
           </ActionButton>
         </FormGroup>
       </Form>
-    )
+    );
   }
 
   handleSaveChanges = async (e) => {

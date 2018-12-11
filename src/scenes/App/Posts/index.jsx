@@ -1,11 +1,10 @@
 import React from 'react';
-import { Box, BoxContent, BoxHeader, BoxHeaderContent, Col, PostArea, PostHeaderContent, Row } from '../../../elements/layout'
-import Flip from 'react-reveal/Flip'
-import CreatePostForm from '../../../forms/CreatePostForm'
 import Post from '../Post';
-import { compose, graphql } from 'react-apollo'
-import { allPosts } from '../../../services/queries'
-import Fade from 'react-reveal/Fade'
+import Flip from 'react-reveal/Flip';
+import { compose, graphql } from 'react-apollo';
+import { allPosts } from '../../../services/queries';
+import CreatePostForm from '../../../forms/CreatePostForm';
+import { Box, BoxContent, BoxHeader, PostArea, PostHeaderContent } from '../../../elements/layout';
 
 class Posts extends React.PureComponent {
   render() {
@@ -27,12 +26,20 @@ class Posts extends React.PureComponent {
             </PostHeaderContent>
           </BoxHeader>
           <BoxContent>
-            <CreatePostForm userId={userId} updateRequired={this.handleRefetch}/>
+            <CreatePostForm
+              userId={userId}
+              updateRequired={this.handleRefetch}
+            />
           </BoxContent>
         </Box>
         {posts.map((post) => {
           return (
-            <Post key={post.id} post={post} userId={userId} updateRequired={this.handleRefetch}/>
+            <Post
+              post={post}
+              key={post.id}
+              userId={userId}
+              updateRequired={this.handleRefetch}
+            />
           );
         })}
       </PostArea>
@@ -46,4 +53,4 @@ class Posts extends React.PureComponent {
 
 export default compose(
   graphql(allPosts, { name: 'allPosts' })
-)(Posts)
+)(Posts);

@@ -1,10 +1,22 @@
 import React from 'react';
-import { ActionBar, ActionButton, ButtonContent, ErrorBox, FaCogSpin, Field, Form, FormGroup, Label, RadioButton, SuccessMessage } from '../elements/form'
-import { FaMoon, FaLightbulb, FaPaperclip } from 'react-icons/fa'
-import Flip from 'react-reveal/Flip'
-import Fade from 'react-reveal/Fade'
-import { compose, graphql } from 'react-apollo'
-import { updateUser } from '../services/mutations'
+import {
+  ActionBar,
+  ActionButton,
+  ButtonContent,
+  ErrorBox,
+  FaCogSpin,
+  Field,
+  Form,
+  FormGroup,
+  Label,
+  RadioButton,
+  SuccessMessage
+} from '../elements/form';
+import { FaMoon, FaLightbulb, FaPaperclip } from 'react-icons/fa';
+import Flip from 'react-reveal/Flip';
+import Fade from 'react-reveal/Fade';
+import { compose, graphql } from 'react-apollo';
+import { updateUser } from '../services/mutations';
 
 class UserSettingsForm extends React.Component {
   state = {

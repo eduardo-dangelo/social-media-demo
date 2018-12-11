@@ -1,8 +1,8 @@
 import React from 'react';
-import { Box, BoxContent, BoxHeader } from '../../../elements/layout'
-import { FaUserCog } from 'react-icons/fa'
+import Flip from 'react-reveal/Flip';
+import { FaUserCog } from 'react-icons/fa';
 import UserSettingsForm from '../../../forms/UserSettingsForm';
-import Flip from 'react-reveal/Flip'
+import { Box, BoxContent, BoxHeader } from '../../../elements/layout';
 
 class Settings extends React.Component {
   render() {
@@ -23,8 +23,8 @@ class Settings extends React.Component {
           />
         </BoxContent>
       </Box>
-    )
+    );
   }
 }
 
-export default Settings
+export default Settings;

@@ -17,7 +17,7 @@ export const variables = {
   headerColorDark: '#b7b7b7',
   headerColorHover: '#2c313d',
   headerColorDarkHover: '#dddddd',
-}
+};
 
 export const dark = {
   page: {
@@ -85,7 +85,7 @@ export const dark = {
     bg: '#0a0a0a',
     color: '#949494',
   },
-}
+};
 
 export const light = {
   page: {
@@ -153,7 +153,7 @@ export const light = {
     bg: '#dfdfdf',
     color: '#21252e',
   },
-}
+};
 
 export const style = {
   themes: {
@@ -161,4 +161,4 @@ export const style = {
     light,
   },
   variables: variables,
-}
+};

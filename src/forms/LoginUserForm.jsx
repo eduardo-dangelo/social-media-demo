@@ -13,7 +13,7 @@ import {
 } from '../elements/form';
 import { authenticateUser } from '../services/mutations';
 import { FaSignInAlt } from 'react-icons/fa';
-import Flip from 'react-reveal/Flip'
+import Flip from 'react-reveal/Flip';
 
 class LoginUserForm extends React.Component {
   state = {
@@ -38,10 +38,6 @@ class LoginUserForm extends React.Component {
           disabled = true
         }
       })
-
-      // if (loading) {
-      //   disabled = true
-      // }
 
       return disabled;
     }
@@ -86,7 +82,7 @@ class LoginUserForm extends React.Component {
           </ActionButton>
         </ActionBar>
       </Form>
-    )
+    );
   }
 
   authenticateUser = async (e) => {
@@ -114,4 +110,5 @@ class LoginUserForm extends React.Component {
 
 export default compose(
   graphql(authenticateUser, {name: 'authenticateUser'}),
-)(withRouter(LoginUserForm))
+)(withRouter(LoginUserForm));
+

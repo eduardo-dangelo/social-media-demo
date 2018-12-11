@@ -1,16 +1,16 @@
 import React from 'react';
-import { Box, BoxContent, PostAuthor, PostContent, PostDate, PostHeader } from '../../../elements/layout'
-import { variables } from '../../../config'
-import { ActionBar, ActionLink } from '../../../elements/form'
-import { FaRegComment, FaComment, FaUser, FaTrashAlt, FaPencilAlt } from 'react-icons/fa'
-import Comments from '../Comments'
-import Flip from 'react-reveal/Flip'
-import TimeAgo from 'react-timeago'
-import EditPostForm from '../../../forms/EditPostForm'
-import DeletePostForm from '../../../forms/DeletePostForm'
-import { compose, graphql } from 'react-apollo'
-import { likePost } from '../../../services/mutations'
-import LikesPost from '../LikesPost'
+import Comments from '../Comments';
+import TimeAgo from 'react-timeago';
+import Flip from 'react-reveal/Flip';
+import LikesPost from '../LikesPost';
+import { variables } from '../../../config';
+import { compose, graphql } from 'react-apollo';
+import { likePost } from '../../../services/mutations';
+import EditPostForm from '../../../forms/EditPostForm';
+import DeletePostForm from '../../../forms/DeletePostForm';
+import { ActionBar, ActionLink } from '../../../elements/form';
+import { FaRegComment, FaComment, FaUser, FaTrashAlt, FaPencilAlt } from 'react-icons/fa';
+import { Box, BoxContent, PostAuthor, PostContent, PostDate, PostHeader } from '../../../elements/layout';
 
 class Post extends React.Component {
   state = {
@@ -118,4 +118,4 @@ class Post extends React.Component {
 
 export default compose(
   graphql(likePost, { name: 'likePost'})
-)(Post)
+)(Post);

@@ -1,16 +1,15 @@
 import React from 'react';
-import logo from './graphql_Logo_color_xxs.png';
-import { withRouter } from 'react-router-dom';
 import {
   Container,
-  HeaderActionBar,
   HeaderBox,
-  HeaderButton,
   HeaderTitle,
+  HeaderButton,
+  HeaderActionBar,
   TransparentButton,
 } from '../elements/header';
 import Flip from 'react-reveal/Flip';
-import { FaBolt, FaChild, FaLayerGroup, FaGlobe } from 'react-icons/fa'
+import { FaLayerGroup } from 'react-icons/fa';
+import { withRouter } from 'react-router-dom';
 
 
 class Header extends React.Component {
@@ -19,7 +18,7 @@ class Header extends React.Component {
     return (
       <HeaderBox styles={styles}>
         <Container>
-          <TransparentButton styles={styles} onClick={this._handleClick('/social-media-demo/')}>
+          <TransparentButton styles={styles} onClick={this.handleClick('/social-media-demo/')}>
             <HeaderTitle>
               <Flip cascade top>
                 {/*<img src={logo} onLoad={this._onImageLoad}/>*/}
@@ -32,26 +31,26 @@ class Header extends React.Component {
           </TransparentButton>
           <HeaderActionBar>
             {!userId && location.pathname === '/social-media-demo/signup' && (
-              <HeaderButton styles={styles} onClick={this._handleClick('/social-media-demo/login')}>
+              <HeaderButton styles={styles} onClick={this.handleClick('/social-media-demo/login')}>
                 login
               </HeaderButton>
             )}
             {!userId && location.pathname === '/social-media-demo/login' && (
-              <HeaderButton styles={styles} onClick={this._handleClick('/social-media-demo/signup')}>
+              <HeaderButton styles={styles} onClick={this.handleClick('/social-media-demo/signup')}>
                 <Flip cascade top>
                   signup
                 </Flip>
               </HeaderButton>
             )}
             {!userId && location.pathname === '/social-media-demo/' && (
-              <HeaderButton styles={styles} onClick={this._handleClick('/social-media-demo/signup')}>
+              <HeaderButton styles={styles} onClick={this.handleClick('/social-media-demo/signup')}>
                 <Flip cascade top>
                   signup
                 </Flip>
               </HeaderButton>
             )}
             {userId && (
-              <HeaderButton styles={styles} onClick={this._handleClick('logout')}>
+              <HeaderButton styles={styles} onClick={this.handleClick('logout')}>
                 <Flip cascade top>
                   logout
                 </Flip>
@@ -63,7 +62,7 @@ class Header extends React.Component {
     );
   }
 
-  _handleClick = (path) => () => {
+  handleClick = (path) => () => {
     const { history } = this.props;
     const isLoggingOut = path === 'logout';
 
@@ -75,10 +74,6 @@ class Header extends React.Component {
     if (!isLoggingOut) {
       history.replace(path);
     }
-  }
-
-  _onImageLoad = () => {
-    this.setState({ show: true })
   }
 }
 

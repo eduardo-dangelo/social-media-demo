@@ -1,11 +1,11 @@
 import React from 'react';
-import { CommentActions, CommentBox, CommentContent, CommentText } from '../../../elements/layout'
-import { FaPencilAlt, FaTrashAlt, FaUser } from 'react-icons/fa'
-import Flip from 'react-reveal/Flip'
-import { ActionLink } from '../../../elements/form'
-import DeleteCommentForm from '../../../forms/DeleteCommentForm'
-import LikesComment from '../LikesComment'
-import EditCommentForm from '../../../forms/EditCommentForm'
+import Flip from 'react-reveal/Flip';
+import LikesComment from '../LikesComment';
+import { ActionLink } from '../../../elements/form';
+import EditCommentForm from '../../../forms/EditCommentForm';
+import { FaPencilAlt, FaTrashAlt, FaUser } from 'react-icons/fa';
+import DeleteCommentForm from '../../../forms/DeleteCommentForm';
+import { CommentActions, CommentBox, CommentContent, CommentText } from '../../../elements/layout';
 
 class Comment extends React.Component {
   state = {
@@ -74,7 +74,7 @@ class Comment extends React.Component {
           />
         </CommentActions>
       </CommentBox>
-    )
+    );
   }
 
   handleLike = () => {
@@ -90,4 +90,4 @@ class Comment extends React.Component {
   }
 }
 
-export default Comment
+export default Comment;

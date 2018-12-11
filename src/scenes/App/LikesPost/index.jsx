@@ -1,9 +1,9 @@
 import React from 'react';
-import Tada from 'react-reveal/Tada'
-import { ActionLink, ActionLinkContent } from '../../../elements/form'
-import { FaRegThumbsUp, FaThumbsUp } from 'react-icons/fa'
-import { compose, graphql } from 'react-apollo'
-import { dislikePost, likePost } from '../../../services/mutations'
+import Tada from 'react-reveal/Tada';
+import { compose, graphql } from 'react-apollo';
+import { FaRegThumbsUp, FaThumbsUp } from 'react-icons/fa';
+import { dislikePost, likePost } from '../../../services/mutations';
+import { ActionLink, ActionLinkContent } from '../../../elements/form';
 
 class LikesPost extends React.Component {
   state = {
@@ -31,7 +31,7 @@ class LikesPost extends React.Component {
           </Tada>
         </ActionLinkContent>
       </ActionLink>
-    )
+    );
   }
 
   handleLike = () => {
@@ -61,4 +61,4 @@ class LikesPost extends React.Component {
 export default compose(
   graphql(likePost, { name: 'likePost'}),
   graphql(dislikePost, { name: 'dislikePost'})
-)(LikesPost)
+)(LikesPost);

@@ -7,10 +7,10 @@ import {
   Form,
   FormGroup,
 } from '../elements/form';
-import { FaPaperPlane } from 'react-icons/fa'
-import Flip from 'react-reveal/Flip'
-import { compose, graphql } from 'react-apollo'
-import { updateComment } from '../services/mutations'
+import { FaPaperPlane } from 'react-icons/fa';
+import Flip from 'react-reveal/Flip';
+import { compose, graphql } from 'react-apollo';
+import { updateComment } from '../services/mutations';
 
 class EditCommentForm extends React.Component {
   state = {
@@ -71,7 +71,7 @@ class EditCommentForm extends React.Component {
           </ActionButton>
         </FormGroup>
       </Form>
-    )
+    );
   }
 
   handleSaveChanges = async (e) => {

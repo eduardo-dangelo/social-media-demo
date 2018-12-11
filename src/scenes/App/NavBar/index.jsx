@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box, BoxHeader, BoxHeaderContent, LItem, UList } from '../../../elements/layout';
+import Flip from 'react-reveal/Flip';
 import { FaUser, FaEnvelope, FaUserCog } from 'react-icons/fa';
-import Flip from 'react-reveal/Flip'
+import { Box, BoxHeader, BoxHeaderContent, LItem, UList } from '../../../elements/layout';
 
 class NavBar extends React.Component {
   state = {
@@ -51,7 +51,7 @@ class NavBar extends React.Component {
           })}
         </UList>
       </Box>
-    )
+    );
   }
 
   handleClick = (item) => () => {
@@ -61,4 +61,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar
+export default NavBar;

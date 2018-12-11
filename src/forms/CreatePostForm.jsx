@@ -1,23 +1,25 @@
 import React from 'react';
 import {
-  ActionButton, ButtonContent,
-  ErrorBox,
-  FaCogSpin,
-  Field,
+  Label,
   Form,
-  FormGroup, Label,
+  Field,
+  ErrorBox,
+  FormGroup,
+  FaCogSpin,
+  ActionButton,
+  ButtonContent,
 } from '../elements/form';
-import { FaPaperPlane } from 'react-icons/fa'
-import Flip from 'react-reveal/Flip'
-import { compose, graphql } from 'react-apollo'
-import { createPost } from '../services/mutations'
+import Flip from 'react-reveal/Flip';
+import { FaPaperPlane } from 'react-icons/fa';
+import { compose, graphql } from 'react-apollo';
+import { createPost } from '../services/mutations';
 
 class CreatePostForm extends React.Component {
   state = {
-    theme: 'dark',
     content: '',
-    loading: false,
-    error: false
+    error: false,
+    theme: 'dark',
+    loading: false
   }
 
   render() {
@@ -69,7 +71,7 @@ class CreatePostForm extends React.Component {
           </ActionButton>
         </FormGroup>
       </Form>
-    )
+    );
   }
 
   handleSaveChanges = async (e) => {

@@ -1,11 +1,11 @@
 import React from 'react';
-import Login from '../Login';
-import { Col, Page, Row } from '../../elements/layout'
-import NavBar from './NavBar';
 import Posts from './Posts';
+import Login from '../Login';
+import NavBar from './NavBar';
 import Settings from './Settings';
-import { compose, graphql } from 'react-apollo'
-import { currentUser } from '../../services/queries'
+import { compose, graphql } from 'react-apollo';
+import { currentUser } from '../../services/queries';
+import { Col, Page, Row } from '../../elements/layout';
 
 
 class App extends React.PureComponent {

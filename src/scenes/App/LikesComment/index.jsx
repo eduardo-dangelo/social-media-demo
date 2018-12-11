@@ -1,9 +1,9 @@
 import React from 'react';
-import Tada from 'react-reveal/Tada'
-import { ActionLink, ActionLinkContent } from '../../../elements/form'
-import { FaRegThumbsUp, FaThumbsUp } from 'react-icons/fa'
-import { compose, graphql } from 'react-apollo'
-import { dislikeComment, likeComment } from '../../../services/mutations'
+import Tada from 'react-reveal/Tada';
+import { compose, graphql } from 'react-apollo';
+import { FaRegThumbsUp, FaThumbsUp } from 'react-icons/fa';
+import { ActionLink, ActionLinkContent } from '../../../elements/form';
+import { dislikeComment, likeComment } from '../../../services/mutations';
 
 class LikesComment extends React.Component {
   state = {
@@ -61,4 +61,4 @@ class LikesComment extends React.Component {
 export default compose(
   graphql(likeComment, { name: 'likeComment'}),
   graphql(dislikeComment, { name: 'dislikeComment'})
-)(LikesComment)
+)(LikesComment);

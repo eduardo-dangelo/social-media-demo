@@ -1,6 +1,6 @@
-import React from 'react'
-import { withRouter } from 'react-router-dom'
-import { graphql, compose } from 'react-apollo'
+import React from 'react';
+import { withRouter } from 'react-router-dom';
+import { graphql, compose } from 'react-apollo';
 import {
   ActionBar,
   ActionButton, ButtonContent,
@@ -10,10 +10,10 @@ import {
   Form,
   FormGroup,
   Label,
-} from '../elements/form'
-import { signupUser } from '../services/mutations'
-import { FaSignInAlt } from 'react-icons/fa'
-import Flip from 'react-reveal/Flip'
+} from '../elements/form';
+import { signupUser } from '../services/mutations';
+import { FaSignInAlt } from 'react-icons/fa';
+import Flip from 'react-reveal/Flip';
 
 class CreateUserForm extends React.Component {
   state = {
@@ -40,10 +40,6 @@ class CreateUserForm extends React.Component {
           disabled = true
         }
       })
-
-      // if (loading) {
-      //   disabled = true
-      // }
 
       return disabled;
     }
@@ -126,4 +122,4 @@ class CreateUserForm extends React.Component {
 
 export default compose(
   graphql(signupUser, {name: 'signupUser'}),
-)(withRouter(CreateUserForm))
+)(withRouter(CreateUserForm));

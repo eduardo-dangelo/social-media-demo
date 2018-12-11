@@ -3,14 +3,12 @@ import {
   ActionButton, ButtonContent,
   ErrorBox,
   FaCogSpin,
-  Field,
   Form,
   FormGroup, Label,
 } from '../elements/form';
-import { FaPaperPlane } from 'react-icons/fa'
-import Flip from 'react-reveal/Flip'
-import { compose, graphql } from 'react-apollo'
-import { createPost, deleteComment, deletePost } from '../services/mutations'
+import { FaPaperPlane } from 'react-icons/fa';
+import { compose, graphql } from 'react-apollo';
+import { deleteComment } from '../services/mutations';
 
 class DeleteCommentForm extends React.Component {
   state = {

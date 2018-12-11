@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import Shell from '../Shell';
-import { Route, Switch, Redirect } from 'react-router-dom';
-import Login from './Login';
+import React from 'react';
 import App from './App';
+import Login from './Login';
+import Shell from '../Shell';
+import { style } from '../config';
 import CreateUser from './CreateUser';
 import { compose, graphql } from 'react-apollo';
 import { loggedInUser } from '../services/queries';
-import { style } from '../config';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
-class Scenes extends Component {
+class Scenes extends React.Component {
   state = {
     theme: 'light'
   }

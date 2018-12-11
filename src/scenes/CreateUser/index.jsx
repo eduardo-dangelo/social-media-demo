@@ -1,10 +1,10 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
+import Flip from 'react-reveal/Flip';
 import { FaUser } from 'react-icons/fa';
 import CreateUserForm from '../../forms/CreateUserForm';
-import { Box, BoxContent, BoxHeader, Col, Page, Row } from '../../elements/layout'
-import Flip from 'react-reveal/Flip';
+import { Box, BoxContent, BoxHeader, Col, Page, Row } from '../../elements/layout';
 
-class CreateUser extends PureComponent {
+class CreateUser extends React.PureComponent {
   render() {
     const { updateRequired } = this.props;
     return (

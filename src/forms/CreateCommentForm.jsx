@@ -1,16 +1,18 @@
 import React from 'react';
 import {
-  ActionButton, ButtonContent,
-  ErrorBox,
-  FaCogSpin,
-  Field,
   Form,
-  FormGroup, Label,
+  Label,
+  Field,
+  ErrorBox,
+  FormGroup,
+  FaCogSpin,
+  ActionButton,
+  ButtonContent,
 } from '../elements/form';
-import { FaPaperPlane } from 'react-icons/fa'
-import Flip from 'react-reveal/Flip'
-import { compose, graphql } from 'react-apollo'
-import { createComment } from '../services/mutations'
+import Flip from 'react-reveal/Flip';
+import { FaPaperPlane } from 'react-icons/fa';
+import { compose, graphql } from 'react-apollo';
+import { createComment } from '../services/mutations';
 
 class CreateCommentForm extends React.Component {
   state = {
@@ -68,7 +70,7 @@ class CreateCommentForm extends React.Component {
           </ActionButton>
         </FormGroup>
       </Form>
-    )
+    );
   }
 
   handleSaveChanges = async (e) => {

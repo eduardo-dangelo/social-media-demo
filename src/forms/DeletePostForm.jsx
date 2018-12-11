@@ -3,14 +3,12 @@ import {
   ActionButton, ButtonContent,
   ErrorBox,
   FaCogSpin,
-  Field,
   Form,
   FormGroup, Label,
 } from '../elements/form';
 import { FaPaperPlane } from 'react-icons/fa'
-import Flip from 'react-reveal/Flip'
 import { compose, graphql } from 'react-apollo'
-import { createPost, deletePost } from '../services/mutations'
+import { deletePost } from '../services/mutations'
 
 class DeletePostForm extends React.Component {
   state = {
@@ -47,7 +45,7 @@ class DeletePostForm extends React.Component {
           </ActionButton>
         </FormGroup>
       </Form>
-    )
+    );
   }
 
   handleDeletePost = async (e) => {
