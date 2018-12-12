@@ -1,0 +1,3 @@
+targets:
+  social-media-demo: shared-us-west-2/cjowu0zrbb1270106hgdbk7vv
+  default: social-media-demo
