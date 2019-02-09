@@ -53,6 +53,20 @@ export const ActionButton = styled.button`
   justify-content: space-around;
   box-shadow: 0 0 0 rgba(0,0,0,0);
   transition: ${variables.transition};
+  position: relative;
+  overflow: hidden;
+  
+  &:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    transform: rotateZ(-45deg);
+    background: linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,1), rgba(255,255,255,0));
+    position: absolute;
+    left: -100%;
+    transition: .4s ease;
+    opacity: .1;
+  }
   
   span {
     display: flex;
@@ -66,14 +80,22 @@ export const ActionButton = styled.button`
   &:hover, &:focus {
     outline: none;
     box-shadow: ${variables.boxShadow};
+    
+    &:before {
+      left: 100%;
+    }
   }
   
   &:disabled {
-    opacity: .7;
+    //opacity: .7;
     cursor: default;
     
     &:hover, &:focus {
       box-shadow: none;
+      
+    &:before {
+      left: 100%;
+    }
     }
   } 
   
@@ -141,13 +163,30 @@ export const ActionLink = styled.a`
   cursor: pointer;
   transition: ${variables.transition};
   margin-left: ${({ marginLeft }) => marginLeft ? variables.spaceSmall : '0'};
+  position: relative;
   
-  svg, &:last-child {
-    margin-left: ${variables.spaceSmall};
+  &:before {
+    content: "";
+    border-bottom: 2px solid;
+    width: 0;
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    transition: .3s ease;
+    opacity: 0.7;
   }
   
   &:hover {
+    text-decoration: none;
     text-shadow: ${variables.boxShadow};
+    
+    &:before {
+      width: calc(100% - 25px);
+    }
+  }
+  
+  svg, &:last-child {
+    margin-left: ${variables.spaceSmall};
   }
 `;
 
