@@ -1,14 +1,13 @@
 {
-  "main.js": "/social-media-demo/static/js/main.2f2f5385.chunk.js",
-  "main.js.map": "/social-media-demo/static/js/main.2f2f5385.chunk.js.map",
-  "static/css/1.5d246281.chunk.css": "/social-media-demo/static/css/1.5d246281.chunk.css",
-  "static/js/1.3a7e653c.chunk.js": "/social-media-demo/static/js/1.3a7e653c.chunk.js",
-  "static/js/1.3a7e653c.chunk.js.map": "/social-media-demo/static/js/1.3a7e653c.chunk.js.map",
+  "main.js": "/social-media-demo/static/js/main.af6d2ecb.chunk.js",
+  "main.js.map": "/social-media-demo/static/js/main.af6d2ecb.chunk.js.map",
+  "static/css/1.6694c7e2.chunk.css": "/social-media-demo/static/css/1.6694c7e2.chunk.css",
+  "static/js/1.7fc03fb7.chunk.js": "/social-media-demo/static/js/1.7fc03fb7.chunk.js",
+  "static/js/1.7fc03fb7.chunk.js.map": "/social-media-demo/static/js/1.7fc03fb7.chunk.js.map",
   "runtime~main.js": "/social-media-demo/static/js/runtime~main.6baeb3a9.js",
   "runtime~main.js.map": "/social-media-demo/static/js/runtime~main.6baeb3a9.js.map",
-  "static/media/graphql_Logo_color_xxs.png": "/social-media-demo/static/media/graphql_Logo_color_xxs.2f0d022e.png",
-  "static/css/1.5d246281.chunk.css.map": "/social-media-demo/static/css/1.5d246281.chunk.css.map",
+  "static/css/1.6694c7e2.chunk.css.map": "/social-media-demo/static/css/1.6694c7e2.chunk.css.map",
   "index.html": "/social-media-demo/index.html",
-  "precache-manifest.87121eb59a25cb9819d2e50e55717c9a.js": "/social-media-demo/precache-manifest.87121eb59a25cb9819d2e50e55717c9a.js",
+  "precache-manifest.17db7372a9469106bf42df4c1620427b.js": "/social-media-demo/precache-manifest.17db7372a9469106bf42df4c1620427b.js",
   "service-worker.js": "/social-media-demo/service-worker.js"
 }
