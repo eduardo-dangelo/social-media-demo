@@ -17,8 +17,8 @@ import Flip from 'react-reveal/Flip';
 
 class LoginUserForm extends React.Component {
   state = {
-    email: '',
-    password: '',
+    email: 'guest@smd.com',
+    password: 'ttest',
     loading: false,
     error: false,
   }
