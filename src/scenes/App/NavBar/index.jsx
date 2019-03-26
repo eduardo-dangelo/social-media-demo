@@ -18,7 +18,7 @@ class NavBar extends React.Component {
 
 
   render() {
-    const { theme, userName } = this.props;
+    const { theme, userName, userId } = this.props;
     const { activeItem } = this.state;
     const items = [
       { name: 'Posts', key: 'posts', icon: (<FaEnvelope/>)},
@@ -42,7 +42,7 @@ class NavBar extends React.Component {
                 key={item.key}
                 theme={theme}
                 active={activeItem === item.key}
-                onClick={this.handleClick(item.key)}
+                onClick={userId ? this.handleClick(item.key) : this.handleAuthClick}
               >
                 {item.icon}
                 {item.name}
@@ -58,6 +58,11 @@ class NavBar extends React.Component {
     const { onSelectItem } = this.props;
     this.setState({ activeItem: item });
     onSelectItem(item);
+  }
+
+  handleAuthClick = () => {
+    const { onAuthRequired } = this.props;
+    onAuthRequired();
   }
 }
 

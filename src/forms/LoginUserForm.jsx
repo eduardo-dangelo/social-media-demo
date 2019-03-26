@@ -97,7 +97,7 @@ class LoginUserForm extends React.Component {
     })
       .then((response) => (
         localStorage.setItem('graphcoolToken', response.data.authenticateUser.token),
-        history.replace('/social-media-demo'),
+        history.replace('/social-media-demo/'),
         updateRequired()
       ))
       .catch((e) => (

@@ -194,16 +194,34 @@ export const LItem = styled.a`
   align-items: center;
   text-decoration: none;
   justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
   transition: ${variables.transition};
   padding: ${variables.spaceSmall} ${variables.space};
   background: ${({ theme, active }) => active ? style.themes[theme].link.active.bg : 'transparent'};
   color: ${({ theme, active }) => active ? style.themes[theme].link.active.color : style.themes[theme].link.color};
   
+  &:before {
+    content: "";
+    width: 50%;
+    height: 300%;
+    transform: rotateZ(-45deg);
+    background: linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,0.4), rgba(255,255,255,0));
+    position: absolute;
+    left: -100%;
+    transition: .6s ease;
+    opacity: .1;
+  }
+
   svg {
     margin-right: ${variables.spaceSmall};
   }
   
   &:hover {
     text-shadow: ${variables.boxShadow};
+    
+    &:before {
+      left: 100%;
+    }
   }
 `;

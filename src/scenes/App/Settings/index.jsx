@@ -6,7 +6,7 @@ import { Box, BoxContent, BoxHeader } from '../../../elements/layout';
 
 class Settings extends React.Component {
   render() {
-    const { theme, onSelectTheme, currentUser } = this.props;
+    // const { theme, onSelectTheme, currentUser } = this.props;
     return (
       <Box>
         <BoxHeader>
@@ -16,11 +16,7 @@ class Settings extends React.Component {
           </Flip>
         </BoxHeader>
         <BoxContent>
-          <UserSettingsForm
-            theme={theme}
-            onSelectTheme={onSelectTheme}
-            currentUser={currentUser}
-          />
+          <UserSettingsForm {...this.props}/>
         </BoxContent>
       </Box>
     );

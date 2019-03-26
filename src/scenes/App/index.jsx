@@ -24,16 +24,16 @@ class App extends React.PureComponent {
     } = this.props;
     const { view } = this.state;
 
-    if (!userId) {
-      return <Login userId={userId} updateRequired={updateRequired}/>;
-    }
+    // if (!userId) {
+    //   return <Login userId={userId} updateRequired={updateRequired}/>;
+    // }
 
     const userName = currentUser.User ? currentUser.User.name : '';
     const userTheme = currentUser.User ? currentUser.User.theme : '';
 
-    if (!userName) {
-      return null;
-    }
+    // if (!userName) {
+    //   return null;
+    // }
 
     return (
       <Page>
@@ -42,22 +42,30 @@ class App extends React.PureComponent {
             <NavBar
               theme={theme}
               styles={styles}
+              userId={userId}
               userName={userName}
               userTheme={userTheme}
               onLoadUserTheme={onSelectTheme}
               onSelectItem={this.handleViewChange}
+              onAuthRequired={this.handleAuthRequired}
             />
           </Col>
           <Col size={6}>
             {view === 'settings' && (
               <Settings
+                userId={userId}
                 theme={theme}
                 currentUser={currentUser}
                 onSelectTheme={onSelectTheme}
+                onAuthRequired={this.handleAuthRequired}
               />
             )}
             {view === 'posts' && (
-              <Posts userName={userName} userId={userId}/>
+              <Posts
+                userName={userName}
+                userId={userId}
+                onAuthRequired={this.handleAuthRequired}
+              />
             )}
           </Col>
         </Row>
@@ -67,6 +75,10 @@ class App extends React.PureComponent {
 
   handleViewChange = (view) => {
     this.setState({ view });
+  }
+
+  handleAuthRequired = () => {
+    // some hot stuff here...
   }
 }
 
