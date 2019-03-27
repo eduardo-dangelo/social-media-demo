@@ -14,14 +14,7 @@ class App extends React.PureComponent {
   }
 
   render() {
-    const {
-      theme,
-      styles,
-      userId,
-      currentUser,
-      updateRequired,
-      onSelectTheme,
-    } = this.props;
+    const { currentUser, onSelectTheme } = this.props;
     const { view } = this.state;
 
     // if (!userId) {
@@ -40,31 +33,26 @@ class App extends React.PureComponent {
         <Row>
           <Col size={2} navBar>
             <NavBar
-              theme={theme}
-              styles={styles}
-              userId={userId}
               userName={userName}
               userTheme={userTheme}
               onLoadUserTheme={onSelectTheme}
               onSelectItem={this.handleViewChange}
               onAuthRequired={this.handleAuthRequired}
+              {...this.props}
             />
           </Col>
           <Col size={6}>
             {view === 'settings' && (
               <Settings
-                userId={userId}
-                theme={theme}
-                currentUser={currentUser}
-                onSelectTheme={onSelectTheme}
                 onAuthRequired={this.handleAuthRequired}
+                {...this.props}
               />
             )}
             {view === 'posts' && (
               <Posts
                 userName={userName}
-                userId={userId}
                 onAuthRequired={this.handleAuthRequired}
+                {...this.props}
               />
             )}
           </Col>
@@ -78,7 +66,7 @@ class App extends React.PureComponent {
   }
 
   handleAuthRequired = () => {
-    // some hot stuff here...
+    console.log('hellooooooo')
   }
 }
 

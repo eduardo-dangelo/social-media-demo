@@ -66,12 +66,7 @@ class Comment extends React.Component {
               </span>
             </ActionLink>
           )}
-          <LikesComment
-            comment={comment}
-            userId={userId}
-            likes={comment.likes}
-            updateRequired={updateRequired}
-          />
+          <LikesComment likes={comment.likes} {...this.props}/>
         </CommentActions>
       </CommentBox>
     );

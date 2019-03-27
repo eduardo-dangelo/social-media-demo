@@ -83,21 +83,11 @@ class Post extends React.Component {
                 {post.comments.length > 0 ? <FaComment/> : <FaRegComment/>}
               </span>
             </ActionLink>
-            <LikesPost
-              post={post}
-              userId={userId}
-              likes={post.likes}
-              updateRequired={updateRequired}
-            />
+            <LikesPost likes={post.likes} {...this.props}/>
           </ActionBar>
         </BoxContent>
         {showComments && (
-          <Comments
-            userId={userId}
-            postId={post.id}
-            comments={post.comments}
-            updateRequired={updateRequired}
-          />
+          <Comments postId={post.id} comments={post.comments} {...this.props}/>
         )}
       </Box>
     )

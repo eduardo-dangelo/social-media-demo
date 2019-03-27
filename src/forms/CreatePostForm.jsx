@@ -23,6 +23,7 @@ class CreatePostForm extends React.Component {
   }
 
   render() {
+    const { userId, onAuthRequired } = this.props;
     const { loading, error, content, name } = this.state;
 
     const validate = () => {
@@ -45,7 +46,7 @@ class CreatePostForm extends React.Component {
     }
 
     return (
-      <Form onSubmit={this.handleSaveChanges}>
+      <Form onSubmit={userId ? this.handleSaveChanges : onAuthRequired()}>
         {error && (
           <ErrorBox>
             An error has occurred
@@ -56,9 +57,9 @@ class CreatePostForm extends React.Component {
             Post:
           </Label>
           <Field
-            value={name}
+            value={content}
             placeholder='post...'
-            onChange={(e) => this.setState({content: e.target.value})}
+            onChange={this.handleFieldChange}
           />
           <ActionButton type="submit" disabled={validate()}>
             <ButtonContent>
@@ -72,6 +73,15 @@ class CreatePostForm extends React.Component {
         </FormGroup>
       </Form>
     );
+  }
+
+  handleFieldChange = (e) => {
+    const { userId, onAuthRequired } = this.props;
+    if (userId) {
+      this.setState({content: e.target.value})
+    } else {
+      onAuthRequired()
+    }
   }
 
   handleSaveChanges = async (e) => {

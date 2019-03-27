@@ -23,6 +23,7 @@ class CreateCommentForm extends React.Component {
 
   render() {
     const { loading, error, content } = this.state;
+    const { onAuthRequired, userId } = this.props;
 
     const validate = () => {
       let disabled = false
@@ -44,7 +45,7 @@ class CreateCommentForm extends React.Component {
     }
 
     return (
-      <Form onSubmit={this.handleSaveChanges}>
+      <Form onSubmit={userId ? this.handleSaveChanges : onAuthRequired()}>
         {error && (
           <ErrorBox>
             An error has occurred
@@ -57,7 +58,7 @@ class CreateCommentForm extends React.Component {
           <Field
             value={content}
             placeholder='comment...'
-            onChange={(e) => this.setState({content: e.target.value})}
+            onChange={userId ? (e) => this.setState({content: e.target.value}) : onAuthRequired()}
           />
           <ActionButton type="submit" disabled={validate()}>
             <ButtonContent>

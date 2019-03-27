@@ -8,7 +8,7 @@ import { Box, BoxContent, BoxHeader, PostArea, PostHeaderContent } from '../../.
 
 class Posts extends React.PureComponent {
   render() {
-    const { userName, userId, allPosts } = this.props;
+    const { userName, allPosts } = this.props;
     let posts = []
 
     if (allPosts.allPosts) {
@@ -27,8 +27,8 @@ class Posts extends React.PureComponent {
           </BoxHeader>
           <BoxContent>
             <CreatePostForm
-              userId={userId}
               updateRequired={this.handleRefetch}
+              {...this.props}
             />
           </BoxContent>
         </Box>
@@ -37,8 +37,8 @@ class Posts extends React.PureComponent {
             <Post
               post={post}
               key={post.id}
-              userId={userId}
               updateRequired={this.handleRefetch}
+              {...this.props}
             />
           );
         })}

@@ -88,7 +88,7 @@ export const ActionButton = styled.button`
   
   &:disabled {
     //opacity: .7;
-    cursor: default;
+    cursor: not-allowed;
     
     &:hover, &:focus {
       box-shadow: none;

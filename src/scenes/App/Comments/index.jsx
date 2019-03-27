@@ -5,7 +5,7 @@ import { BoxContent, CommentsContainer } from '../../../elements/layout';
 
 class Comments extends React.Component {
   render() {
-    const { comments, userId, postId, updateRequired } = this.props;
+    const { comments } = this.props;
     return (
       <>
         {comments.length > 0 && (
@@ -13,21 +13,16 @@ class Comments extends React.Component {
             {comments.map((comment) => {
               return (
                 <Comment
-                  userId={userId}
                   key={comment.id}
                   comment={comment}
-                  updateRequired={updateRequired}
+                  {...this.props}
                 />
               );
             })}
           </CommentsContainer>
         )}
         <BoxContent divider>
-          <CreateCommentForm
-            userId={userId}
-            postId={postId}
-            updateRequired={updateRequired}
-          />
+          <CreateCommentForm {...this.props}/>
         </BoxContent>
       </>
     );

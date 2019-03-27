@@ -35,14 +35,19 @@ class LikesComment extends React.Component {
   }
 
   handleLike = () => {
-    const { likeComment, comment, userId, updateRequired } = this.props;
-    likeComment({
-      variables: { commentId: comment.id, authorId: userId }
-    })
-      .then(() => (
-        updateRequired()
-      ))
-    this.setState({ counter: this.state.counter + 1 });
+    const { likeComment, comment, userId, updateRequired, onAuthRequired } = this.props;
+
+    if (userId) {
+      likeComment({
+        variables: { commentId: comment.id, authorId: userId }
+      })
+        .then(() => (
+          updateRequired()
+        ))
+      this.setState({ counter: this.state.counter + 1 });
+    } else {
+      onAuthRequired()
+    }
   }
 
   handleDislike = (likeId) => () => {
