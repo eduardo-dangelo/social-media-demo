@@ -75,7 +75,7 @@ class UserSettingsForm extends React.Component {
           <Field
             value={name}
             placeholder='name'
-            onChange={userId ? (e) => this.setState({name: e.target.value}) : this.handleAuthClick}
+            onChange={(e) => this.setState({name: e.target.value})}
           />
         </FormGroup>
         <FormGroup>
@@ -86,7 +86,7 @@ class UserSettingsForm extends React.Component {
             type="button"
             activeTheme={theme}
             active={theme === 'dark'}
-            onClick={userId ? this.handleSelectTheme('dark') : this.handleAuthClick}
+            onClick={this.handleSelectTheme('dark')}
           >
             <FaMoon/>
             Dark
@@ -95,7 +95,7 @@ class UserSettingsForm extends React.Component {
             type="button"
             activeTheme={theme}
             active={theme === 'light'}
-            onClick={userId ? this.handleSelectTheme('light') : this.handleAuthClick}
+            onClick={this.handleSelectTheme('light')}
           >
             <FaLightbulb/>
             Light
@@ -143,11 +143,6 @@ class UserSettingsForm extends React.Component {
   handleSelectTheme = (theme) => () => {
     const { onSelectTheme } = this.props;
     onSelectTheme(theme)
-  }
-
-  handleAuthClick = () => {
-    const { onAuthRequired } = this.props;
-    onAuthRequired();
   }
 }
 

@@ -23,8 +23,7 @@ class CreatePostForm extends React.Component {
   }
 
   render() {
-    const { userId, onAuthRequired } = this.props;
-    const { loading, error, content, name } = this.state;
+    const { loading, error, content } = this.state;
 
     const validate = () => {
       let disabled = false
@@ -46,7 +45,7 @@ class CreatePostForm extends React.Component {
     }
 
     return (
-      <Form onSubmit={userId ? this.handleSaveChanges : onAuthRequired()}>
+      <Form onSubmit={this.handleSaveChanges}>
         {error && (
           <ErrorBox>
             An error has occurred

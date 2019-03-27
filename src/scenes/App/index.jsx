@@ -1,35 +1,51 @@
 import React from 'react';
 import Posts from './Posts';
-import Login from '../Login';
 import NavBar from './NavBar';
 import Settings from './Settings';
 import { compose, graphql } from 'react-apollo';
 import { currentUser } from '../../services/queries';
-import { Col, Page, Row } from '../../elements/layout';
+import { Col, Page, Row, Modal, ModalContainer, Overlay, BoxHeader, BoxContent, Box } from '../../elements/layout';
+import Flip from 'react-reveal/Flip'
+import { FaUser } from 'react-icons/fa'
+import LoginUserForm from '../../forms/LoginUserForm'
+import Tada from 'react-reveal/Tada';
+
 
 
 class App extends React.PureComponent {
   state = {
-    view: 'posts'
+    view: 'posts',
+    showLoginModal: false,
   }
 
   render() {
-    const { currentUser, onSelectTheme } = this.props;
-    const { view } = this.state;
-
-    // if (!userId) {
-    //   return <Login userId={userId} updateRequired={updateRequired}/>;
-    // }
-
+    const { currentUser, onSelectTheme, updateRequired } = this.props;
+    const { view, showLoginModal } = this.state;
     const userName = currentUser.User ? currentUser.User.name : '';
     const userTheme = currentUser.User ? currentUser.User.theme : '';
 
-    // if (!userName) {
-    //   return null;
-    // }
-
     return (
       <Page>
+        {showLoginModal && (
+          <ModalContainer>
+            <Tada  duration={1000} >
+              <Modal>
+                <Box>
+                  <BoxHeader>
+                    <Flip top cascade>
+                      <FaUser/>
+                      Login
+                    </Flip>
+                  </BoxHeader>
+                  <BoxContent>
+                    <LoginUserForm updateRequired={updateRequired}/>
+                  </BoxContent>
+                </Box>
+              </Modal>
+            </Tada>
+            <Overlay onClick={this.toggleLoginModal}/>
+          </ModalContainer>
+        )}
         <Row>
           <Col size={2} navBar>
             <NavBar
@@ -43,15 +59,13 @@ class App extends React.PureComponent {
           </Col>
           <Col size={6}>
             {view === 'settings' && (
-              <Settings
-                onAuthRequired={this.handleAuthRequired}
-                {...this.props}
-              />
+              <Settings updateRequired={updateRequired} {...this.props}/>
             )}
             {view === 'posts' && (
               <Posts
                 userName={userName}
                 onAuthRequired={this.handleAuthRequired}
+                updateRequired={updateRequired}
                 {...this.props}
               />
             )}
@@ -66,7 +80,13 @@ class App extends React.PureComponent {
   }
 
   handleAuthRequired = () => {
-    console.log('hellooooooo')
+    console.log('cal')
+    this.setState({ showLoginModal: true });
+  }
+
+  toggleLoginModal = () => {
+    console.log('cal2222')
+    this.setState({ showLoginModal: false });
   }
 }
 

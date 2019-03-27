@@ -6,7 +6,6 @@ import { Box, BoxContent, BoxHeader } from '../../../elements/layout';
 
 class Settings extends React.Component {
   render() {
-    // const { theme, onSelectTheme, currentUser } = this.props;
     return (
       <Box>
         <BoxHeader>

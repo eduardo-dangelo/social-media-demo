@@ -225,3 +225,34 @@ export const LItem = styled.a`
     }
   }
 `;
+
+export const Overlay = styled.div`
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.2);
+`;
+
+
+export const ModalContainer = styled.div`
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
+
+export const Modal = styled.div`
+  border-radius: 8px;
+  max-width: 400px;
+  position: relative;
+  z-index: 3;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.3);
+`;
