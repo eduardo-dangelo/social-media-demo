@@ -23,6 +23,7 @@ class App extends React.PureComponent {
     const { view, showLoginModal } = this.state;
     const userName = currentUser.User ? currentUser.User.name : '';
     const userTheme = currentUser.User ? currentUser.User.theme : '';
+    const userId = currentUser.User ? currentUser.User.id : '';
 
     return (
       <Page>
@@ -38,7 +39,7 @@ class App extends React.PureComponent {
                     </Flip>
                   </BoxHeader>
                   <BoxContent>
-                    <LoginUserForm updateRequired={updateRequired}/>
+                    <LoginUserForm updateRequired={this.handleUpdateRequired}/>
                   </BoxContent>
                 </Box>
               </Modal>
@@ -63,10 +64,9 @@ class App extends React.PureComponent {
             )}
             {view === 'posts' && (
               <Posts
+                userId={userId}
                 userName={userName}
                 onAuthRequired={this.handleAuthRequired}
-                updateRequired={updateRequired}
-                {...this.props}
               />
             )}
           </Col>
@@ -85,7 +85,12 @@ class App extends React.PureComponent {
   }
 
   toggleLoginModal = () => {
-    console.log('cal2222')
+    this.setState({ showLoginModal: false });
+  }
+
+  handleUpdateRequired = () => {
+    const { updateRequired } = this.props;
+    updateRequired();
     this.setState({ showLoginModal: false });
   }
 }
