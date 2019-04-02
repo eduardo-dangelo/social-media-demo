@@ -1,20 +1,20 @@
 import styled from 'styled-components'
 import { variables } from '../../config'
-import { Box, BoxContent, BoxHeader, CommentBox, CommentsContainer } from '../layout'
+import { BoxContainer, BoxContent, BoxHeader, CommentBox, CommentsContainer } from '../layout'
 import { ActionBar, ActionButton, ActionLink, ErrorBox, Field, RadioButton } from '../form'
 
 export const Container = styled.div`
   font-family: 'Montserrat', sans-serif;
 `;
 
-export const Body = styled.div`
+export const BodyContainer = styled.div`
   width: 100%;
   min-height: calc(100vh - 60px);
   position: relative;
   transition: ${variables.transitionLarge};
   background: ${({ styles }) => styles.theme.page.bg};
   
-  ${Box} {
+  ${BoxContainer} {
     background: ${({ styles }) => styles.theme.box.bg};
     color: ${({ styles }) => styles.theme.box.color};
     border-color: ${({ styles }) => styles.theme.box.border.color};
@@ -102,7 +102,7 @@ export const Body = styled.div`
   }
 `;
 
-export const BodyContainer = styled.div`
+export const BodyContent = styled.div`
   max-width: 1200px;
   margin: auto;
 `;

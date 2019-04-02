@@ -4,7 +4,7 @@ import Flip from 'react-reveal/Flip';
 import { compose, graphql } from 'react-apollo';
 import { allPosts } from '../../../services/queries';
 import CreatePostForm from '../../../forms/CreatePostForm';
-import { Box, BoxContent, BoxHeader, PostArea, PostHeaderContent } from '../../../elements/layout';
+import { BoxContainer, BoxContent, BoxHeader, PostArea, PostHeaderContent } from '../../../elements/layout';
 
 class Posts extends React.PureComponent {
   render() {
@@ -17,7 +17,7 @@ class Posts extends React.PureComponent {
 
     return (
       <PostArea>
-        <Box>
+        <BoxContainer>
           <BoxHeader>
             <PostHeaderContent>
               <Flip top cascade>
@@ -31,7 +31,7 @@ class Posts extends React.PureComponent {
               {...this.props}
             />
           </BoxContent>
-        </Box>
+        </BoxContainer>
         {posts.map((post) => {
           return (
             <Post

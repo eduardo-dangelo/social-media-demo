@@ -11,6 +11,17 @@ export const Page = styled.div`
   max-width: ${variables.containerMaxWidth}
 `;
 
+export const FlexBox = styled.div`
+  display: flex;
+  align-items: ${({ alignItems }) => alignItems ? alignItems : `center`};
+  justify-content: ${({ justifyContent }) => justifyContent ? justifyContent : `space-around`};
+  max-width: ${variables.containerMaxWidth}
+  
+  > div {
+    flex: 1;
+  }
+`;
+
 
 export const Row = styled.div`
   width: 100%;
@@ -56,12 +67,13 @@ export const PostArea = styled.div`
   margin-bottom: 60px;
 `;
 
-export const Box = styled.div`
+export const BoxContainer = styled.div`
   width: 100%;
+  max-width: ${({ size }) => size ? `${size}px` : `100%`};
   overflow: hidden;
   border: 1px solid;
   transition: ${variables.transition};
-  margin-top: ${({ mt }) => mt ? mt : 0 };
+  margin-top: ${({ mt }) => mt ? `${mt}px` : 0 };
   
   &:hover {
     box-shadow: ${variables.boxShadow};

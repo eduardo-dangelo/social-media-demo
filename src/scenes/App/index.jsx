@@ -4,13 +4,11 @@ import NavBar from './NavBar';
 import Settings from './Settings';
 import { compose, graphql } from 'react-apollo';
 import { currentUser } from '../../services/queries';
-import { Col, Page, Row, Modal, ModalContainer, Overlay, BoxHeader, BoxContent, Box } from '../../elements/layout';
+import { Col, Page, Row, Modal, ModalContainer, Overlay, BoxHeader, BoxContent, BoxContainer } from '../../elements/layout';
 import Flip from 'react-reveal/Flip'
 import { FaUser } from 'react-icons/fa'
 import LoginUserForm from '../../forms/LoginUserForm'
 import Tada from 'react-reveal/Tada';
-
-
 
 class App extends React.PureComponent {
   state = {
@@ -31,7 +29,7 @@ class App extends React.PureComponent {
           <ModalContainer>
             <Tada  duration={1000} >
               <Modal>
-                <Box>
+                <BoxContainer>
                   <BoxHeader>
                     <Flip top cascade>
                       <FaUser/>
@@ -41,7 +39,7 @@ class App extends React.PureComponent {
                   <BoxContent>
                     <LoginUserForm updateRequired={this.handleUpdateRequired}/>
                   </BoxContent>
-                </Box>
+                </BoxContainer>
               </Modal>
             </Tada>
             <Overlay onClick={this.toggleLoginModal}/>

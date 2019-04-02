@@ -1,32 +1,43 @@
 import React from 'react';
-import Flip from 'react-reveal/Flip';
 import { FaUser } from 'react-icons/fa';
 import CreateUserForm from '../../forms/CreateUserForm';
-import { Box, BoxContent, BoxHeader, Col, Page, Row } from '../../elements/layout';
+import { Page, FlexBox } from '../../elements/layout';
+import { Redirect } from 'react-router-dom';
+import { UserContext } from '../index';
+import Box from '../../components/Box';
 
 class CreateUser extends React.PureComponent {
   render() {
-    const { updateRequired } = this.props;
     return (
-      <Page>
-        <Row>
-          <Col/>
-          <Col>
-            <Box>
-              <BoxHeader>
-                <Flip top cascade>
-                  <FaUser/>
-                  Sign Up
-                </Flip>
-              </BoxHeader>
-              <BoxContent>
-                <CreateUserForm updateRequired={updateRequired}/>
-              </BoxContent>
-            </Box>
-          </Col>
-          <Col/>
-        </Row>
-      </Page>
+      <UserContext.Consumer>
+        {({ userId, updateRequired }) => {
+
+          if (userId) {
+            return <Redirect to={'/social-media-demo/'}/>
+          }
+
+          return (
+            <Page>
+              <FlexBox
+                alignItems={'center'}
+                justifyContent={'space-around'}
+              >
+                <Box
+                  size={480}
+                  mt={60}
+                  header={(
+                    <><FaUser/> Sign Up</>
+                  )}
+                >
+                  <CreateUserForm
+                    updateRequired={updateRequired}
+                  />
+                </Box>
+              </FlexBox>
+            </Page>
+          );
+        }}
+      </UserContext.Consumer>
     );
   }
 }

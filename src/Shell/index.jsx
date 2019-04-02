@@ -1,17 +1,16 @@
 import React from 'react';
-import Header from '../Header';
-import { Body, BodyContainer, Container } from '../elements/shell'
+import Header from '../components/Header';
+import { Container } from '../elements/shell';
+import Body from '../components/Body';
 
 class Shell extends React.Component {
   render() {
-    const { children, userId, theme, styles } = this.props;
+    const { children } = this.props;
     return (
       <Container>
-        <Header userId={userId} styles={styles}/>
-        <Body theme={theme} styles={styles}>
-          <BodyContainer>
-            {children}
-          </BodyContainer>
+        <Header/>
+        <Body>
+          {children}
         </Body>
       </Container>
     );

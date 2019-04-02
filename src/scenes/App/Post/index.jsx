@@ -10,7 +10,7 @@ import EditPostForm from '../../../forms/EditPostForm';
 import DeletePostForm from '../../../forms/DeletePostForm';
 import { ActionBar, ActionLink } from '../../../elements/form';
 import { FaRegComment, FaComment, FaUser, FaTrashAlt, FaPencilAlt } from 'react-icons/fa';
-import { Box, BoxContent, PostAuthor, PostContent, PostDate, PostHeader } from '../../../elements/layout';
+import { BoxContainer, BoxContent, PostAuthor, PostContent, PostDate, PostHeader } from '../../../elements/layout';
 
 class Post extends React.Component {
   state = {
@@ -24,7 +24,7 @@ class Post extends React.Component {
     const { post, userId, updateRequired } = this.props;
     const { showComments, editPost, deletePost } = this.state;
     return (
-      <Box mt={variables.space}>
+      <BoxContainer mt={variables.space}>
         <BoxContent>
           <PostHeader>
             <PostAuthor>
@@ -89,7 +89,7 @@ class Post extends React.Component {
         {showComments && (
           <Comments postId={post.id} comments={post.comments} {...this.props}/>
         )}
-      </Box>
+      </BoxContainer>
     )
   }
 

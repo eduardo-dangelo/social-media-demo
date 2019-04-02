@@ -6,7 +6,10 @@ import { style } from '../config';
 import CreateUser from './CreateUser';
 import { compose, graphql } from 'react-apollo';
 import { loggedInUser } from '../services/queries';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+
+export const UserContext = React.createContext({});
+export const StyleContext = React.createContext({});
 
 class Scenes extends React.Component {
   state = {
@@ -22,38 +25,39 @@ class Scenes extends React.Component {
       userId = user.loggedInUser.id;
     }
 
-    const styles = {
+    const styleContextValue = {
       theme: style.themes[theme],
       variables: style.variables
     }
 
+    const userContextValue = {
+      userId: user.loggedInUser && user.loggedInUser.id,
+      updateRequired: this._handleRefetch,
+    }
+
     return (
-      <Shell userId={userId} theme={theme} styles={styles}>
-        <Switch>
-          <Route exact path='/social-media-demo/'>
-            <App
-              userId={userId}
-              theme={theme}
-              updateRequired={this._handleRefetch}
-              onSelectTheme={this.handleThemeChange}
-            />
-          </Route>
-          <Route exact path='/social-media-demo/login'>
-            {userId ? (
-              <Redirect to={'/social-media-demo/'}/>
-              ) : (
-              <Login userId={userId} updateRequired={this._handleRefetch}/>
-            )}
-          </Route>
-          <Route path='/social-media-demo/signup'>
-            {userId ? (
-              <Redirect to={'/social-media-demo/'}/>
-            ) : (
-              <CreateUser updateRequired={this._handleRefetch}/>
-            )}
-          </Route>
-        </Switch>
-      </Shell>
+      <UserContext.Provider value={userContextValue}>
+        <StyleContext.Provider value={styleContextValue}>
+          <Shell>
+            <Switch>
+              <Route exact path='/social-media-demo/'>
+                <App
+                  userId={userId}
+                  theme={theme}
+                  updateRequired={this._handleRefetch}
+                  onSelectTheme={this.handleThemeChange}
+                />
+              </Route>
+              <Route exact path='/social-media-demo/login'>
+                <Login/>
+              </Route>
+              <Route path='/social-media-demo/signup'>
+                <CreateUser/>
+              </Route>
+            </Switch>
+          </Shell>
+        </StyleContext.Provider>
+      </UserContext.Provider>
     );
   }
 
