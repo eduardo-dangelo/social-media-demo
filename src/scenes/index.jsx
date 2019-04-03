@@ -27,7 +27,8 @@ class Scenes extends React.Component {
 
     const styleContextValue = {
       theme: style.themes[theme],
-      variables: style.variables
+      variables: style.variables,
+      selectTheme: this.handleThemeChange,
     }
 
     const userContextValue = {

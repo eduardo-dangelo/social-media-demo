@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { graphql, compose } from 'react-apollo';
 import {
   ActionBar,
-  ActionButton, ButtonContent,
+  ActionButton, ActionLink, ButtonContent,
   ErrorBox,
   FaCogSpin,
   Field,
@@ -12,7 +12,7 @@ import {
   Label,
 } from '../elements/form';
 import { signupUser } from '../services/mutations';
-import { FaSignInAlt } from 'react-icons/fa';
+import { FaSignInAlt, FaUserCheck } from 'react-icons/fa';
 import Flip from 'react-reveal/Flip';
 
 class CreateUserForm extends React.Component {
@@ -82,7 +82,12 @@ class CreateUserForm extends React.Component {
             onChange={(e) => this.setState({password: e.target.value})}
           />
         </FormGroup>
-        <ActionBar divider>
+        <ActionBar divider justifyContent={'space-between'}>
+          <ActionLink onClick={this.handleLogin}>
+            <span>
+              Login
+            </span>
+          </ActionLink>
           <ActionButton type="submit" disabled={validate()}>
             <ButtonContent>
               <Flip cascade top>
@@ -96,6 +101,12 @@ class CreateUserForm extends React.Component {
       </Form>
     )
   }
+
+  handleLogin = () => {
+    const { history } = this.props;
+    history.replace('/social-media-demo/login');
+  }
+
 
   handleSignupUser = async (e) => {
     const { email, password, name } = this.state;

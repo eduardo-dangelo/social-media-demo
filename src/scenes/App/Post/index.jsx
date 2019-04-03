@@ -34,14 +34,14 @@ class Post extends React.Component {
             <PostDate>
               <TimeAgo date={post.updatedAt} />
               {post.author.id === userId && (
-                <ActionLink marginLeft onClick={this.handleEditPost}>
+                <ActionLink marginLeft icon onClick={this.handleEditPost}>
                   <span>
                     <FaPencilAlt/>
                   </span>
                 </ActionLink>
               )}
               {post.author.id === userId && (
-                <ActionLink onClick={this.handleDeletePost}>
+                <ActionLink icon onClick={this.handleDeletePost}>
                   <span>
                     <FaTrashAlt/>
                   </span>
@@ -77,7 +77,7 @@ class Post extends React.Component {
             </BoxContent>
           )}
           <ActionBar divider>
-            <ActionLink onClick={this.handleToggleComments}>
+            <ActionLink icon onClick={this.handleToggleComments}>
               <span>
                 {post.comments.length > 1 ? 'Comments' : 'comment'} {post.comments.length}
                 {post.comments.length > 0 ? <FaComment/> : <FaRegComment/>}

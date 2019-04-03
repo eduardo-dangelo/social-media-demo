@@ -4,11 +4,10 @@ import NavBar from './NavBar';
 import Settings from './Settings';
 import { compose, graphql } from 'react-apollo';
 import { currentUser } from '../../services/queries';
-import { Col, Page, Row, Modal, ModalContainer, Overlay, BoxHeader, BoxContent, BoxContainer } from '../../elements/layout';
-import Flip from 'react-reveal/Flip'
+import { Col, Page, Row } from '../../elements/layout';
 import { FaUser } from 'react-icons/fa'
 import LoginUserForm from '../../forms/LoginUserForm'
-import Tada from 'react-reveal/Tada';
+import Modal from '../../components/Modal/Modal'
 
 class App extends React.PureComponent {
   state = {
@@ -25,26 +24,14 @@ class App extends React.PureComponent {
 
     return (
       <Page>
-        {showLoginModal && (
-          <ModalContainer>
-            <Tada  duration={1000} >
-              <Modal>
-                <BoxContainer>
-                  <BoxHeader>
-                    <Flip top cascade>
-                      <FaUser/>
-                      Login
-                    </Flip>
-                  </BoxHeader>
-                  <BoxContent>
-                    <LoginUserForm updateRequired={this.handleUpdateRequired}/>
-                  </BoxContent>
-                </BoxContainer>
-              </Modal>
-            </Tada>
-            <Overlay onClick={this.toggleLoginModal}/>
-          </ModalContainer>
-        )}
+        <Modal
+          size={300}
+          show={showLoginModal}
+          onClose={this.toggleLoginModal}
+          header={(<><FaUser/> Login</>)}
+        >
+          <LoginUserForm updateRequired={this.handleUpdateRequired}/>
+        </Modal>
         <Row>
           <Col size={2} navBar>
             <NavBar

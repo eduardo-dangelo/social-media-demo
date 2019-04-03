@@ -1,13 +1,13 @@
 import React from 'react';
-import { BoxContainer, BoxContent, BoxHeader } from '../../elements/layout';
+import { ModalBoxContainer, BoxContent, BoxHeader } from '../../elements/layout';
 import Flip from 'react-reveal/Flip';
 import { FaTimes } from 'react-icons/fa';
 
-class Box extends React.Component {
+class ModalBox extends React.Component {
   render() {
     const { header, size, children, onClose, mt } = this.props;
     return (
-      <BoxContainer size={size} mt={mt}>
+      <ModalBoxContainer size={size} mt={mt}>
         {header && (
           <BoxHeader>
             <Flip top cascade>
@@ -19,9 +19,9 @@ class Box extends React.Component {
         <BoxContent>
           {children}
         </BoxContent>
-      </BoxContainer>
+      </ModalBoxContainer>
     )
   }
 }
 
-export default Box;
+export default ModalBox;

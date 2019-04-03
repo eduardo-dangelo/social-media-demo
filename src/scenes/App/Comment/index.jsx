@@ -53,14 +53,14 @@ class Comment extends React.Component {
         )}
         <CommentActions>
           {comment.author.id === userId && (
-            <ActionLink marginLeft onClick={this.toggleEditComment}>
+            <ActionLink marginLeft icon onClick={this.toggleEditComment}>
               <span>
                 <FaPencilAlt/>
               </span>
             </ActionLink>
           )}
           {comment.author.id === userId && (
-            <ActionLink onClick={this.toggleDeleteComment}>
+            <ActionLink icon onClick={this.toggleDeleteComment}>
               <span>
                 <FaTrashAlt/>
               </span>

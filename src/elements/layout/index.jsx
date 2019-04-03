@@ -89,9 +89,17 @@ export const BoxHeader = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   transition: ${variables.transition};
   border-bottom: 1px solid;
+  
+  a {
+    cursor: pointer;
+  
+    svg {
+      margin-right: 0;
+    }
+  }
   
   svg {
     margin-right: 5px;
@@ -261,10 +269,8 @@ export const ModalContainer = styled.div`
   justify-content: space-around;
 `;
 
-export const Modal = styled.div`
-  border-radius: 8px;
-  max-width: 400px;
+export const ModalBoxContainer = styled(BoxContainer)`
   position: relative;
   z-index: 3;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.3);
+  box-shadow: 0 6px 22px rgba(0,0,0,0.4);
 `;

@@ -139,7 +139,7 @@ export const ActionBar = styled.div`
   display: flex;
   position: relative;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: ${({ justifyContent }) => justifyContent ? justifyContent : `flex-end`};
   border-top: ${({ divider }) => divider ? '1px dashed' : 'none'};
   padding-top: ${({ divider }) => divider ? variables.space : 0 };
 `;
@@ -181,7 +181,7 @@ export const ActionLink = styled.a`
     text-shadow: ${variables.boxShadow};
     
     &:before {
-      width: calc(100% - 25px);
+      width: calc(100% - ${({ icon }) => icon ? `25px` : `0px`});
     }
   }
   

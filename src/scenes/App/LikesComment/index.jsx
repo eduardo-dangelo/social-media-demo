@@ -23,7 +23,7 @@ class LikesComment extends React.Component {
     })
 
     return (
-      <ActionLink onClick={liked ? this.handleDislike(likeId) : this.handleLike}>
+      <ActionLink icon onClick={liked ? this.handleDislike(likeId) : this.handleLike}>
         <ActionLinkContent>
           {likes.length > 1 ? 'Likes' : 'Like'} {likes.length}
           <Tada  spy={this.state.counter}>
