@@ -13,7 +13,7 @@ export const StyleContext = React.createContext({});
 
 class Scenes extends React.Component {
   state = {
-    theme: 'light'
+    theme: 'light',
   }
 
   render() {
@@ -26,9 +26,10 @@ class Scenes extends React.Component {
     }
 
     const styleContextValue = {
-      theme: style.themes[theme],
+      theme: style.themes[theme ? theme : 'light'],
+      activeTheme: theme ? theme : 'light',
       variables: style.variables,
-      selectTheme: this.handleThemeChange,
+      onSelectTheme: this._handleThemeChange,
     }
 
     const userContextValue = {
@@ -46,7 +47,6 @@ class Scenes extends React.Component {
                   userId={userId}
                   theme={theme}
                   updateRequired={this._handleRefetch}
-                  onSelectTheme={this.handleThemeChange}
                 />
               </Route>
               <Route exact path='/social-media-demo/login'>
@@ -67,7 +67,7 @@ class Scenes extends React.Component {
     user.refetch()
   }
 
-  handleThemeChange = (theme) => {
+  _handleThemeChange = (theme) => {
     this.setState({ theme });
   }
 }

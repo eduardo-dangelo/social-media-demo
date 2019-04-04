@@ -1,23 +1,30 @@
 import React from 'react';
-import Flip from 'react-reveal/Flip';
 import { FaUserCog } from 'react-icons/fa';
 import UserSettingsForm from '../../../forms/UserSettingsForm';
-import { BoxContainer, BoxContent, BoxHeader } from '../../../elements/layout';
+import Box from '../../../components/Box';
+import { CurrentUser } from '../../App';
+import { StyleContext } from '../../index';
 
 class Settings extends React.Component {
   render() {
     return (
-      <BoxContainer>
-        <BoxHeader>
-          <Flip top cascade>
-            <FaUserCog/>
-            Settings
-          </Flip>
-        </BoxHeader>
-        <BoxContent>
-          <UserSettingsForm {...this.props}/>
-        </BoxContent>
-      </BoxContainer>
+      <CurrentUser.Consumer>
+        {({ userId, userName, userTheme }) => (
+          <StyleContext.Consumer>
+            {({ onSelectTheme, activeTheme }) => (
+              <Box header={(<><FaUserCog/> Settings</>)}>
+                <UserSettingsForm
+                  userId={userId}
+                  userName={userName}
+                  userTheme={userTheme}
+                  activeTheme={activeTheme}
+                  onSelectTheme={onSelectTheme}
+                />
+              </Box>
+            )}
+          </StyleContext.Consumer>
+        )}
+      </CurrentUser.Consumer>
     );
   }
 }

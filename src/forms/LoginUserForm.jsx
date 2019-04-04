@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { graphql, compose } from 'react-apollo';
 import {
   ActionBar,
@@ -12,7 +12,7 @@ import {
   Label,
 } from '../elements/form';
 import { authenticateUser } from '../services/mutations';
-import { FaSignInAlt, FaUserPlus } from 'react-icons/fa';
+import { FaSignInAlt } from 'react-icons/fa';
 import Flip from 'react-reveal/Flip';
 
 class LoginUserForm extends React.Component {

@@ -1,18 +1,18 @@
 import styled from 'styled-components'
-import { variables } from '../../config'
+import { variables, style } from '../../config'
 
 export const HeaderBox = styled.div`
   width: 100%;
   padding: 0;
   min-height: 60px;
-  background: ${({ styles }) => styles.theme.header.bg};
-  color: ${({ styles }) => styles.theme.header.color};
-  border-bottom: 1px solid ${({ styles }) => styles.theme.header.color};
+  background: ${({ theme }) => style.themes[theme ? theme : 'light'].header.bg};
+  color: ${({ theme }) => style.themes[theme ? theme : 'light'].header.color};
+  border-bottom: 1px solid ${({ theme }) => style.themes[theme ? theme : 'light'].header.color};
   position: relative;
   
   svg {
-    color: ${({ styles }) => styles.theme.box.icon.color};
-    margin-right: ${({ styles }) => styles.variables.spaceSmall};
+    color: ${({ theme }) => style.themes[theme ? theme : 'light'].box.icon.color};
+    margin-right: ${variables.spaceSmall};
   }
 `;
 
@@ -60,11 +60,11 @@ export const HeaderButton = styled.button`
   justify-content: space-around;
   transition: .3s ease;
   padding: 15px;
-  color: ${({ styles }) => styles.theme.header.color};
+  color: ${({ theme }) => theme.header.color};
   cursor: pointer;
   
   &:hover, &:focus {
-    color: ${({ styles }) => styles.theme.header.hover.color};
+    color: ${({ theme }) => theme.header.hover.color};
     background: rgba(255,255,255,0.04);
     outline: none;
   }

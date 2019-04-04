@@ -28,24 +28,24 @@ class UserSettingsForm extends React.Component {
   }
 
   componentWillMount() {
-    const { currentUser } = this.props;
+    const { userId, userName, userTheme, onSelectTheme } = this.props;
+    onSelectTheme(userTheme);
     this.setState({
-      id: currentUser.User.id,
-      name: currentUser.User.name,
-      authorId: currentUser.User.id
+      id: userId,
+      name: userName,
     })
   }
 
 
   render() {
-    const { theme, userId } = this.props;
+    const { activeTheme } = this.props;
     const { loading, error, name, saveSuccess } = this.state;
 
     const validate = () => {
       let disabled = false
       const values = [
         name,
-        theme,
+        activeTheme,
       ]
 
       values.forEach((item) => {
@@ -84,8 +84,8 @@ class UserSettingsForm extends React.Component {
           </Label>
           <RadioButton
             type="button"
-            activeTheme={theme}
-            active={theme === 'dark'}
+            activeTheme={activeTheme}
+            active={activeTheme === 'dark'}
             onClick={this.handleSelectTheme('dark')}
           >
             <FaMoon/>
@@ -93,8 +93,8 @@ class UserSettingsForm extends React.Component {
           </RadioButton>
           <RadioButton
             type="button"
-            activeTheme={theme}
-            active={theme === 'light'}
+            activeTheme={activeTheme}
+            active={activeTheme === 'light'}
             onClick={this.handleSelectTheme('light')}
           >
             <FaLightbulb/>
@@ -122,14 +122,14 @@ class UserSettingsForm extends React.Component {
   }
 
   handleSaveChanges = async (e) => {
-    const { updateUser, theme } = this.props;
+    const { updateUser, activeTheme } = this.props;
     const { name, id } = this.state;
     e.preventDefault();
     this.setState({ loading: true, error: false });
 
 
     updateUser({
-      variables: { id, name, theme },
+      variables: { id, name, theme: activeTheme },
     })
       .then(() => (
         this.setState({ loading: false, error: false, saveSuccess: true }),

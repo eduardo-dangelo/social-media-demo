@@ -12,7 +12,7 @@ import {
   Label,
 } from '../elements/form';
 import { signupUser } from '../services/mutations';
-import { FaSignInAlt, FaUserCheck } from 'react-icons/fa';
+import { FaSignInAlt } from 'react-icons/fa';
 import Flip from 'react-reveal/Flip';
 
 class CreateUserForm extends React.Component {

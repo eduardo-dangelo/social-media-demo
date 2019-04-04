@@ -17,7 +17,7 @@ class Posts extends React.PureComponent {
 
     return (
       <PostArea>
-        <BoxContainer>
+        <BoxContainer size={700}>
           <BoxHeader>
             <PostHeaderContent>
               <Flip top cascade>

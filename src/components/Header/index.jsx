@@ -20,10 +20,10 @@ class Header extends React.Component {
       <UserContext.Consumer>
         {({ userId }) => (
           <StyleContext.Consumer>
-            {(styles) => (
-              <HeaderBox styles={styles}>
+            {({ theme, variables, activeTheme }) => (
+              <HeaderBox theme={activeTheme}>
                 <Container>
-                  <TransparentButton styles={styles} onClick={this.handleClick('/social-media-demo/')}>
+                  <TransparentButton theme={theme} onClick={this.handleClick('/social-media-demo/')}>
                     <HeaderTitle>
                       <Flip cascade top>
                         {/*<img src={logo} onLoad={this._onImageLoad}/>*/}
@@ -36,26 +36,26 @@ class Header extends React.Component {
                   </TransparentButton>
                   <HeaderActionBar>
                     {!userId && location.pathname === '/social-media-demo/signup' && (
-                      <HeaderButton styles={styles} onClick={this.handleClick('/social-media-demo/login')}>
+                      <HeaderButton theme={theme} onClick={this.handleClick('/social-media-demo/login')}>
                         login
                       </HeaderButton>
                     )}
                     {!userId && location.pathname === '/social-media-demo/login' && (
-                      <HeaderButton styles={styles} onClick={this.handleClick('/social-media-demo/signup')}>
+                      <HeaderButton theme={theme} onClick={this.handleClick('/social-media-demo/signup')}>
                         <Flip cascade top>
                           signup
                         </Flip>
                       </HeaderButton>
                     )}
                     {!userId && location.pathname === '/social-media-demo/' && (
-                      <HeaderButton styles={styles} onClick={this.handleClick('/social-media-demo/signup')}>
+                      <HeaderButton theme={theme} onClick={this.handleClick('/social-media-demo/signup')}>
                         <Flip cascade top>
                           signup
                         </Flip>
                       </HeaderButton>
                     )}
                     {userId && (
-                      <HeaderButton styles={styles} onClick={this.handleClick('logout')}>
+                      <HeaderButton theme={theme} onClick={this.handleClick('logout')}>
                         <Flip cascade top>
                           logout
                         </Flip>

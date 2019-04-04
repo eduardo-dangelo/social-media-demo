@@ -1,24 +1,17 @@
 import React from 'react';
-import Flip from 'react-reveal/Flip';
-import { FaUser, FaEnvelope, FaUserCog } from 'react-icons/fa';
-import { BoxContainer, BoxHeader, BoxHeaderContent, LItem, UList } from '../../../elements/layout';
+import { FaEnvelope, FaUserCog } from 'react-icons/fa';
+import { CurrentUser } from '../index'
+import { StyleContext } from '../../'
+import Box from '../../../components/Box'
+import NavItem from '../../../components/NavItem'
+import NavList from '../../../components/NavList'
 
 class NavBar extends React.Component {
   state = {
     activeItem: 'posts',
   }
 
-  componentWillMount() {
-    const { userTheme, onLoadUserTheme } = this.props;
-
-    if (userTheme) {
-      onLoadUserTheme(userTheme);
-    }
-  }
-
-
   render() {
-    const { theme, userName, userId } = this.props;
     const { activeItem } = this.state;
     const items = [
       { name: 'Posts', key: 'posts', icon: (<FaEnvelope/>)},
@@ -26,43 +19,32 @@ class NavBar extends React.Component {
     ];
 
     return (
-      <BoxContainer>
-        <BoxHeader>
-          <FaUser/>
-          <BoxHeaderContent>
-            <Flip top cascade>
-              {`Welcome ${userName}`}
-            </Flip>
-          </BoxHeaderContent>
-        </BoxHeader>
-        <UList>
-          {items.map((item) => {
-            return (
-              <LItem
-                key={item.key}
-                theme={theme}
-                active={activeItem === item.key}
-                onClick={userId ? this.handleClick(item.key) : this.handleAuthClick}
-              >
-                {item.icon}
-                {item.name}
-              </LItem>
-            );
-          })}
-        </UList>
-      </BoxContainer>
+      <CurrentUser.Consumer>
+        {({ userName, userId, onAuthRequired, onSelectView, currentView }) => (
+          <Box size={500} header={`Welcome ${userName}`}>
+            <NavList>
+              {items.map((view) => {
+                return (
+                  <NavItem
+                    key={view.key}
+                    active={activeItem === view.key}
+                    onSelect={userId ? this.handleClick(view.key, onSelectView) : onAuthRequired}
+                  >
+                    {view.icon}
+                    {view.name}
+                  </NavItem>
+                );
+              })}
+            </NavList>
+          </Box>
+        )}
+      </CurrentUser.Consumer>
     );
   }
 
-  handleClick = (item) => () => {
-    const { onSelectItem } = this.props;
+  handleClick = (item, onSelectView) => () => {
     this.setState({ activeItem: item });
-    onSelectItem(item);
-  }
-
-  handleAuthClick = () => {
-    const { onAuthRequired } = this.props;
-    onAuthRequired();
+    onSelectView(item);
   }
 }
 

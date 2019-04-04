@@ -203,12 +203,12 @@ export const CommentActions = styled.div`
   font-size: .8em;
 `;
 
-export const UList = styled.div`
-  margin: 0;
+export const NavListWrapper = styled.div`
+  margin: -${variables.spaceSmall};
   padding: ${variables.spaceSmall} 0;
 `;
 
-export const LItem = styled.a`
+export const NavItemWrapper = styled.a`
   display: flex;
   cursor: pointer;
   align-items: center;

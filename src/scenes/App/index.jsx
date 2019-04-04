@@ -8,6 +8,9 @@ import { Col, Page, Row } from '../../elements/layout';
 import { FaUser } from 'react-icons/fa'
 import LoginUserForm from '../../forms/LoginUserForm'
 import Modal from '../../components/Modal/Modal'
+import { LoadUserTheme } from '../../helpers/LoadUserTheme'
+
+export const CurrentUser = React.createContext({});
 
 class App extends React.PureComponent {
   state = {
@@ -16,47 +19,49 @@ class App extends React.PureComponent {
   }
 
   render() {
-    const { currentUser, onSelectTheme, updateRequired } = this.props;
+    const { currentUser } = this.props;
     const { view, showLoginModal } = this.state;
     const userName = currentUser.User ? currentUser.User.name : '';
-    const userTheme = currentUser.User ? currentUser.User.theme : '';
     const userId = currentUser.User ? currentUser.User.id : '';
 
+    const contextValues = {
+      userName: currentUser.User ? currentUser.User.name : '',
+      userTheme: currentUser.User ? currentUser.User.theme : 'light',
+      userId: currentUser.User ? currentUser.User.id : null,
+      onSelectView: this.handleViewChange,
+      onAuthRequired: this.handleAuthRequired,
+      currentView: view,
+    }
+
     return (
-      <Page>
-        <Modal
-          size={300}
-          show={showLoginModal}
-          onClose={this.toggleLoginModal}
-          header={(<><FaUser/> Login</>)}
-        >
-          <LoginUserForm updateRequired={this.handleUpdateRequired}/>
-        </Modal>
-        <Row>
-          <Col size={2} navBar>
-            <NavBar
-              userName={userName}
-              userTheme={userTheme}
-              onLoadUserTheme={onSelectTheme}
-              onSelectItem={this.handleViewChange}
-              onAuthRequired={this.handleAuthRequired}
-              {...this.props}
-            />
-          </Col>
-          <Col size={6}>
-            {view === 'settings' && (
-              <Settings updateRequired={updateRequired} {...this.props}/>
-            )}
-            {view === 'posts' && (
-              <Posts
-                userId={userId}
-                userName={userName}
-                onAuthRequired={this.handleAuthRequired}
-              />
-            )}
-          </Col>
-        </Row>
-      </Page>
+      <CurrentUser.Provider value={contextValues}>
+        <LoadUserTheme/>
+        <Page>
+          <Modal
+            size={300}
+            show={showLoginModal}
+            onClose={this.toggleLoginModal}
+            header={(<><FaUser/> Login</>)}
+          >
+            <LoginUserForm updateRequired={this.handleUpdateRequired}/>
+          </Modal>
+          <Row>
+            <Col size={2} navBar>
+              <NavBar/>
+            </Col>
+            <Col size={6}>
+              {view === 'settings' && <Settings />}
+              {view === 'posts' && (
+                <Posts
+                  userId={userId}
+                  userName={userName}
+                  onAuthRequired={this.handleAuthRequired}
+                />
+              )}
+            </Col>
+          </Row>
+        </Page>
+      </CurrentUser.Provider>
     );
   }
 
