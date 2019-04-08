@@ -89,7 +89,7 @@ class EditPostForm extends React.Component {
     })
       .then(() => (
         this.setState({ loading: false, error: false }),
-        this.props.updateRequired()
+        this.props.onEditComplete()
       ))
   }
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import { FaEnvelope, FaUserCog } from 'react-icons/fa';
 import { CurrentUser } from '../index'
-import { StyleContext } from '../../'
 import Box from '../../../components/Box'
 import NavItem from '../../../components/NavItem'
 import NavList from '../../../components/NavList'
@@ -20,7 +19,7 @@ class NavBar extends React.Component {
 
     return (
       <CurrentUser.Consumer>
-        {({ userName, userId, onAuthRequired, onSelectView, currentView }) => (
+        {({ userName, userId, onAuthRequired, onSelectView }) => (
           <Box size={500} header={`Welcome ${userName}`}>
             <NavList>
               {items.map((view) => {

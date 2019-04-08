@@ -51,7 +51,7 @@ class DeletePostForm extends React.Component {
   handleDeletePost = async (e) => {
     e.preventDefault();
 
-    const { postId, updateRequired } = this.props;
+    const { postId, onUpdateRequired } = this.props;
     this.setState({ loading: true, error: false });
 
     await this.props.deletePost({
@@ -59,7 +59,7 @@ class DeletePostForm extends React.Component {
     })
       .then(() => (
         this.setState({ loading: false, error: false }),
-          updateRequired()
+          onUpdateRequired()
       ))
   }
 

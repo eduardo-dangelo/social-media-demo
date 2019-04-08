@@ -111,8 +111,8 @@ export const BoxHeaderContent = styled.div`
   word-wrap: break-word;
 `;
 
-export const PostHeaderContent = styled.div`
-  max-width: 600px;
+export const BoxSection = styled.div`
+  margin: ${variables.space} -${variables.space} 0;
   word-wrap: break-word;
 `;
 
@@ -121,7 +121,7 @@ export const BoxContent = styled.div`
   border-top: ${({ divider }) => divider ? '1px solid' : 'none'};
 `;
 
-export const PostContent = styled.h3`
+export const PostContentContainer = styled.h3`
   width: 100%;
   max-width: 600px;
   word-wrap: break-word;
@@ -135,7 +135,7 @@ export const CommentsContainer = styled.div`
   position: relative;
 `;
 
-export const PostHeader = styled.div`
+export const PostHeaderContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -94,7 +94,7 @@ class CreatePostForm extends React.Component {
     })
       .then((response) => (
         this.setState({ content: '', loading: false, error: false }),
-        this.props.updateRequired()
+        this.props.onUpdateRequired()
       ))
   }
 }

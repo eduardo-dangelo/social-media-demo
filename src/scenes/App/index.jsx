@@ -8,7 +8,7 @@ import { Col, Page, Row } from '../../elements/layout';
 import { FaUser } from 'react-icons/fa'
 import LoginUserForm from '../../forms/LoginUserForm'
 import Modal from '../../components/Modal/Modal'
-import { LoadUserTheme } from '../../helpers/LoadUserTheme'
+import { LoadUserTheme } from '../../helpers/LoadUserTheme';
 
 export const CurrentUser = React.createContext({});
 
@@ -21,8 +21,14 @@ class App extends React.PureComponent {
   render() {
     const { currentUser } = this.props;
     const { view, showLoginModal } = this.state;
-    const userName = currentUser.User ? currentUser.User.name : '';
-    const userId = currentUser.User ? currentUser.User.id : '';
+
+    const viewTypes = {
+      POSTS: 'posts',
+      SETTINGS: 'settings'
+    }
+
+    const showPosts = view === viewTypes.POSTS;
+    const showSettings = view === viewTypes.SETTINGS;
 
     const contextValues = {
       userName: currentUser.User ? currentUser.User.name : '',
@@ -50,14 +56,8 @@ class App extends React.PureComponent {
               <NavBar/>
             </Col>
             <Col size={6}>
-              {view === 'settings' && <Settings />}
-              {view === 'posts' && (
-                <Posts
-                  userId={userId}
-                  userName={userName}
-                  onAuthRequired={this.handleAuthRequired}
-                />
-              )}
+              {showPosts && <Posts/>}
+              {showSettings && <Settings />}
             </Col>
           </Row>
         </Page>
@@ -70,7 +70,6 @@ class App extends React.PureComponent {
   }
 
   handleAuthRequired = () => {
-    console.log('cal')
     this.setState({ showLoginModal: true });
   }
 
