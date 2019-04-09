@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { variables } from '../../config'
 import { BoxContainer, BoxContent, BoxHeader, CommentBox, CommentsContainer } from '../layout'
-import { ActionBar, ActionButton, ActionLink, ErrorBox, Field, RadioButton } from '../form'
+import { ActionBarContainer, ActionButton, ActionLink, ErrorBox, Field, RadioButton } from '../form'
 
 export const Container = styled.div`
   font-family: 'Montserrat', sans-serif;
@@ -91,7 +91,7 @@ export const BodyContainer = styled.div`
     }
   }
   
-  ${ActionBar} {
+  ${ActionBarContainer} {
     border-color: ${({ styles }) => styles.theme.box.color};
   }
   

@@ -5,21 +5,28 @@ import { ActionLink } from '../../../elements/form';
 import EditCommentForm from '../../../forms/EditCommentForm';
 import { FaPencilAlt, FaTrashAlt, FaUser } from 'react-icons/fa';
 import DeleteCommentForm from '../../../forms/DeleteCommentForm';
-import { CommentActions, CommentBox, CommentContent, CommentText } from '../../../elements/layout';
+import {
+  CommentActions,
+  CommentBox,
+  CommentContent,
+  CommentText
+} from '../../../elements/layout';
 
 class Comment extends React.Component {
   state = {
     counter: 0,
-    deleteComment: false
-  }
+    showDeleteComment: false
+  };
 
   render() {
-    const { comment, userId, updateRequired } = this.props;
-    const { deleteComment, editComment } = this.state;
+    const { comment, userId, onUpdateRequired, onAuthRequired } = this.props;
+    const { showDeleteComment, showEditComment } = this.state;
+    const showCommentContent = !showDeleteComment && !showEditComment;
+    const isUserComment = comment.author.id === userId;
 
     return (
       <CommentBox key={comment.id}>
-        {!deleteComment && !editComment && (
+        {showCommentContent && (
           <CommentContent>
             <FaUser/>
             {' '}
@@ -31,7 +38,7 @@ class Comment extends React.Component {
             </CommentText>
           </CommentContent>
         )}
-        {editComment && (
+        {showEditComment && (
           <CommentContent>
             <EditCommentForm
               userId={userId}
@@ -41,32 +48,37 @@ class Comment extends React.Component {
             />
           </CommentContent>
         )}
-        {deleteComment && (
+        {showDeleteComment && (
           <CommentContent>
             <DeleteCommentForm
               userId={userId}
               commentId={comment.id}
               onCancel={this.toggleDeleteComment}
-              updateRequired={updateRequired}
+              updateRequired={onUpdateRequired}
             />
           </CommentContent>
         )}
         <CommentActions>
-          {comment.author.id === userId && (
+          {isUserComment && (
             <ActionLink marginLeft icon onClick={this.toggleEditComment}>
               <span>
                 <FaPencilAlt/>
               </span>
             </ActionLink>
           )}
-          {comment.author.id === userId && (
+          {isUserComment && (
             <ActionLink icon onClick={this.toggleDeleteComment}>
               <span>
                 <FaTrashAlt/>
               </span>
             </ActionLink>
           )}
-          <LikesComment likes={comment.likes} {...this.props}/>
+          <LikesComment
+            comment={comment}
+            userId={userId}
+            onUpdateRequired={onUpdateRequired}
+            onAuthRequired={onAuthRequired}
+          />
         </CommentActions>
       </CommentBox>
     );
@@ -74,14 +86,20 @@ class Comment extends React.Component {
 
   handleLike = () => {
     this.setState({ counter: this.state.counter + 1 });
-  }
+  };
 
   toggleEditComment = () => {
-    this.setState({ editComment: !this.state.editComment, deleteComment: false })
-  }
+    this.setState({
+      showEditComment: !this.state.showEditComment,
+      showDeleteComment: false
+    })
+  };
 
   toggleDeleteComment = () => {
-    this.setState({ deleteComment: !this.state.deleteComment, editComment: false });
+    this.setState({
+      showDeleteComment: !this.state.showDeleteComment,
+      showEditComment: false
+    });
   }
 }
 

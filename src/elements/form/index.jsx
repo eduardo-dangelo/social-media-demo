@@ -135,7 +135,7 @@ export const RadioButton = styled.button`
   }
 `;
 
-export const ActionBar = styled.div`
+export const ActionBarContainer = styled.div`
   display: flex;
   position: relative;
   align-items: center;

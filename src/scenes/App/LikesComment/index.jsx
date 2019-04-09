@@ -11,11 +11,12 @@ class LikesComment extends React.Component {
   }
 
   render() {
-    const { likes, comment, userId } = this.props;
+    const { comment, userId } = this.props;
+    const likes = comment.likes;
     let liked = false;
     let likeId = null;
 
-    comment.likes.forEach((like) => {
+    likes.forEach((like) => {
       if (like.author.id === userId) {
         liked = true;
         likeId = like.id
@@ -35,14 +36,14 @@ class LikesComment extends React.Component {
   }
 
   handleLike = () => {
-    const { likeComment, comment, userId, updateRequired, onAuthRequired } = this.props;
+    const { likeComment, comment, userId, onUpdateRequired, onAuthRequired } = this.props;
 
     if (userId) {
       likeComment({
         variables: { commentId: comment.id, authorId: userId }
       })
         .then(() => (
-          updateRequired()
+          onUpdateRequired()
         ))
       this.setState({ counter: this.state.counter + 1 });
     } else {
@@ -51,13 +52,13 @@ class LikesComment extends React.Component {
   }
 
   handleDislike = (likeId) => () => {
-    const { dislikeComment, updateRequired } = this.props;
+    const { dislikeComment, onUpdateRequired } = this.props;
 
     dislikeComment({
       variables: { id: likeId }
     })
       .then(() => (
-        updateRequired()
+        onUpdateRequired()
       ))
     this.setState({ counter: this.state.counter - 1 });
   }

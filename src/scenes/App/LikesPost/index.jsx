@@ -8,19 +8,20 @@ import { ActionLink, ActionLinkContent } from '../../../elements/form';
 class LikesPost extends React.Component {
   state = {
     counter: 0,
-  }
+  };
 
   render() {
-    const { likes, post, userId } = this.props;
+    const { post, userId } = this.props;
+    const likes = post.likes;
     let liked = false;
     let likeId = null;
 
-    post.likes.forEach((like) => {
+    likes.forEach((like) => {
       if (like.author.id === userId) {
         liked = true;
         likeId = like.id
       }
-    })
+    });
 
     return (
       <ActionLink icon onClick={liked ? this.handleDislike(likeId) : this.handleLike}>
@@ -35,15 +36,15 @@ class LikesPost extends React.Component {
   }
 
   handleLike = () => {
-    const { likePost, post, userId, updateRequired, onAuthRequired } = this.props;
+    const { likePost, post, userId, onUpdateRequired, onAuthRequired } = this.props;
 
     if (userId) {
       likePost({
         variables: { postId: post.id, authorId: userId }
       })
         .then(() => (
-          updateRequired()
-        ))
+          onUpdateRequired()
+        ));
       this.setState({ counter: this.state.counter + 1 });
     } else {
       onAuthRequired()
@@ -51,14 +52,14 @@ class LikesPost extends React.Component {
   }
 
   handleDislike = (likeId) => () => {
-    const { dislikePost, updateRequired } = this.props;
+    const { dislikePost, onUpdateRequired } = this.props;
 
     dislikePost({
       variables: { id: likeId }
     })
       .then(() => (
-        updateRequired()
-      ))
+        onUpdateRequired()
+      ));
     this.setState({ counter: this.state.counter - 1 });
   }
 }

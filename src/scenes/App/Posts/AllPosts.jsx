@@ -7,7 +7,7 @@ class AllPosts extends React.Component {
   render() {
     return (
       <CurrentUser.Consumer>
-        {({ userId }) => (
+        {({ userId, onAuthRequired }) => (
           <PostContext.Consumer>
             {({ posts, onUpdateRequired }) => {
               return posts.length > 1 && posts.map((post) => {
@@ -17,6 +17,7 @@ class AllPosts extends React.Component {
                     key={post.id}
                     userId={userId}
                     onUpdateRequired={onUpdateRequired}
+                    onAuthRequired={onAuthRequired}
                   />
                 );
               })

@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { graphql, compose } from 'react-apollo';
 import {
-  ActionBar,
+  ActionBarContainer,
   ActionButton, ActionLink, ButtonContent,
   ErrorBox,
   FaCogSpin,
@@ -82,7 +82,7 @@ class CreateUserForm extends React.Component {
             onChange={(e) => this.setState({password: e.target.value})}
           />
         </FormGroup>
-        <ActionBar divider justifyContent={'space-between'}>
+        <ActionBarContainer divider justifyContent={'space-between'}>
           <ActionLink onClick={this.handleLogin}>
             <span>
               Login
@@ -97,7 +97,7 @@ class CreateUserForm extends React.Component {
               {loading ? <FaCogSpin/> : ''}
             </ButtonContent>
           </ActionButton>
-        </ActionBar>
+        </ActionBarContainer>
       </Form>
     )
   }

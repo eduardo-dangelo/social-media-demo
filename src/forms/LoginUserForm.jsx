@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { graphql, compose } from 'react-apollo';
 import {
-  ActionBar,
+  ActionBarContainer,
   ActionButton, ActionLink, ButtonContent,
   ErrorBox,
   FaCogSpin,
@@ -21,26 +21,26 @@ class LoginUserForm extends React.Component {
     password: 'ttest',
     loading: false,
     error: false,
-  }
+  };
 
   render () {
     const { loading, error, email, password } = this.state;
 
     const validate = () => {
-      let disabled = false
+      let disabled = false;
       const values = [
         email,
         password,
-      ]
+      ];
 
       values.forEach((item) => {
         if (item === '') {
           disabled = true
         }
-      })
+      });
 
       return disabled;
-    }
+    };
 
     return (
       <Form onSubmit={this.authenticateUser}>
@@ -70,7 +70,7 @@ class LoginUserForm extends React.Component {
             onChange={(e) => this.setState({password: e.target.value})}
           />
         </FormGroup>
-        <ActionBar divider justifyContent={'space-between'}>
+        <ActionBarContainer divider justifyContent={'space-between'}>
           <ActionLink onClick={this.handleSignUp}>
             <span>
               Sign Up
@@ -85,7 +85,7 @@ class LoginUserForm extends React.Component {
               {loading ? <FaCogSpin/> : ''}
             </ButtonContent>
           </ActionButton>
-        </ActionBar>
+        </ActionBarContainer>
       </Form>
     );
   }
@@ -93,7 +93,7 @@ class LoginUserForm extends React.Component {
   handleSignUp = () => {
     const { history } = this.props;
     history.replace('/social-media-demo/signup');
-  }
+  };
 
   authenticateUser = async (e) => {
     const { authenticateUser, history, updateRequired } = this.props;

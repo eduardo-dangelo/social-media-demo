@@ -19,30 +19,29 @@ class CreateCommentForm extends React.Component {
     content: '',
     loading: false,
     error: false
-  }
+  };
 
   render() {
     const { loading, error, content } = this.state;
-    const { onAuthRequired, userId } = this.props;
 
     const validate = () => {
       let disabled = false
       const values = [
         content,
-      ]
+      ];
 
       values.forEach((item) => {
         if (item === '') {
           disabled = true
         }
-      })
+      });
 
       if (loading) {
         disabled = true
       }
 
       return disabled;
-    }
+    };
 
     return (
       <Form onSubmit={this.handleSaveChanges}>
@@ -81,11 +80,11 @@ class CreateCommentForm extends React.Component {
     } else {
       onAuthRequired()
     }
-  }
+  };
 
   handleSaveChanges = async (e) => {
     const { content } = this.state;
-    const { postId, userId } = this.props;
+    const { postId, userId, onUpdateRequired } = this.props;
     e.preventDefault();
     this.setState({ loading: true, error: false });
 
@@ -94,7 +93,7 @@ class CreateCommentForm extends React.Component {
     })
       .then(() => (
         this.setState({ content: '', loading: false, error: false }),
-        this.props.updateRequired()
+        onUpdateRequired()
       ))
   }
 }

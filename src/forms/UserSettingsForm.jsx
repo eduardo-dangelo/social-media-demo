@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  ActionBar,
+  ActionBarContainer,
   ActionButton,
   ButtonContent,
   ErrorBox,
@@ -101,7 +101,7 @@ class UserSettingsForm extends React.Component {
             Light
           </RadioButton>
         </FormGroup>
-        <ActionBar divider>
+        <ActionBarContainer divider>
           <Fade bottom opposite when={saveSuccess}>
             <SuccessMessage>
               Saved!
@@ -116,7 +116,7 @@ class UserSettingsForm extends React.Component {
               {loading ? <FaCogSpin/> : ''}
             </ButtonContent>
           </ActionButton>
-        </ActionBar>
+        </ActionBarContainer>
       </Form>
     )
   }
